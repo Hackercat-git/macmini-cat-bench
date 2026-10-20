@@ -1,0 +1,124 @@
+{
+ "track": "longcontext",
+ "description": "Finding one fact in a long document (about 2k, 6k and 12k tokens), early, in the middle and late.",
+ "defaults": {
+  "system": "Answer using only the document.",
+  "num_predict": 60
+ },
+ "tasks": [
+  {
+   "id": "long-2k-early",
+   "checks": [
+    {
+     "type": "needle",
+     "value": "7391-LYNX"
+    }
+   ],
+   "pass": "7391-LYNX",
+   "fail": "The document does not contain a code.",
+   "long": {
+    "approx_tokens": 2000,
+    "position": 0.1,
+    "needle_sentence": "The secret access code for the archive is 7391-LYNX.",
+    "filler_seed": 11,
+    "question": "What is the secret access code for the archive? Answer with the code only."
+   },
+   "num_ctx": 16384
+  },
+  {
+   "id": "long-2k-late",
+   "checks": [
+    {
+     "type": "needle",
+     "value": "4820-OTTER"
+    }
+   ],
+   "pass": "4820-OTTER",
+   "fail": "The document does not contain a code.",
+   "long": {
+    "approx_tokens": 2000,
+    "position": 0.9,
+    "needle_sentence": "The secret access code for the archive is 4820-OTTER.",
+    "filler_seed": 12,
+    "question": "What is the secret access code for the archive? Answer with the code only."
+   },
+   "num_ctx": 16384
+  },
+  {
+   "id": "long-6k-middle",
+   "checks": [
+    {
+     "type": "needle",
+     "value": "1957-HERON"
+    }
+   ],
+   "pass": "1957-HERON",
+   "fail": "The document does not contain a code.",
+   "long": {
+    "approx_tokens": 6000,
+    "position": 0.5,
+    "needle_sentence": "The secret access code for the archive is 1957-HERON.",
+    "filler_seed": 13,
+    "question": "What is the secret access code for the archive? Answer with the code only."
+   },
+   "num_ctx": 16384
+  },
+  {
+   "id": "long-6k-early",
+   "checks": [
+    {
+     "type": "needle",
+     "value": "6034-MARTEN"
+    }
+   ],
+   "pass": "6034-MARTEN",
+   "fail": "The document does not contain a code.",
+   "long": {
+    "approx_tokens": 6000,
+    "position": 0.1,
+    "needle_sentence": "The secret access code for the archive is 6034-MARTEN.",
+    "filler_seed": 14,
+    "question": "What is the secret access code for the archive? Answer with the code only."
+   },
+   "num_ctx": 16384
+  },
+  {
+   "id": "long-12k-middle",
+   "checks": [
+    {
+     "type": "needle",
+     "value": "8842-BADGER"
+    }
+   ],
+   "pass": "8842-BADGER",
+   "fail": "The document does not contain a code.",
+   "long": {
+    "approx_tokens": 12000,
+    "position": 0.5,
+    "needle_sentence": "The secret access code for the archive is 8842-BADGER.",
+    "filler_seed": 15,
+    "question": "What is the secret access code for the archive? Answer with the code only."
+   },
+   "num_ctx": 16384
+  },
+  {
+   "id": "long-12k-late",
+   "checks": [
+    {
+     "type": "needle",
+     "value": "3206-FALCON"
+    }
+   ],
+   "pass": "3206-FALCON",
+   "fail": "The document does not contain a code.",
+   "long": {
+    "approx_tokens": 12000,
+    "position": 0.9,
+    "needle_sentence": "The secret access code for the archive is 3206-FALCON.",
+    "filler_seed": 16,
+    "question": "What is the secret access code for the archive? Answer with the code only."
+   },
+   "num_ctx": 16384
+  }
+ ]
+}

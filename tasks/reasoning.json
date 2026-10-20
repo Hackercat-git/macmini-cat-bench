@@ -1,0 +1,154 @@
+{
+ "track": "reasoning",
+ "description": "Word problems and arithmetic with one correct final answer.",
+ "defaults": {
+  "system": "You are a careful problem solver. Think briefly, then give the final answer on the last line as 'Answer: <number>'.",
+  "num_predict": 700
+ },
+ "tasks": [
+  {
+   "id": "math-discount",
+   "prompt": "A shirt costs 40 euros after a 20% discount. What was the original price in euros?",
+   "checks": [
+    {
+     "type": "number",
+     "expected": 50
+    }
+   ],
+   "pass": "Answer: 50",
+   "fail": "Answer: 48"
+  },
+  {
+   "id": "math-ages",
+   "prompt": "Tom is twice as old as Anna. In 5 years the sum of their ages will be 40. How old is Tom now?",
+   "checks": [
+    {
+     "type": "number",
+     "expected": 20
+    }
+   ],
+   "pass": "Answer: 20",
+   "fail": "Answer: 10"
+  },
+  {
+   "id": "math-pipes",
+   "prompt": "Pipe A fills a tank in 6 hours and pipe B in 3 hours. How many hours does it take to fill the tank with both pipes together?",
+   "checks": [
+    {
+     "type": "number",
+     "expected": 2
+    }
+   ],
+   "pass": "Answer: 2",
+   "fail": "Answer: 4.5"
+  },
+  {
+   "id": "math-primes",
+   "prompt": "How many prime numbers are there between 10 and 30?",
+   "checks": [
+    {
+     "type": "number",
+     "expected": 6
+    }
+   ],
+   "pass": "Answer: 6",
+   "fail": "Answer: 7"
+  },
+  {
+   "id": "math-speed",
+   "prompt": "A car drives 60 km at 30 km/h and returns the same 60 km at 60 km/h. What is its average speed for the whole trip in km/h?",
+   "checks": [
+    {
+     "type": "number",
+     "expected": 40
+    }
+   ],
+   "pass": "Answer: 40",
+   "fail": "Answer: 45"
+  },
+  {
+   "id": "math-widgets",
+   "prompt": "If 5 machines make 5 widgets in 5 minutes, how many minutes do 100 machines need to make 100 widgets?",
+   "checks": [
+    {
+     "type": "number",
+     "expected": 5
+    }
+   ],
+   "pass": "Answer: 5",
+   "fail": "Answer: 100"
+  },
+  {
+   "id": "math-multiply",
+   "prompt": "What is 17 × 24?",
+   "checks": [
+    {
+     "type": "number",
+     "expected": 408
+    }
+   ],
+   "pass": "Answer: 408",
+   "fail": "Answer: 418"
+  },
+  {
+   "id": "math-sequence",
+   "prompt": "What is the next number in the sequence 2, 6, 12, 20, 30?",
+   "checks": [
+    {
+     "type": "number",
+     "expected": 42
+    }
+   ],
+   "pass": "Answer: 42",
+   "fail": "Answer: 40"
+  },
+  {
+   "id": "math-batball",
+   "prompt": "A bat and a ball cost 1.10 euros in total. The bat costs 1.00 euro more than the ball. How many cents does the ball cost?",
+   "checks": [
+    {
+     "type": "number",
+     "expected": 5
+    }
+   ],
+   "pass": "Answer: 5",
+   "fail": "Answer: 10"
+  },
+  {
+   "id": "math-fraction",
+   "prompt": "Write 0.375 as a fraction in lowest terms.",
+   "checks": [
+    {
+     "type": "regex",
+     "pattern": "\\b3\\s*/\\s*8\\b"
+    }
+   ],
+   "pass": "Answer: 3/8",
+   "fail": "Answer: 375/1000"
+  },
+  {
+   "id": "math-equation",
+   "prompt": "Solve for x: 3x + 7 = 28.",
+   "checks": [
+    {
+     "type": "number",
+     "expected": 7
+    }
+   ],
+   "pass": "Answer: 7",
+   "fail": "Answer: 9"
+  },
+  {
+   "id": "math-area",
+   "prompt": "A rectangle has a perimeter of 30 cm and a length of 9 cm. What is its area in square centimetres?",
+   "checks": [
+    {
+     "type": "number",
+     "expected": 54
+    }
+   ],
+   "pass": "Answer: 54",
+   "fail": "Answer: 81"
+  }
+ ]
+}

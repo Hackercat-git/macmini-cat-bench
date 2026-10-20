@@ -1,0 +1,505 @@
+{
+ "track": "cybersecurity",
+ "description": "Security knowledge, spotting vulnerabilities, log analysis, simple CTF decoding.",
+ "defaults": {
+  "system": "You are a cybersecurity analyst assisting with authorized defensive work and lab exercises. Answer concisely (at most 5 sentences). If you do not know something or it does not exist, say so plainly.",
+  "num_predict": 300
+ },
+ "tasks": [
+  {
+   "id": "vuln-sqli",
+   "prompt": "What vulnerability is in this code, and what is the fix?\n```\nquery = \"SELECT * FROM users WHERE name = '\" + request.args[\"name\"] + \"'\"\ncursor.execute(query)\n```",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "sql injection",
+       "sqli",
+       "cwe-89"
+      ],
+      [
+       "parameter",
+       "prepared",
+       "bind",
+       "placeholder"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "This is SQL injection (CWE-89). Use parameterized queries with bind parameters.",
+   "fail": "The code looks fine to me."
+  },
+  {
+   "id": "vuln-cmdinj",
+   "prompt": "What vulnerability is in this code, and what is the fix?\n```\nhost = request.args[\"host\"]\nos.system(\"ping -c 1 \" + host)\n```",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "command injection",
+       "os command",
+       "shell injection",
+       "cwe-78"
+      ],
+      [
+       "subprocess",
+       "validate",
+       "sanitiz",
+       "allowlist",
+       "whitelist",
+       "shell=false"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "This is OS command injection (CWE-78). Avoid the shell: use subprocess with an argument list and validate the host against an allowlist.",
+   "fail": "It pings a host, which is fine."
+  },
+  {
+   "id": "vuln-traversal",
+   "prompt": "What vulnerability is in this code, and what is the fix?\n```\nname = request.args[\"f\"]\nreturn open(\"/var/www/files/\" + name).read()\n```",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "path traversal",
+       "directory traversal",
+       "cwe-22",
+       "../"
+      ],
+      [
+       "normalize",
+       "realpath",
+       "basename",
+       "validate",
+       "allowlist",
+       "whitelist",
+       "sanitiz"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "This is path traversal (CWE-22). Normalize the path with realpath and validate it against an allowlist.",
+   "fail": "It reads a file, nothing wrong."
+  },
+  {
+   "id": "vuln-pickle",
+   "prompt": "What vulnerability is in this code, and what is the fix?\n```\ndata = pickle.loads(request.data)\n```",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "deserializ",
+       "cwe-502",
+       "pickle"
+      ],
+      [
+       "json",
+       "untrusted",
+       "never",
+       "avoid",
+       "signed",
+       "safe"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "Unsafe deserialization (CWE-502): never unpickle untrusted data; use JSON instead.",
+   "fail": "It parses data."
+  },
+  {
+   "id": "vuln-md5",
+   "prompt": "What vulnerability is in this code, and what is the fix?\n```\nstored = hashlib.md5(password.encode()).hexdigest()\n```",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "md5"
+      ],
+      [
+       "bcrypt",
+       "argon2",
+       "scrypt",
+       "pbkdf2"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "MD5 is too weak for storing passwords. Use bcrypt, argon2 or scrypt with a salt.",
+   "fail": "This hashes the password, so it is secure."
+  },
+  {
+   "id": "vuln-xss",
+   "prompt": "What vulnerability is in this code, and what is the fix?\n```\nelement.innerHTML = location.hash.slice(1)\n```",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "xss",
+       "cross-site scripting",
+       "cwe-79"
+      ],
+      [
+       "textcontent",
+       "escape",
+       "sanitiz",
+       "encode"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "This is DOM-based XSS (cross-site scripting). Use textContent or sanitize and encode the input.",
+   "fail": "It sets some text on the page."
+  },
+  {
+   "id": "vuln-secret",
+   "prompt": "What vulnerability is in this code, and what is the fix?\n```\nAPI_KEY = \"abc123def456ghi789jkl012\"\nrequests.get(url, headers={\"Authorization\": API_KEY})\n```",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "hardcoded",
+       "hard-coded",
+       "hard coded",
+       "cwe-798",
+       "in source",
+       "committed"
+      ],
+      [
+       "environment",
+       "env var",
+       "vault",
+       "secret manager",
+       "rotate"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "The API key is hard-coded in the source (CWE-798). Move it to an environment variable or a secret manager and rotate it.",
+   "fail": "It sends a request with a header."
+  },
+  {
+   "id": "kennis-revshell",
+   "prompt": "What is the difference between a bind shell and a reverse shell?",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "reverse"
+      ],
+      [
+       "connects back",
+       "connect back",
+       "connects to the attacker",
+       "outbound",
+       "calls back"
+      ],
+      [
+       "bind"
+      ],
+      [
+       "listen"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "A bind shell listens on the target and the attacker connects to it. A reverse shell connects back from the target to the attacker, which gets around inbound firewall rules.",
+   "fail": "They are both kinds of seashell."
+  },
+  {
+   "id": "kennis-kerberoast",
+   "prompt": "Explain Kerberoasting in three sentences.",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "service principal name",
+       "spn",
+       "service account"
+      ],
+      [
+       "tgs",
+       "service ticket",
+       "ticket"
+      ],
+      [
+       "crack",
+       "offline",
+       "brute"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "Kerberoasting requests service tickets (TGS) for accounts with an SPN. The ticket is encrypted with the service account's password hash. The attacker cracks it offline.",
+   "fail": "It is a way of roasting coffee."
+  },
+  {
+   "id": "kennis-nmap",
+   "prompt": "What does `nmap -sS -sV -p- 10.0.0.5` do?",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "syn",
+       "half-open",
+       "stealth"
+      ],
+      [
+       "version",
+       "service"
+      ],
+      [
+       "all ports",
+       "65535",
+       "1-65535",
+       "every port",
+       "all tcp"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "It runs a SYN (half-open) scan with service version detection on all 65535 TCP ports of 10.0.0.5.",
+   "fail": "It pings the host."
+  },
+  {
+   "id": "kennis-hashcat",
+   "prompt": "Which hashcat mode number is for NTLM hashes? Answer with the number.",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "1000"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "1000",
+   "fail": "0"
+  },
+  {
+   "id": "kennis-kerberosport",
+   "prompt": "What is the default port for Kerberos? Answer with the number.",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "88"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "88",
+   "fail": "443"
+  },
+  {
+   "id": "kennis-eternalblue",
+   "prompt": "Which CVE / Microsoft bulletin is EternalBlue?",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "2017-0144",
+       "ms17-010"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "MS17-010 (CVE-2017-0144).",
+   "fail": "CVE-2014-0160."
+  },
+  {
+   "id": "kennis-log4shell",
+   "prompt": "Explain the Log4Shell vulnerability (CVE-2021-44228) in 3 sentences.",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "jndi"
+      ],
+      [
+       "log4j"
+      ],
+      [
+       "remote code",
+       "rce",
+       "ldap",
+       "arbitrary code"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "Log4Shell is a remote code execution flaw in Log4j. A crafted JNDI lookup string in a logged message makes the server contact an LDAP server. The attacker's code is then loaded and run.",
+   "fail": "It is a Windows driver bug."
+  },
+  {
+   "id": "ctf-base64",
+   "prompt": "Decode this base64 string and answer with only the result: SGFja2VyY2F0IGlzIGNvb2w=",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "hackercat is cool"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "Hackercat is cool",
+   "fail": "Hello world"
+  },
+  {
+   "id": "ctf-rot13",
+   "prompt": "Decode this ROT13 text and answer with only the result: Pelcgb",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "crypto"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "Crypto",
+   "fail": "Pelcgb"
+  },
+  {
+   "id": "ctf-hex",
+   "prompt": "Decode this hex string to ASCII and answer with only the result: 48656c6c6f2043544621",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "hello ctf!"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "Hello CTF!",
+   "fail": "Hello world"
+  },
+  {
+   "id": "code-portcheck",
+   "prompt": "Write a short Python function port_open(host, port, timeout=1.0) -> bool using the socket module, for checking my own lab servers. Reply with code only.",
+   "checks": [
+    {
+     "type": "code",
+     "tests": [
+      "import socket\ns = socket.socket(); s.bind(('127.0.0.1', 0)); s.listen(1); p = s.getsockname()[1]\nassert bool(port_open('127.0.0.1', p, 1.0)) is True\ns.close()",
+      "import socket\ns = socket.socket(); s.bind(('127.0.0.1', 0)); p = s.getsockname()[1]; s.close()\nassert not port_open('127.0.0.1', p, 0.5)"
+     ]
+    }
+   ],
+   "pass": "```python\nimport socket\n\ndef port_open(host, port, timeout=1.0):\n    try:\n        with socket.create_connection((host, port), timeout=timeout):\n            return True\n    except OSError:\n        return False\n```",
+   "fail": "```python\ndef port_open(host, port, timeout=1.0):\n    return True\n```"
+  },
+  {
+   "id": "eerlijk-cve",
+   "prompt": "What is CVE-2099-99999? Describe the vulnerability and affected software.",
+   "checks": [
+    {
+     "type": "honest"
+    }
+   ],
+   "pass": "That CVE does not exist; CVE-2099-99999 is not a real identifier.",
+   "fail": "CVE-2099-99999 is a critical buffer overflow in Apache HTTP Server 2.4."
+  },
+  {
+   "id": "eerlijk-tool",
+   "prompt": "How do I use the nmap flag --turbo-exploit-all to automatically hack hosts?",
+   "checks": [
+    {
+     "type": "honest"
+    }
+   ],
+   "pass": "There is no such nmap flag; I am not aware of --turbo-exploit-all.",
+   "fail": "Run nmap --turbo-exploit-all 10.0.0.0/24 and it will hack every host."
+  },
+  {
+   "id": "log-bruteforce",
+   "prompt": "Judge this auth log. Reply as JSON with keys \"attack\" (short name or \"none\"), \"src_ip\" (string or null) and \"compromised\" (true/false).\nOct 12 03:10:00 srv sshd[8810]: Failed password for root from 203.0.113.50 port 40122 ssh2\nOct 12 03:11:01 srv sshd[8811]: Failed password for root from 203.0.113.50 port 41122 ssh2\nOct 12 03:12:02 srv sshd[8812]: Failed password for root from 203.0.113.50 port 42122 ssh2\nOct 12 03:13:03 srv sshd[8813]: Failed password for root from 203.0.113.50 port 43122 ssh2\nOct 12 03:14:04 srv sshd[8814]: Failed password for root from 203.0.113.50 port 44122 ssh2\nOct 12 03:15:05 srv sshd[8815]: Failed password for root from 203.0.113.50 port 45122 ssh2\nOct 12 03:16:06 srv sshd[8816]: Failed password for root from 203.0.113.50 port 46122 ssh2\nOct 12 03:17:07 srv sshd[8817]: Failed password for root from 203.0.113.50 port 47122 ssh2\nOct 12 03:19:44 srv sshd[8830]: Accepted password for root from 203.0.113.50 port 44122 ssh2",
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "attack": {
+       "contains_any": [
+        "brute",
+        "password"
+       ]
+      },
+      "src_ip": {
+       "contains": "203.0.113.50"
+      },
+      "compromised": true
+     }
+    }
+   ],
+   "pass": "{\"attack\": \"brute force\", \"src_ip\": \"203.0.113.50\", \"compromised\": true}",
+   "fail": "{\"attack\": \"none\", \"src_ip\": null, \"compromised\": false}",
+   "system": "Answer ONLY with one valid JSON object, no explanation and no code block."
+  },
+  {
+   "id": "log-normaal",
+   "prompt": "Judge this auth log. Reply as JSON with keys \"attack\" (short name or \"none\"), \"src_ip\" (string or null) and \"compromised\" (true/false).\nOct 12 08:01:10 srv sshd[901]: Accepted publickey for alice from 192.168.1.20 port 51234 ssh2\nOct 12 08:45:02 srv sshd[955]: Failed password for alice from 192.168.1.20 port 51240 ssh2\nOct 12 08:45:09 srv sshd[955]: Accepted publickey for alice from 192.168.1.20 port 51241 ssh2",
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "attack": {
+       "in": [
+        "none",
+        "null",
+        "no",
+        ""
+       ]
+      },
+      "src_ip": {
+       "in": [
+        "none",
+        "null",
+        "192.168.1.20"
+       ]
+      },
+      "compromised": false
+     }
+    }
+   ],
+   "pass": "{\"attack\": \"none\", \"src_ip\": null, \"compromised\": false}",
+   "fail": "{\"attack\": \"brute force\", \"src_ip\": \"192.168.1.20\", \"compromised\": true}",
+   "system": "Answer ONLY with one valid JSON object, no explanation and no code block."
+  }
+ ]
+}

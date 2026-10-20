@@ -1,0 +1,7 @@
+FROM ./whiterabbitneo-13b.Q4_K_M.gguf
+TEMPLATE """{{ if .System }}SYSTEM: {{ .System }}
+{{ end }}USER: {{ .Prompt }}
+ASSISTANT: """
+PARAMETER stop "USER:"
+PARAMETER stop "SYSTEM:"
+PARAMETER temperature 0.2

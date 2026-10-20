@@ -1,0 +1,10 @@
+{
+  "model": "WhiteRabbitNeo 13B (Q4_K_M)",
+  "hardware": "Apple Mac mini, Apple M6, 32 GB unified memory, Ollama 0.40.5",
+  "settings": {"num_ctx": 8192, "flash_attention": true, "kv_cache_type": "q8_0", "tokens_per_request": 120, "agents": 5},
+  "weights_gb": 7.87,
+  "sequential": {"num_parallel": 1, "memory_gb_one_agent": 11.69, "memory_gb_five_agents": 11.69, "seconds_for_five": 32.3},
+  "parallel": {"num_parallel": 5, "memory_gb_one_agent": 26.86, "memory_gb_five_agents": 26.86, "seconds_for_five": 11.1},
+  "single_agent_generation_tok_s": 18.4,
+  "note": "Measured on 2026-10-20. Sequential = the production Ollama service (one request at a time). Parallel = a temporary second instance started with OLLAMA_NUM_PARALLEL=5 and the same settings; it was stopped afterwards. One measurement per setting."
+}

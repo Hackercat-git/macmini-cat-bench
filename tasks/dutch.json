@@ -1,0 +1,294 @@
+{
+ "track": "dutch",
+ "description": "Dutch language: answering in Dutch, translation both ways, grammar, spelling and idioms.",
+ "defaults": {
+  "system": "Je bent een behulpzame assistent. Antwoord kort en in dezelfde taal als de vraag, tenzij anders gevraagd.",
+  "num_predict": 250
+ },
+ "tasks": [
+  {
+   "id": "nl-capital",
+   "prompt": "Wat is de hoofdstad van Nederland?",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "amsterdam"
+      ]
+     ],
+     "weight": 1
+    },
+    {
+     "type": "language",
+     "lang": "nl"
+    }
+   ],
+   "pass": "De hoofdstad van Nederland is Amsterdam.",
+   "fail": "The capital is Amsterdam."
+  },
+  {
+   "id": "nl-translate-en-nl",
+   "prompt": "Translate to Dutch: 'The meeting has been moved to Thursday.'",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "vergadering",
+       "bijeenkomst",
+       "meeting",
+       "overleg"
+      ],
+      [
+       "donderdag"
+      ],
+      [
+       "verplaatst",
+       "verschoven"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "De vergadering is verplaatst naar donderdag.",
+   "fail": "La reunión se ha movido al jueves."
+  },
+  {
+   "id": "nl-translate-nl-en",
+   "prompt": "Translate to English: 'Ik heb vandaag geen tijd om te koken.'",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "today"
+      ],
+      [
+       "time"
+      ],
+      [
+       "cook"
+      ],
+      [
+       "don't have",
+       "do not have",
+       "have no",
+       "haven't"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "I don't have time to cook today.",
+   "fail": "I like cooking."
+  },
+  {
+   "id": "nl-answer-in-dutch",
+   "prompt": "Answer in Dutch: what is a rainbow? Use at most 40 words.",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "regenboog"
+      ]
+     ],
+     "weight": 1
+    },
+    {
+     "type": "language",
+     "lang": "nl"
+    },
+    {
+     "type": "max_words",
+     "n": 40
+    }
+   ],
+   "pass": "Een regenboog is een gekleurde boog aan de hemel die ontstaat als zonlicht door regendruppels wordt gebroken.",
+   "fail": "A rainbow is an arc of colours in the sky."
+  },
+  {
+   "id": "nl-dat-die",
+   "prompt": "Vul in: 'Het boek ___ ik las was mooi.' Geef alleen het ontbrekende woord (dat, die of wat).",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "dat"
+      ]
+     ],
+     "weight": 1,
+     "forbid": [
+      "die ik las",
+      "wat ik las"
+     ]
+    }
+   ],
+   "pass": "dat",
+   "fail": "die"
+  },
+  {
+   "id": "nl-plural",
+   "prompt": "Wat is het meervoud van 'stad'? Antwoord met één woord.",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "steden"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "steden",
+   "fail": "stads"
+  },
+  {
+   "id": "nl-verb",
+   "prompt": "Vul de juiste werkwoordsvorm in: 'Hij ___ (worden) boos.' Antwoord met één woord.",
+   "checks": [
+    {
+     "type": "regex",
+     "pattern": "\\bwordt\\b"
+    }
+   ],
+   "pass": "wordt",
+   "fail": "word"
+  },
+  {
+   "id": "nl-polite",
+   "prompt": "Schrijf één beleefde zin in het Nederlands waarmee je een afspraak wilt verzetten.",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "afspraak"
+      ],
+      [
+       "verzet",
+       "verplaats",
+       "andere tijd",
+       "ander moment",
+       "andere dag"
+      ]
+     ],
+     "weight": 1
+    },
+    {
+     "type": "language",
+     "lang": "nl"
+    }
+   ],
+   "pass": "Zou ik onze afspraak kunnen verzetten naar een ander moment?",
+   "fail": "Please move our appointment."
+  },
+  {
+   "id": "nl-leap",
+   "prompt": "Hoeveel dagen heeft februari in een schrikkeljaar?",
+   "checks": [
+    {
+     "type": "number",
+     "expected": 29
+    }
+   ],
+   "pass": "Februari heeft dan 29 dagen.",
+   "fail": "Februari heeft 28 dagen."
+  },
+  {
+   "id": "nl-summary",
+   "prompt": "Vat deze tekst samen in één zin:\n\nDe gemeente Utrecht opent volgend jaar in april een nieuwe fietsenstalling bij het station. De stalling biedt plaats aan 12.000 fietsen en is dag en nacht open.",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "utrecht"
+      ],
+      [
+       "fietsenstalling",
+       "stalling"
+      ],
+      [
+       "12.000",
+       "12000",
+       "12 000"
+      ]
+     ],
+     "weight": 1
+    },
+    {
+     "type": "language",
+     "lang": "nl"
+    }
+   ],
+   "pass": "Utrecht opent in april een nieuwe fietsenstalling bij het station voor 12.000 fietsen.",
+   "fail": "The city opens a bicycle garage."
+  },
+  {
+   "id": "nl-idiom",
+   "prompt": "Wat betekent de uitdrukking 'iemand de bons geven'?",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "afwijz",
+       "afwijs",
+       "afgewezen",
+       "niet meer",
+       "verbreken",
+       "uitmaken",
+       "wegsturen",
+       "weigeren",
+       "laten vallen"
+      ]
+     ],
+     "weight": 1
+    },
+    {
+     "type": "language",
+     "lang": "nl"
+    }
+   ],
+   "pass": "Het betekent dat je iemand afwijst, bijvoorbeeld in de liefde, of een relatie met die persoon verbreekt.",
+   "fail": "Het betekent iemand een cadeautje geven."
+  },
+  {
+   "id": "nl-cities",
+   "prompt": "Noem drie Nederlandse steden, gescheiden door komma's.",
+   "checks": [
+    {
+     "type": "count",
+     "items": [
+      "amsterdam",
+      "rotterdam",
+      "utrecht",
+      "den haag",
+      "'s-gravenhage",
+      "eindhoven",
+      "groningen",
+      "tilburg",
+      "almere",
+      "breda",
+      "nijmegen",
+      "apeldoorn",
+      "haarlem",
+      "arnhem",
+      "zwolle",
+      "maastricht",
+      "leiden",
+      "delft",
+      "enschede"
+     ],
+     "n": 3
+    }
+   ],
+   "pass": "Amsterdam, Rotterdam, Utrecht",
+   "fail": "Paris, London, Berlin"
+  }
+ ]
+}

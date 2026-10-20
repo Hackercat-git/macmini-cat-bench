@@ -1,0 +1,249 @@
+# The models in the benchmark. `tag` is what you give to `ollama pull` / `catbench run --models`.
+# status: "round1" = in the first complete run, "planned" = next, "wishlist" = does not fit a 32 GB Mac mini.
+# predict_min: models that always think before answering need a much larger token limit, or the answer never appears.
+
+[[model]]
+tag = "qwen3:8b"
+name = "qwen3 8B"
+family = "Qwen"
+params_b = 8
+size_gb = 5.2
+source = "ollama library"
+tier = "small"
+status = "round1"
+
+[[model]]
+tag = "hf.co/mradermacher/DeepHat-V1-7B-GGUF:Q4_K_M"
+name = "DeepHat V1 7B"
+family = "Qwen 2.5 Coder (security-tuned)"
+params_b = 7
+size_gb = 4.7
+source = "Hugging Face mradermacher/DeepHat-V1-7B-GGUF, Q4_K_M"
+tier = "small"
+status = "round1"
+
+[[model]]
+tag = "hf.co/QuantFactory/Foundation-Sec-8B-GGUF:Q4_K_M"
+name = "Foundation-Sec 8B"
+family = "Llama 3.1 (security-tuned, Cisco)"
+params_b = 8
+size_gb = 4.9
+source = "Hugging Face QuantFactory/Foundation-Sec-8B-GGUF, Q4_K_M"
+tier = "small"
+status = "round1"
+notes = "Base (not instruction-tuned) model: expect weaker instruction following."
+
+[[model]]
+tag = "llama3.1:8b"
+name = "Llama 3.1 8B"
+family = "Llama"
+params_b = 8
+size_gb = 4.9
+source = "ollama library"
+tier = "small"
+status = "round1"
+notes = "The common reference point."
+
+[[model]]
+tag = "qwen3.5:9b"
+name = "qwen3.5 9B"
+family = "Qwen"
+params_b = 9
+size_gb = 6.6
+source = "ollama library"
+tier = "small"
+status = "round1"
+
+[[model]]
+tag = "gemma4:12b"
+name = "gemma4 12B"
+family = "Gemma"
+params_b = 12
+size_gb = 8.0
+source = "ollama library"
+tier = "mid"
+status = "round1"
+
+[[model]]
+tag = "qwen2.5-coder:14b"
+name = "qwen2.5-coder 14B"
+family = "Qwen"
+params_b = 14
+size_gb = 9.0
+source = "ollama library"
+tier = "mid"
+status = "round1"
+
+[[model]]
+tag = "qwen3.8:27b"
+name = "qwen3.8 27B"
+family = "Qwen"
+params_b = 27
+size_gb = 17.0
+source = "ollama library"
+tier = "large"
+status = "round1"
+
+[[model]]
+tag = "phi4:14b"
+name = "phi4 14B"
+family = "Phi"
+params_b = 14
+size_gb = 9.1
+source = "ollama library"
+tier = "mid"
+status = "planned"
+
+[[model]]
+tag = "gemma3:12b"
+name = "gemma3 12B"
+family = "Gemma"
+params_b = 12
+size_gb = 8.1
+source = "ollama library"
+tier = "mid"
+status = "planned"
+
+[[model]]
+tag = "gpt-oss:20b"
+name = "gpt-oss 20B"
+family = "gpt-oss"
+params_b = 20
+size_gb = 13.8
+source = "ollama library"
+tier = "mid"
+status = "planned"
+predict_min = 3000
+notes = "Reasoning model: thinks before answering, so answers take longer."
+
+[[model]]
+tag = "deepseek-r1:14b"
+name = "deepseek-r1 14B"
+family = "DeepSeek R1 distill"
+params_b = 14
+size_gb = 9.0
+source = "ollama library"
+tier = "mid"
+status = "planned"
+predict_min = 3000
+notes = "Reasoning model: with a small token limit it scores near zero because the answer never appears."
+
+[[model]]
+tag = "codestral:22b"
+name = "codestral 22B"
+family = "Mistral"
+params_b = 22
+size_gb = 12.6
+source = "ollama library"
+tier = "mid"
+status = "planned"
+
+[[model]]
+tag = "mistral-small:24b"
+name = "Mistral Small 24B"
+family = "Mistral"
+params_b = 24
+size_gb = 14.3
+source = "ollama library"
+tier = "mid"
+status = "planned"
+
+[[model]]
+tag = "granite4"
+name = "granite4"
+family = "Granite"
+size_gb = 2.1
+source = "ollama library"
+tier = "small"
+status = "planned"
+
+[[model]]
+tag = "llama3.2:3b"
+name = "Llama 3.2 3B"
+family = "Llama"
+params_b = 3
+size_gb = 2.0
+source = "ollama library"
+tier = "small"
+status = "planned"
+
+[[model]]
+tag = "gemma3:4b"
+name = "gemma3 4B"
+family = "Gemma"
+params_b = 4
+size_gb = 3.3
+source = "ollama library"
+tier = "small"
+status = "planned"
+
+[[model]]
+tag = "qwen3-coder:30b"
+name = "Qwen3-Coder 30B-A3B"
+family = "Qwen"
+params_b = 30
+size_gb = 18.6
+source = "ollama library"
+tier = "large"
+status = "planned"
+
+[[model]]
+tag = "qwen3.5:27b"
+name = "qwen3.5 27B"
+family = "Qwen"
+params_b = 27
+size_gb = 17.5
+source = "ollama library"
+tier = "large"
+status = "planned"
+
+[[model]]
+tag = "devstral:24b"
+name = "Devstral Small 24B"
+family = "Mistral"
+params_b = 24
+size_gb = 14.3
+source = "ollama library"
+tier = "mid"
+status = "planned"
+
+[[model]]
+tag = "wrn13b"
+name = "WhiteRabbitNeo 13B (Llama 2)"
+family = "Llama 2 (security-tuned)"
+params_b = 13
+size_gb = 7.9
+source = "Hugging Face TheBloke/WhiteRabbitNeo-13B-GGUF, Q4_K_M, imported with modelfiles/Modelfile.wrn13b"
+tier = "mid"
+status = "planned"
+notes = "Measured in the earlier study that started this repository: quality 0.76 on a 22-task security suite."
+
+[[model]]
+tag = "hf.co/mradermacher/Llama-3-WhiteRabbitNeo-8B-v2.0-GGUF:Q4_K_M"
+name = "WhiteRabbitNeo (Llama 3) 8B"
+family = "Llama 3 (security-tuned)"
+params_b = 8
+size_gb = 4.9
+source = "Hugging Face mradermacher/Llama-3-WhiteRabbitNeo-8B-v2.0-GGUF, Q4_K_M"
+tier = "small"
+status = "planned"
+
+[[model]]
+tag = "hf.co/bartowski/WhiteRabbitNeo-2.5-Qwen-2.5-Coder-7B-GGUF:Q4_K_M"
+name = "WhiteRabbitNeo 2.5 (Qwen) 7B"
+family = "Qwen 2.5 Coder (security-tuned)"
+params_b = 7
+size_gb = 4.7
+source = "Hugging Face bartowski/WhiteRabbitNeo-2.5-Qwen-2.5-Coder-7B-GGUF, Q4_K_M"
+tier = "small"
+status = "planned"
+
+[[model]]
+tag = "llama4:scout"
+name = "Llama 4 Scout"
+family = "Llama"
+params_b = 109
+source = "ollama library"
+tier = "huge"
+status = "wishlist"
+notes = "Does not fit a 32 GB Mac mini; wanted for Mac mini configurations with much more memory."

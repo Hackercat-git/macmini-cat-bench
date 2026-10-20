@@ -1,0 +1,156 @@
+{
+ "hardware": {
+  "chip": "Apple M6",
+  "ram_gb": 32,
+  "macos": "27.0.1",
+  "ollama": "",
+  "datum": "2026-10-19 21:51"
+ },
+ "instellingen": {
+  "num_ctx": 8192,
+  "rondes": 3,
+  "gen_tokens": 256
+ },
+ "modellen": {
+  "wrn13b": {
+   "model": "wrn13b",
+   "laadtijd_s": 2.8,
+   "ram_gb": 11.69,
+   "gpu_gb": 11.69,
+   "context": 8192,
+   "prompt_tokens": 3256,
+   "prompt_tok_s": 345.5,
+   "ttft_lange_prompt_s": 9.43,
+   "gen_tok_s": 18.4,
+   "gen_tok_s_min": 18.4,
+   "gen_tok_s_max": 18.4,
+   "gen_tokens": [
+    256,
+    256,
+    256
+   ],
+   "ruw_prompt_tok_s": [
+    345.2,
+    345.5,
+    349.7
+   ],
+   "ruw_gen_tok_s": [
+    18.4,
+    18.4,
+    18.4
+   ]
+  },
+  "qwen2.5-coder:14b": {
+   "model": "qwen2.5-coder:14b",
+   "laadtijd_s": 3.3,
+   "ram_gb": 9.67,
+   "gpu_gb": 9.67,
+   "context": 8192,
+   "prompt_tokens": 3212,
+   "prompt_tok_s": 336.8,
+   "ttft_lange_prompt_s": 9.54,
+   "gen_tok_s": 16.6,
+   "gen_tok_s_min": 16.6,
+   "gen_tok_s_max": 16.6,
+   "gen_tokens": [
+    256,
+    256,
+    256
+   ],
+   "ruw_prompt_tok_s": [
+    336.8,
+    334.0,
+    337.4
+   ],
+   "ruw_gen_tok_s": [
+    16.6,
+    16.6,
+    16.6
+   ]
+  },
+  "phi4:14b": {
+   "model": "phi4:14b",
+   "laadtijd_s": 2.8,
+   "ram_gb": 9.55,
+   "gpu_gb": 9.55,
+   "context": 8192,
+   "prompt_tokens": 2319,
+   "prompt_tok_s": 329.7,
+   "ttft_lange_prompt_s": 7.03,
+   "gen_tok_s": 16.2,
+   "gen_tok_s_min": 16.1,
+   "gen_tok_s_max": 16.3,
+   "gen_tokens": [
+    256,
+    256,
+    256
+   ],
+   "ruw_prompt_tok_s": [
+    329.7,
+    333.0,
+    324.2
+   ],
+   "ruw_gen_tok_s": [
+    16.1,
+    16.3,
+    16.2
+   ]
+  },
+  "qwen3:8b": {
+   "model": "qwen3:8b",
+   "laadtijd_s": 2.3,
+   "ram_gb": 5.24,
+   "gpu_gb": 5.24,
+   "context": 8192,
+   "prompt_tokens": 3193,
+   "prompt_tok_s": 719.7,
+   "ttft_lange_prompt_s": 4.44,
+   "gen_tok_s": 28.8,
+   "gen_tok_s_min": 28.8,
+   "gen_tok_s_max": 28.8,
+   "gen_tokens": [
+    256,
+    256,
+    256
+   ],
+   "ruw_prompt_tok_s": [
+    725.2,
+    719.7,
+    683.5
+   ],
+   "ruw_gen_tok_s": [
+    28.8,
+    28.8,
+    28.8
+   ]
+  },
+  "qwen3.8:27b": {
+   "model": "qwen3.8:27b",
+   "laadtijd_s": 6.6,
+   "ram_gb": 16.46,
+   "gpu_gb": 16.46,
+   "context": 8192,
+   "prompt_tokens": 3195,
+   "prompt_tok_s": 171.1,
+   "ttft_lange_prompt_s": 18.69,
+   "gen_tok_s": 14.9,
+   "gen_tok_s_min": 14.1,
+   "gen_tok_s_max": 15.5,
+   "gen_tokens": [
+    256,
+    256,
+    256
+   ],
+   "ruw_prompt_tok_s": [
+    182.2,
+    170.5,
+    171.1
+   ],
+   "ruw_gen_tok_s": [
+    15.5,
+    14.1,
+    14.9
+   ]
+  }
+ }
+}

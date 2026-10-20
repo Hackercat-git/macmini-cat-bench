@@ -1,0 +1,119 @@
+{
+ "wrn13b": {
+  "cyber": {
+   "score": 0.78,
+   "avg_s": 12.5,
+   "tok_s": 17.8,
+   "cases": {
+    "vuln-sqli": 1.0,
+    "vuln-cmdinj": 1.0,
+    "vuln-traversal": 0.5,
+    "vuln-pickle": 1.0,
+    "vuln-md5": 0.5,
+    "vuln-xss": 1.0,
+    "vuln-secret": 1.0,
+    "kennis-revshell": 0.5,
+    "kennis-kerberoast": 1.0,
+    "kennis-nmap": 1.0,
+    "kennis-hashcat": 1.0,
+    "kennis-kerberosport": 1.0,
+    "kennis-eternalblue": 1.0,
+    "kennis-log4shell": 0.67,
+    "ctf-base64": 0.0,
+    "ctf-rot13": 0.0,
+    "ctf-hex": 1.0,
+    "code-portcheck": 1.0,
+    "eerlijk-cve": 1.0,
+    "eerlijk-tool": 0.0,
+    "log-bruteforce": 1.0,
+    "log-normaal": 1.0
+   },
+   "categorieen": {
+    "vuln": 0.86,
+    "kennis": 0.88,
+    "ctf": 0.33,
+    "code": 1.0,
+    "eerlijk": 0.5,
+    "log": 1.0
+   }
+  }
+ },
+ "qwen2.5-coder:14b": {
+  "cyber": {
+   "score": 0.87,
+   "avg_s": 5.4,
+   "tok_s": 15.2,
+   "cases": {
+    "vuln-sqli": 1.0,
+    "vuln-cmdinj": 1.0,
+    "vuln-traversal": 1.0,
+    "vuln-pickle": 1.0,
+    "vuln-md5": 1.0,
+    "vuln-xss": 1.0,
+    "vuln-secret": 1.0,
+    "kennis-revshell": 0.75,
+    "kennis-kerberoast": 0.67,
+    "kennis-nmap": 0.67,
+    "kennis-hashcat": 1.0,
+    "kennis-kerberosport": 1.0,
+    "kennis-eternalblue": 1.0,
+    "kennis-log4shell": 1.0,
+    "ctf-base64": 1.0,
+    "ctf-rot13": 0.0,
+    "ctf-hex": 0.0,
+    "code-portcheck": 1.0,
+    "eerlijk-cve": 1.0,
+    "eerlijk-tool": 1.0,
+    "log-bruteforce": 1.0,
+    "log-normaal": 1.0
+   },
+   "categorieen": {
+    "vuln": 1.0,
+    "kennis": 0.87,
+    "ctf": 0.33,
+    "code": 1.0,
+    "eerlijk": 1.0,
+    "log": 1.0
+   }
+  }
+ },
+ "qwen3.8:27b": {
+  "cyber": {
+   "score": 0.94,
+   "avg_s": 5.5,
+   "tok_s": 12.2,
+   "cases": {
+    "vuln-sqli": 1.0,
+    "vuln-cmdinj": 1.0,
+    "vuln-traversal": 1.0,
+    "vuln-pickle": 1.0,
+    "vuln-md5": 1.0,
+    "vuln-xss": 1.0,
+    "vuln-secret": 1.0,
+    "kennis-revshell": 1.0,
+    "kennis-kerberoast": 1.0,
+    "kennis-nmap": 0.67,
+    "kennis-hashcat": 1.0,
+    "kennis-kerberosport": 1.0,
+    "kennis-eternalblue": 1.0,
+    "kennis-log4shell": 1.0,
+    "ctf-base64": 1.0,
+    "ctf-rot13": 0.0,
+    "ctf-hex": 1.0,
+    "code-portcheck": 1.0,
+    "eerlijk-cve": 1.0,
+    "eerlijk-tool": 1.0,
+    "log-bruteforce": 1.0,
+    "log-normaal": 1.0
+   },
+   "categorieen": {
+    "vuln": 1.0,
+    "kennis": 0.95,
+    "ctf": 0.67,
+    "code": 1.0,
+    "eerlijk": 1.0,
+    "log": 1.0
+   }
+  }
+ }
+}

@@ -1,0 +1,230 @@
+{
+ "track": "tools",
+ "description": "Structured output: extracting fields into JSON, choosing a tool, filling a function call.",
+ "defaults": {
+  "system": "Answer ONLY with one valid JSON object, no explanation and no code block.",
+  "num_predict": 250
+ },
+ "tasks": [
+  {
+   "id": "json-mail",
+   "prompt": "Extract JSON with keys \"sender\", \"amount\" (a number) and \"order_id\" from this email:\nFrom: Bol.com <noreply@bol.com>\nDate: 12-10-2026\nYour order #88123 of €49.95 has shipped.",
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "sender": {
+       "contains": "bol"
+      },
+      "amount": {
+       "num": 49.95
+      },
+      "order_id": {
+       "contains": "88123"
+      }
+     }
+    }
+   ],
+   "pass": "{\"sender\": \"Bol.com\", \"amount\": 49.95, \"order_id\": \"88123\"}",
+   "fail": "{\"sender\": \"unknown\", \"amount\": 1, \"order_id\": \"1\"}"
+  },
+  {
+   "id": "json-transaction",
+   "prompt": "Give JSON with \"shop\", \"amount\" (positive number) and \"category\" (one of: groceries, transport, subscription, other):\nDebit 11-10 ALBERT HEIJN 1234 -€23,40 balance €310,10",
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "shop": {
+       "contains": "albert"
+      },
+      "amount": {
+       "num": 23.4
+      },
+      "category": "groceries"
+     }
+    }
+   ],
+   "pass": "{\"shop\": \"Albert Heijn\", \"amount\": 23.40, \"category\": \"groceries\"}",
+   "fail": "{\"shop\": \"x\", \"amount\": 310.10, \"category\": \"other\"}"
+  },
+  {
+   "id": "json-cve",
+   "prompt": "Give JSON with \"id\", \"severity\" (low/medium/high/critical) and \"patch\" (true/false):\nCVE-2026-1234, CVSS 9.8, remote code execution in nginx 1.24; patch available in 1.26.",
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "id": {
+       "contains": "2026-1234"
+      },
+      "severity": "critical",
+      "patch": true
+     }
+    }
+   ],
+   "pass": "{\"id\": \"CVE-2026-1234\", \"severity\": \"critical\", \"patch\": true}",
+   "fail": "{\"id\": \"CVE-2026-1234\", \"severity\": \"low\", \"patch\": false}"
+  },
+  {
+   "id": "json-routing",
+   "prompt": "Choose the right tool for the question. Tools: schedule_today, schedule_tomorrow, get_tests, get_homework. Reply as JSON {\"tool\": \"<name>\"}.\nQuestion: What is the schedule tomorrow?",
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "tool": "schedule_tomorrow"
+     }
+    }
+   ],
+   "pass": "{\"tool\": \"schedule_tomorrow\"}",
+   "fail": "{\"tool\": \"schedule_today\"}"
+  },
+  {
+   "id": "json-date",
+   "prompt": "Convert the date to ISO 8601. Reply as JSON {\"date\": \"YYYY-MM-DD\"}.\nText: The invoice is due on 12 March 2026.",
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "date": "2026-03-12"
+     }
+    }
+   ],
+   "pass": "{\"date\": \"2026-03-12\"}",
+   "fail": "{\"date\": \"2026-12-03\"}"
+  },
+  {
+   "id": "json-contact",
+   "prompt": "Extract JSON with \"name\", \"phone\" and \"city\":\nPlease call Jan de Vries on +31 6 1234 5678, he lives in Utrecht.",
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "name": {
+       "contains": "jan de vries"
+      },
+      "phone": {
+       "contains_any": [
+        "+31 6 1234 5678",
+        "+31612345678",
+        "0612345678",
+        "06 1234 5678",
+        "06-12345678"
+       ]
+      },
+      "city": "utrecht"
+     }
+    }
+   ],
+   "pass": "{\"name\": \"Jan de Vries\", \"phone\": \"+31 6 1234 5678\", \"city\": \"Utrecht\"}",
+   "fail": "{\"name\": \"Jan\", \"phone\": \"0\", \"city\": \"Amsterdam\"}"
+  },
+  {
+   "id": "json-function",
+   "prompt": "You can call get_weather(city, unit) where unit is \"celsius\" or \"fahrenheit\". Reply as JSON with the keys \"function\", \"city\" and \"unit\" to answer: What is the temperature in Rotterdam in Fahrenheit?",
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "function": "get_weather",
+      "city": "rotterdam",
+      "unit": "fahrenheit"
+     }
+    }
+   ],
+   "pass": "{\"function\": \"get_weather\", \"city\": \"Rotterdam\", \"unit\": \"fahrenheit\"}",
+   "fail": "{\"function\": \"get_time\", \"city\": \"Rotterdam\", \"unit\": \"celsius\"}"
+  },
+  {
+   "id": "json-sentiment",
+   "prompt": "Classify the sentiment as \"positive\", \"negative\" or \"neutral\". Reply as JSON {\"sentiment\": \"...\"}.\nReview: The battery died after two days and support never answered.",
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "sentiment": "negative"
+     }
+    }
+   ],
+   "pass": "{\"sentiment\": \"negative\"}",
+   "fail": "{\"sentiment\": \"positive\"}"
+  },
+  {
+   "id": "json-count",
+   "prompt": "Count the items. Reply as JSON {\"count\": <number>}.\nList: apples, pears, plums, grapes, figs",
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "count": {
+       "num": 5
+      }
+     }
+    }
+   ],
+   "pass": "{\"count\": 5}",
+   "fail": "{\"count\": 4}"
+  },
+  {
+   "id": "json-total",
+   "prompt": "Reply as JSON {\"total\": <number>} with the sum of all amounts in: Coffee 3.50, Sandwich 6.25, Cake 4.75.",
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "total": {
+       "num": 14.5
+      }
+     }
+    }
+   ],
+   "pass": "{\"total\": 14.5}",
+   "fail": "{\"total\": 13.5}"
+  },
+  {
+   "id": "json-deadline",
+   "prompt": "Does the text mention a deadline? Reply as JSON {\"deadline\": true or false, \"date\": \"...\" or null}.\nText: Please send the signed form before 15 November.",
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "deadline": true,
+      "date": {
+       "contains_any": [
+        "15 november",
+        "november 15",
+        "11-15",
+        "15-11"
+       ]
+      }
+     }
+    }
+   ],
+   "pass": "{\"deadline\": true, \"date\": \"15 November\"}",
+   "fail": "{\"deadline\": false, \"date\": null}"
+  },
+  {
+   "id": "json-exact",
+   "prompt": "Reply as JSON with exactly the keys \"a\", \"b\", \"c\" and the values 1, 2, 3.",
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "a": {
+       "num": 1
+      },
+      "b": {
+       "num": 2
+      },
+      "c": {
+       "num": 3
+      }
+     }
+    }
+   ],
+   "pass": "{\"a\": 1, \"b\": 2, \"c\": 3}",
+   "fail": "{\"a\": 3, \"b\": 2, \"c\": 1}"
+  }
+ ]
+}

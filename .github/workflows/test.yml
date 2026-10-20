@@ -1,0 +1,31 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Validate the task files
+        run: python -m catbench validate
+      - name: Unit tests
+        run: python -m unittest discover -s tests -t . -v
+      - name: Every stored run builds a report
+        shell: bash
+        run: |
+          for d in runs/*/; do
+            [ -d "$d" ] || continue
+            id=$(basename "$d")
+            python -m catbench report --run-id "$id" --site "$RUNNER_TEMP/site-$id"
+          done

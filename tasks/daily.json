@@ -1,0 +1,236 @@
+{
+ "track": "daily",
+ "description": "Everyday questions: facts, summaries, writing, conversions and following format instructions.",
+ "defaults": {
+  "system": "You are a helpful assistant. Answer concisely and follow the requested format exactly.",
+  "num_predict": 250
+ },
+ "tasks": [
+  {
+   "id": "daily-capital",
+   "prompt": "What is the capital of Australia? Answer in one word.",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "canberra"
+      ]
+     ],
+     "weight": 1
+    },
+    {
+     "type": "max_words",
+     "n": 6,
+     "weight": 0.5
+    }
+   ],
+   "pass": "Canberra",
+   "fail": "Sydney"
+  },
+  {
+   "id": "daily-miles",
+   "prompt": "Convert 5 miles to kilometres. Give the answer rounded to one decimal place.",
+   "checks": [
+    {
+     "type": "number",
+     "expected": 8.0,
+     "tol": 0.06
+    }
+   ],
+   "pass": "5 miles is about 8.0 km.",
+   "fail": "5 miles is about 12 km."
+  },
+  {
+   "id": "daily-summary",
+   "prompt": "Summarise the following text in at most 30 words.\n\nThe city council met on Tuesday and approved a budget of 4.2 million euros for the new library. Construction will begin in March and should finish by December. The mayor said the library will have a children's section and free internet access.",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "4.2 million",
+       "4,2 million",
+       "4.2m"
+      ],
+      [
+       "march"
+      ],
+      [
+       "library"
+      ]
+     ],
+     "weight": 1
+    },
+    {
+     "type": "max_words",
+     "n": 30
+    }
+   ],
+   "pass": "The council approved a 4.2 million euro library budget; construction starts in March and ends by December.",
+   "fail": "The council met and talked about many different things on Tuesday, and after a long discussion everyone agreed that something should happen sometime, although nobody could say exactly when or how."
+  },
+  {
+   "id": "daily-email",
+   "prompt": "Write a short email (at most 70 words) declining a meeting on Friday and proposing to reschedule.",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "friday"
+      ],
+      [
+       "reschedul",
+       "another time",
+       "new time",
+       "move it",
+       "different day"
+      ]
+     ],
+     "weight": 1
+    },
+    {
+     "type": "max_words",
+     "n": 70
+    }
+   ],
+   "pass": "Hi Sam, thank you for the invite. Unfortunately I cannot attend on Friday. Could we reschedule for early next week? Best regards, Alex",
+   "fail": "No."
+  },
+  {
+   "id": "daily-polite",
+   "prompt": "Rewrite this sentence to sound polite: 'Send me the report now.'",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "please",
+       "would you",
+       "could you",
+       "kindly",
+       "i would appreciate",
+       "i'd appreciate"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "Could you please send me the report when you have a moment?",
+   "fail": "Send me the report right now."
+  },
+  {
+   "id": "daily-days",
+   "prompt": "How many days are there between 3 March and 20 March in the same year? (From 3 March to 20 March, not counting the start day.)",
+   "checks": [
+    {
+     "type": "number",
+     "expected": 17
+    }
+   ],
+   "pass": "Answer: 17",
+   "fail": "Answer: 18"
+  },
+  {
+   "id": "daily-bullets",
+   "prompt": "List exactly three fruits as a bullet list, nothing else.",
+   "checks": [
+    {
+     "type": "bullets",
+     "n": 3
+    }
+   ],
+   "pass": "- apple\n- banana\n- cherry",
+   "fail": "- apple\n- banana"
+  },
+  {
+   "id": "daily-percent",
+   "prompt": "What is 15% of 240?",
+   "checks": [
+    {
+     "type": "number",
+     "expected": 36
+    }
+   ],
+   "pass": "15% of 240 is 36.",
+   "fail": "It is 24."
+  },
+  {
+   "id": "daily-train",
+   "prompt": "A train leaves at 14:35 and the trip takes 2 hours 50 minutes. At what time does it arrive? Use the 24-hour format.",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "17:25"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "It arrives at 17:25.",
+   "fail": "It arrives at 16:55."
+  },
+  {
+   "id": "daily-router",
+   "prompt": "Explain to a ten-year-old what a router does, in at most 60 words.",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "internet",
+       "network",
+       "wi-fi",
+       "wifi",
+       "devices",
+       "connect"
+      ]
+     ],
+     "weight": 1
+    },
+    {
+     "type": "max_words",
+     "n": 60
+    }
+   ],
+   "pass": "A router is like a traffic officer for your home. It connects all your devices to the internet and sends information to the right device.",
+   "fail": "A router is a woodworking tool."
+  },
+  {
+   "id": "daily-grammar",
+   "prompt": "Fix the grammar and spelling: 'Their going to the store tomorow.'",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "they're",
+       "they are"
+      ],
+      [
+       "tomorrow"
+      ]
+     ],
+     "weight": 1
+    }
+   ],
+   "pass": "They're going to the store tomorrow.",
+   "fail": "Their going to the store tomorrow."
+  },
+  {
+   "id": "daily-seconds",
+   "prompt": "How many seconds are in 2.5 hours?",
+   "checks": [
+    {
+     "type": "number",
+     "expected": 9000
+    }
+   ],
+   "pass": "2.5 hours is 9000 seconds.",
+   "fail": "It is 900 seconds."
+  }
+ ]
+}

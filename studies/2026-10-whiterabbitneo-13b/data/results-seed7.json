@@ -1,0 +1,810 @@
+{
+ "qwen3:32b": {
+  "chat": {
+   "score": 1.0,
+   "avg_s": 4.9,
+   "tok_s": 3.4,
+   "cases": {
+    "rooster-feit": 1.0,
+    "niet-in-context": 1.0,
+    "deadline": 1.0,
+    "niet-verzinnen": 1.0
+   }
+  },
+  "json": {
+   "score": 1.0,
+   "avg_s": 4.9,
+   "tok_s": 6.8,
+   "cases": {
+    "mail": 1.0,
+    "transactie": 1.0,
+    "cve": 1.0,
+    "routing": 1.0
+   }
+  },
+  "code": {
+   "score": 1.0,
+   "avg_s": 12.9,
+   "tok_s": 7.3,
+   "cases": {
+    "ipv4": 1.0,
+    "duur": 1.0,
+    "dedupe": 1.0
+   }
+  },
+  "chat2": {
+   "score": 1.0,
+   "avg_s": 8.3,
+   "tok_s": 3.3,
+   "cases": {
+    "naald-in-lange-context": 1.0,
+    "tegenstrijdig-nieuwste-wint": 1.0,
+    "spreektaal": 1.0,
+    "geen-valse-actie": 1.0
+   }
+  },
+  "json2": {
+   "score": 1.0,
+   "avg_s": 5.0,
+   "tok_s": 6.8,
+   "cases": {
+    "ontbrekend-null": 1.0,
+    "nl-getal": 1.0,
+    "lijst": 1.0,
+    "injectie": 1.0
+   }
+  },
+  "code2": {
+   "score": 1.0,
+   "avg_s": 17.7,
+   "tok_s": 7.2,
+   "cases": {
+    "csv-regel": 1.0,
+    "intervallen": 1.0,
+    "ratelimit": 1.0
+   }
+  }
+ },
+ "qwen3.8:27b": {
+  "chat": {
+   "score": 1.0,
+   "avg_s": 4.6,
+   "tok_s": 4.8,
+   "cases": {
+    "rooster-feit": 1.0,
+    "niet-in-context": 1.0,
+    "deadline": 1.0,
+    "niet-verzinnen": 1.0
+   }
+  },
+  "json": {
+   "score": 1.0,
+   "avg_s": 2.0,
+   "tok_s": 15.7,
+   "cases": {
+    "mail": 1.0,
+    "transactie": 1.0,
+    "cve": 1.0,
+    "routing": 1.0
+   }
+  },
+  "code": {
+   "score": 1.0,
+   "avg_s": 4.7,
+   "tok_s": 19.8,
+   "cases": {
+    "ipv4": 1.0,
+    "duur": 1.0,
+    "dedupe": 1.0
+   }
+  },
+  "chat2": {
+   "score": 1.0,
+   "avg_s": 5.1,
+   "tok_s": 5.9,
+   "cases": {
+    "naald-in-lange-context": 1.0,
+    "tegenstrijdig-nieuwste-wint": 1.0,
+    "spreektaal": 1.0,
+    "geen-valse-actie": 1.0
+   }
+  },
+  "json2": {
+   "score": 1.0,
+   "avg_s": 3.5,
+   "tok_s": 14.2,
+   "cases": {
+    "ontbrekend-null": 1.0,
+    "nl-getal": 1.0,
+    "lijst": 1.0,
+    "injectie": 1.0
+   }
+  },
+  "code2": {
+   "score": 1.0,
+   "avg_s": 7.7,
+   "tok_s": 19.0,
+   "cases": {
+    "csv-regel": 1.0,
+    "intervallen": 1.0,
+    "ratelimit": 1.0
+   }
+  },
+  "cyber": {
+   "score": 0.94,
+   "avg_s": 5.2,
+   "tok_s": 12.8,
+   "cases": {
+    "vuln-sqli": 1.0,
+    "vuln-cmdinj": 1.0,
+    "vuln-traversal": 1.0,
+    "vuln-pickle": 1.0,
+    "vuln-md5": 1.0,
+    "vuln-xss": 1.0,
+    "vuln-secret": 1.0,
+    "kennis-revshell": 1.0,
+    "kennis-kerberoast": 1.0,
+    "kennis-nmap": 0.67,
+    "kennis-hashcat": 1.0,
+    "kennis-kerberosport": 1.0,
+    "kennis-eternalblue": 1.0,
+    "kennis-log4shell": 1.0,
+    "ctf-base64": 1.0,
+    "ctf-rot13": 0.0,
+    "ctf-hex": 1.0,
+    "code-portcheck": 1.0,
+    "eerlijk-cve": 1.0,
+    "eerlijk-tool": 1.0,
+    "log-bruteforce": 1.0,
+    "log-normaal": 1.0
+   },
+   "categorieen": {
+    "vuln": 1.0,
+    "kennis": 0.95,
+    "ctf": 0.67,
+    "code": 1.0,
+    "eerlijk": 1.0,
+    "log": 1.0
+   }
+  }
+ },
+ "qwen2.5:14b": {
+  "chat": {
+   "score": 1.0,
+   "avg_s": 3.3,
+   "tok_s": 11.1,
+   "cases": {
+    "rooster-feit": 1.0,
+    "niet-in-context": 1.0,
+    "deadline": 1.0,
+    "niet-verzinnen": 1.0
+   }
+  },
+  "json": {
+   "score": 1.0,
+   "avg_s": 1.9,
+   "tok_s": 15.3,
+   "cases": {
+    "mail": 1.0,
+    "transactie": 1.0,
+    "cve": 1.0,
+    "routing": 1.0
+   }
+  },
+  "code": {
+   "score": 0.67,
+   "avg_s": 6.0,
+   "tok_s": 16.4,
+   "cases": {
+    "ipv4": 0.0,
+    "duur": 1.0,
+    "dedupe": 1.0
+   }
+  },
+  "chat2": {
+   "score": 1.0,
+   "avg_s": 4.8,
+   "tok_s": 9.7,
+   "cases": {
+    "naald-in-lange-context": 1.0,
+    "tegenstrijdig-nieuwste-wint": 1.0,
+    "spreektaal": 1.0,
+    "geen-valse-actie": 1.0
+   }
+  },
+  "json2": {
+   "score": 1.0,
+   "avg_s": 1.9,
+   "tok_s": 15.3,
+   "cases": {
+    "ontbrekend-null": 1.0,
+    "nl-getal": 1.0,
+    "lijst": 1.0,
+    "injectie": 1.0
+   }
+  },
+  "code2": {
+   "score": 0.67,
+   "avg_s": 5.0,
+   "tok_s": 16.2,
+   "cases": {
+    "csv-regel": 0.0,
+    "intervallen": 1.0,
+    "ratelimit": 1.0
+   }
+  }
+ },
+ "qwen3:8b": {
+  "chat": {
+   "score": 1.0,
+   "avg_s": 1.5,
+   "tok_s": 13.8,
+   "cases": {
+    "rooster-feit": 1.0,
+    "niet-in-context": 1.0,
+    "deadline": 1.0,
+    "niet-verzinnen": 1.0
+   }
+  },
+  "json": {
+   "score": 1.0,
+   "avg_s": 1.1,
+   "tok_s": 26.5,
+   "cases": {
+    "mail": 1.0,
+    "transactie": 1.0,
+    "cve": 1.0,
+    "routing": 1.0
+   }
+  },
+  "code": {
+   "score": 0.67,
+   "avg_s": 3.0,
+   "tok_s": 28.4,
+   "cases": {
+    "ipv4": 1.0,
+    "duur": 0.0,
+    "dedupe": 1.0
+   }
+  },
+  "chat2": {
+   "score": 1.0,
+   "avg_s": 2.1,
+   "tok_s": 13.5,
+   "cases": {
+    "naald-in-lange-context": 1.0,
+    "tegenstrijdig-nieuwste-wint": 1.0,
+    "spreektaal": 1.0,
+    "geen-valse-actie": 1.0
+   }
+  },
+  "json2": {
+   "score": 0.75,
+   "avg_s": 1.1,
+   "tok_s": 27.0,
+   "cases": {
+    "ontbrekend-null": 1.0,
+    "nl-getal": 0.0,
+    "lijst": 1.0,
+    "injectie": 1.0
+   }
+  },
+  "code2": {
+   "score": 0.67,
+   "avg_s": 4.4,
+   "tok_s": 28.9,
+   "cases": {
+    "csv-regel": 0.0,
+    "intervallen": 1.0,
+    "ratelimit": 1.0
+   }
+  },
+  "cyber": {
+   "score": 0.85,
+   "avg_s": 2.1,
+   "tok_s": 25.0,
+   "cases": {
+    "vuln-sqli": 1.0,
+    "vuln-cmdinj": 1.0,
+    "vuln-traversal": 1.0,
+    "vuln-pickle": 1.0,
+    "vuln-md5": 1.0,
+    "vuln-xss": 1.0,
+    "vuln-secret": 1.0,
+    "kennis-revshell": 1.0,
+    "kennis-kerberoast": 1.0,
+    "kennis-nmap": 1.0,
+    "kennis-hashcat": 1.0,
+    "kennis-kerberosport": 1.0,
+    "kennis-eternalblue": 1.0,
+    "kennis-log4shell": 0.67,
+    "ctf-base64": 0.0,
+    "ctf-rot13": 0.0,
+    "ctf-hex": 0.0,
+    "code-portcheck": 1.0,
+    "eerlijk-cve": 1.0,
+    "eerlijk-tool": 1.0,
+    "log-bruteforce": 1.0,
+    "log-normaal": 1.0
+   },
+   "categorieen": {
+    "vuln": 1.0,
+    "kennis": 0.95,
+    "ctf": 0.0,
+    "code": 1.0,
+    "eerlijk": 1.0,
+    "log": 1.0
+   }
+  }
+ },
+ "granite4.2:8b": {
+  "chat": {
+   "score": 1.0,
+   "avg_s": 1.5,
+   "tok_s": 16.7,
+   "cases": {
+    "rooster-feit": 1.0,
+    "niet-in-context": 1.0,
+    "deadline": 1.0,
+    "niet-verzinnen": 1.0
+   }
+  },
+  "json": {
+   "score": 0.94,
+   "avg_s": 1.2,
+   "tok_s": 25.0,
+   "cases": {
+    "mail": 1.0,
+    "transactie": 0.75,
+    "cve": 1.0,
+    "routing": 1.0
+   }
+  },
+  "code": {
+   "score": 0.67,
+   "avg_s": 8.6,
+   "tok_s": 27.3,
+   "cases": {
+    "ipv4": 1.0,
+    "duur": 0.0,
+    "dedupe": 1.0
+   }
+  },
+  "chat2": {
+   "score": 0.85,
+   "avg_s": 3.3,
+   "tok_s": 17.9,
+   "cases": {
+    "naald-in-lange-context": 1.0,
+    "tegenstrijdig-nieuwste-wint": 0.4,
+    "spreektaal": 1.0,
+    "geen-valse-actie": 1.0
+   }
+  },
+  "json2": {
+   "score": 1.0,
+   "avg_s": 2.3,
+   "tok_s": 22.3,
+   "cases": {
+    "ontbrekend-null": 1.0,
+    "nl-getal": 1.0,
+    "lijst": 1.0,
+    "injectie": 1.0
+   }
+  },
+  "code2": {
+   "score": 0.67,
+   "avg_s": 8.6,
+   "tok_s": 27.5,
+   "cases": {
+    "csv-regel": 0.0,
+    "intervallen": 1.0,
+    "ratelimit": 1.0
+   }
+  }
+ },
+ "ornith:9b": {
+  "chat": {
+   "score": 1.0,
+   "avg_s": 1.6,
+   "tok_s": 13.5,
+   "cases": {
+    "rooster-feit": 1.0,
+    "niet-in-context": 1.0,
+    "deadline": 1.0,
+    "niet-verzinnen": 1.0
+   }
+  },
+  "json": {
+   "score": 1.0,
+   "avg_s": 1.0,
+   "tok_s": 22.3,
+   "cases": {
+    "mail": 1.0,
+    "transactie": 1.0,
+    "cve": 1.0,
+    "routing": 1.0
+   }
+  },
+  "code": {
+   "score": 0.67,
+   "avg_s": 3.6,
+   "tok_s": 25.9,
+   "cases": {
+    "ipv4": 0.0,
+    "duur": 1.0,
+    "dedupe": 1.0
+   }
+  },
+  "chat2": {
+   "score": 0.85,
+   "avg_s": 2.5,
+   "tok_s": 13.5,
+   "cases": {
+    "naald-in-lange-context": 1.0,
+    "tegenstrijdig-nieuwste-wint": 0.4,
+    "spreektaal": 1.0,
+    "geen-valse-actie": 1.0
+   }
+  },
+  "json2": {
+   "score": 1.0,
+   "avg_s": 1.2,
+   "tok_s": 23.3,
+   "cases": {
+    "ontbrekend-null": 1.0,
+    "nl-getal": 1.0,
+    "lijst": 1.0,
+    "injectie": 1.0
+   }
+  },
+  "code2": {
+   "score": 0.67,
+   "avg_s": 5.2,
+   "tok_s": 26.3,
+   "cases": {
+    "csv-regel": 0.0,
+    "intervallen": 1.0,
+    "ratelimit": 1.0
+   }
+  }
+ },
+ "qwen2.5-coder:14b": {
+  "chat": {
+   "score": 1.0,
+   "avg_s": 2.2,
+   "tok_s": 8.6,
+   "cases": {
+    "rooster-feit": 1.0,
+    "niet-in-context": 1.0,
+    "deadline": 1.0,
+    "niet-verzinnen": 1.0
+   }
+  },
+  "json": {
+   "score": 1.0,
+   "avg_s": 1.9,
+   "tok_s": 15.3,
+   "cases": {
+    "mail": 1.0,
+    "transactie": 1.0,
+    "cve": 1.0,
+    "routing": 1.0
+   }
+  },
+  "code": {
+   "score": 0.67,
+   "avg_s": 5.3,
+   "tok_s": 16.3,
+   "cases": {
+    "ipv4": 1.0,
+    "duur": 0.0,
+    "dedupe": 1.0
+   }
+  },
+  "cyber": {
+   "score": 0.91,
+   "avg_s": 5.4,
+   "tok_s": 15.6,
+   "cases": {
+    "vuln-sqli": 1.0,
+    "vuln-cmdinj": 1.0,
+    "vuln-traversal": 1.0,
+    "vuln-pickle": 1.0,
+    "vuln-md5": 0.5,
+    "vuln-xss": 1.0,
+    "vuln-secret": 0.5,
+    "kennis-revshell": 0.75,
+    "kennis-kerberoast": 1.0,
+    "kennis-nmap": 0.67,
+    "kennis-hashcat": 1.0,
+    "kennis-kerberosport": 1.0,
+    "kennis-eternalblue": 1.0,
+    "kennis-log4shell": 0.67,
+    "ctf-base64": 1.0,
+    "ctf-rot13": 1.0,
+    "ctf-hex": 1.0,
+    "code-portcheck": 1.0,
+    "eerlijk-cve": 1.0,
+    "eerlijk-tool": 1.0,
+    "log-bruteforce": 1.0,
+    "log-normaal": 1.0
+   },
+   "categorieen": {
+    "vuln": 0.86,
+    "kennis": 0.87,
+    "ctf": 1.0,
+    "code": 1.0,
+    "eerlijk": 1.0,
+    "log": 1.0
+   }
+  }
+ },
+ "gemma3:4b": {
+  "chat": {
+   "score": 1.0,
+   "avg_s": 1.3,
+   "tok_s": 32.2,
+   "cases": {
+    "rooster-feit": 1.0,
+    "niet-in-context": 1.0,
+    "deadline": 1.0,
+    "niet-verzinnen": 1.0
+   }
+  },
+  "chat2": {
+   "score": 1.0,
+   "avg_s": 1.0,
+   "tok_s": 38.1,
+   "cases": {
+    "naald-in-lange-context": 1.0,
+    "tegenstrijdig-nieuwste-wint": 1.0,
+    "spreektaal": 1.0,
+    "geen-valse-actie": 1.0
+   }
+  },
+  "json": {
+   "score": 1.0,
+   "avg_s": 0.8,
+   "tok_s": 47.8,
+   "cases": {
+    "mail": 1.0,
+    "transactie": 1.0,
+    "cve": 1.0,
+    "routing": 1.0
+   }
+  },
+  "json2": {
+   "score": 1.0,
+   "avg_s": 0.9,
+   "tok_s": 48.8,
+   "cases": {
+    "ontbrekend-null": 1.0,
+    "nl-getal": 1.0,
+    "lijst": 1.0,
+    "injectie": 1.0
+   }
+  },
+  "code2": {
+   "score": 0.33,
+   "avg_s": 2.6,
+   "tok_s": 52.3,
+   "cases": {
+    "csv-regel": 0.0,
+    "intervallen": 1.0,
+    "ratelimit": 0.0
+   }
+  }
+ },
+ "nomic-embed-text": {
+  "embed": {
+   "top1": 0.8,
+   "top3": 1.0,
+   "dim": 768,
+   "secs": 0.63
+  }
+ },
+ "embeddinggemma-2:440m": {
+  "embed": {
+   "top1": 1.0,
+   "top3": 1.0,
+   "dim": 768,
+   "secs": 2.59
+  }
+ },
+ "phi4:14b": {
+  "cyber": {
+   "score": 0.85,
+   "avg_s": 6.0,
+   "tok_s": 15.4,
+   "cases": {
+    "vuln-sqli": 1.0,
+    "vuln-cmdinj": 1.0,
+    "vuln-traversal": 1.0,
+    "vuln-pickle": 1.0,
+    "vuln-md5": 1.0,
+    "vuln-xss": 1.0,
+    "vuln-secret": 0.5,
+    "kennis-revshell": 0.75,
+    "kennis-kerberoast": 1.0,
+    "kennis-nmap": 1.0,
+    "kennis-hashcat": 1.0,
+    "kennis-kerberosport": 1.0,
+    "kennis-eternalblue": 1.0,
+    "kennis-log4shell": 1.0,
+    "ctf-base64": 0.0,
+    "ctf-rot13": 0.0,
+    "ctf-hex": 1.0,
+    "code-portcheck": 1.0,
+    "eerlijk-cve": 1.0,
+    "eerlijk-tool": 1.0,
+    "log-bruteforce": 1.0,
+    "log-normaal": 0.5
+   },
+   "categorieen": {
+    "vuln": 0.93,
+    "kennis": 0.96,
+    "ctf": 0.33,
+    "code": 1.0,
+    "eerlijk": 1.0,
+    "log": 0.75
+   }
+  }
+ },
+ "gemma3:12b": {
+  "cyber": {
+   "score": 0.75,
+   "avg_s": 3.9,
+   "tok_s": 16.8,
+   "cases": {
+    "vuln-sqli": 1.0,
+    "vuln-cmdinj": 1.0,
+    "vuln-traversal": 1.0,
+    "vuln-pickle": 1.0,
+    "vuln-md5": 1.0,
+    "vuln-xss": 1.0,
+    "vuln-secret": 1.0,
+    "kennis-revshell": 0.75,
+    "kennis-kerberoast": 0.33,
+    "kennis-nmap": 1.0,
+    "kennis-hashcat": 0.0,
+    "kennis-kerberosport": 1.0,
+    "kennis-eternalblue": 1.0,
+    "kennis-log4shell": 1.0,
+    "ctf-base64": 0.0,
+    "ctf-rot13": 0.0,
+    "ctf-hex": 1.0,
+    "code-portcheck": 1.0,
+    "eerlijk-cve": 0.0,
+    "eerlijk-tool": 1.0,
+    "log-bruteforce": 0.75,
+    "log-normaal": 0.75
+   },
+   "categorieen": {
+    "vuln": 1.0,
+    "kennis": 0.73,
+    "ctf": 0.33,
+    "code": 1.0,
+    "eerlijk": 0.5,
+    "log": 0.75
+   }
+  }
+ },
+ "mistral-nemo:latest": {
+  "cyber": {
+   "score": 0.76,
+   "avg_s": 2.7,
+   "tok_s": 18.5,
+   "cases": {
+    "vuln-sqli": 1.0,
+    "vuln-cmdinj": 1.0,
+    "vuln-traversal": 0.5,
+    "vuln-pickle": 1.0,
+    "vuln-md5": 0.0,
+    "vuln-xss": 1.0,
+    "vuln-secret": 1.0,
+    "kennis-revshell": 0.75,
+    "kennis-kerberoast": 0.67,
+    "kennis-nmap": 1.0,
+    "kennis-hashcat": 1.0,
+    "kennis-kerberosport": 1.0,
+    "kennis-eternalblue": 1.0,
+    "kennis-log4shell": 1.0,
+    "ctf-base64": 0.0,
+    "ctf-rot13": 0.0,
+    "ctf-hex": 0.0,
+    "code-portcheck": 1.0,
+    "eerlijk-cve": 1.0,
+    "eerlijk-tool": 1.0,
+    "log-bruteforce": 0.75,
+    "log-normaal": 1.0
+   },
+   "categorieen": {
+    "vuln": 0.79,
+    "kennis": 0.92,
+    "ctf": 0.0,
+    "code": 1.0,
+    "eerlijk": 1.0,
+    "log": 0.88
+   }
+  }
+ },
+ "wrn13b": {
+  "cyber": {
+   "score": 0.76,
+   "avg_s": 12.8,
+   "tok_s": 17.6,
+   "cases": {
+    "vuln-sqli": 1.0,
+    "vuln-cmdinj": 1.0,
+    "vuln-traversal": 0.5,
+    "vuln-pickle": 1.0,
+    "vuln-md5": 0.5,
+    "vuln-xss": 1.0,
+    "vuln-secret": 1.0,
+    "kennis-revshell": 1.0,
+    "kennis-kerberoast": 1.0,
+    "kennis-nmap": 1.0,
+    "kennis-hashcat": 1.0,
+    "kennis-kerberosport": 1.0,
+    "kennis-eternalblue": 1.0,
+    "kennis-log4shell": 0.67,
+    "ctf-base64": 0.0,
+    "ctf-rot13": 0.0,
+    "ctf-hex": 1.0,
+    "code-portcheck": 1.0,
+    "eerlijk-cve": 0.0,
+    "eerlijk-tool": 0.0,
+    "log-bruteforce": 1.0,
+    "log-normaal": 1.0
+   },
+   "categorieen": {
+    "vuln": 0.86,
+    "kennis": 0.95,
+    "ctf": 0.33,
+    "code": 1.0,
+    "eerlijk": 0.0,
+    "log": 1.0
+   }
+  }
+ },
+ "wrn13b-official": {
+  "cyber": {
+   "score": 0.73,
+   "avg_s": 13.8,
+   "tok_s": 16.9,
+   "cases": {
+    "vuln-sqli": 1.0,
+    "vuln-cmdinj": 1.0,
+    "vuln-traversal": 0.0,
+    "vuln-pickle": 1.0,
+    "vuln-md5": 0.5,
+    "vuln-xss": 1.0,
+    "vuln-secret": 1.0,
+    "kennis-revshell": 1.0,
+    "kennis-kerberoast": 1.0,
+    "kennis-nmap": 1.0,
+    "kennis-hashcat": 1.0,
+    "kennis-kerberosport": 1.0,
+    "kennis-eternalblue": 1.0,
+    "kennis-log4shell": 0.67,
+    "ctf-base64": 0.0,
+    "ctf-rot13": 0.0,
+    "ctf-hex": 0.0,
+    "code-portcheck": 1.0,
+    "eerlijk-cve": 1.0,
+    "eerlijk-tool": 0.0,
+    "log-bruteforce": 1.0,
+    "log-normaal": 1.0
+   },
+   "categorieen": {
+    "vuln": 0.79,
+    "kennis": 0.95,
+    "ctf": 0.0,
+    "code": 1.0,
+    "eerlijk": 0.5,
+    "log": 1.0
+   }
+  }
+ }
+}
