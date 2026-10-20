@@ -68,6 +68,16 @@ Run-to-run noise in this run reaches 0.33; smaller differences are not meaningfu
 | `qwen2.5-coder:14b` | 3.1 | 313.1 | 16.6 | 9.67 |
 | `hf.co/QuantFactory/Foundation-Sec-8B-GGUF:Q4_K_M` | 1.8 | 606.3 | 30.8 | 5.02 |
 | `qwen3.8:27b` | 6.4 | 172.8 | 15.6 | 16.46 |
+| `phi4:14b` | 2.8 | 331.8 | 16.5 | 9.55 |
+| `gemma3:12b` | 3.3 | 481.6 | 19.2 | 7.22 |
+| `gpt-oss:20b` | 4.9 | 1088.7 | 39.3 | 12.85 |
+| `deepseek-r1:14b` | 3.1 | 333.8 | 16.4 | 9.03 |
+| `codestral:22b` | 4.3 | 219.8 | 11.3 | 13.77 |
+| `granite4` | 0.8 | 1513.1 | 61.7 | n/a |
+| `gemma3:4b` | 1.1 | 1612.9 | 51.4 | 2.38 |
+| `wrn13b` | 2.8 | 343.0 | 18.2 | n/a |
+| `hf.co/mradermacher/Llama-3-WhiteRabbitNeo-8B-v2.0-GGUF:Q4_K_M` | 1.8 | 609.1 | 30.2 | 5.45 |
+| `hf.co/bartowski/WhiteRabbitNeo-2.5-Qwen-2.5-Coder-7B-GGUF:Q4_K_M` | 1.6 | 692.1 | 32.2 | 4.93 |
 
 ### Reading these results honestly
 
