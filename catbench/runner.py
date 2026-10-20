@@ -81,13 +81,21 @@ def run_model(client: Client, model: str, tracks: list, seeds: list, run_dir: Pa
                 except OllamaError as e:
                     log(f"  ! {model} {task['id']} seed {seed}: {e}")
                     time.sleep(3)
-                    res = client.chat(model, prompt, system=task.get("system", ""), num_predict=int(task.get("num_predict", 300)),
-                                      temperature=temperature, seed=seed, num_ctx=int(task.get("num_ctx", 8192)),
-                                      min_predict=int(cfg.get("predict_min", 0)))
+                    try:
+                        res = client.chat(model, prompt, system=task.get("system", ""), num_predict=int(task.get("num_predict", 300)),
+                                          temperature=temperature, seed=seed, num_ctx=int(task.get("num_ctx", 8192)),
+                                          min_predict=int(cfg.get("predict_min", 0)))
+                    except OllamaError as e2:
+                        if not str(e2).startswith("HTTP"):
+                            raise  # server unreachable: stop cleanly
+                        # the model itself failed twice (for example a repetition loop): that is a result, not a reason to stop
+                        res = {"text": "", "secs": 0.0, "eval_count": 0, "truncated": False, "cut_in_thinking": False, "error": str(e2)[:200]}
                 score, checks = score_task(task, res["text"])
                 rec = {"model": model, "track": track, "task": task["id"], "seed": seed, "score": score, "checks": checks, "secs": res["secs"],
                        "eval_count": res["eval_count"], "truncated": res["truncated"], "cut_in_thinking": res["cut_in_thinking"],
                        "answer": res["text"][:MAX_ANSWER_CHARS]}
+                if res.get("error"):
+                    rec["error"] = res["error"]
                 with open(path, "a", encoding="utf-8") as f:
                     f.write(json.dumps(rec, ensure_ascii=False) + "\n")
                 count += 1

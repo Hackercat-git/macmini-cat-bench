@@ -1,5 +1,6 @@
 import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 
 from catbench import energy, ollama, report, runner
@@ -57,6 +58,29 @@ class RunnerTests(unittest.TestCase):
         recs = runner.read_records(runner.result_path(self.tmp, "m-slow", "honesty"))
         self.assertTrue(all(r["truncated"] for r in recs))
         self.assertEqual(len(recs), 2)
+
+    def test_model_failure_is_recorded_as_zero_and_the_run_continues(self):
+        from catbench.ollama import OllamaError
+
+        class Looping(FakeClient):
+            def chat(self, model, user, **kw):
+                raise OllamaError('HTTP 500: {"error":"prediction aborted, token repeat limit reached"}')
+
+        with mock.patch.object(runner.time, "sleep"):
+            new = runner.run_model(Looping(), "m-loop", ["honesty"], [1], self.tmp, log=lambda *a: None, limit=3)
+        self.assertEqual(new["honesty"], 3)
+        recs = runner.read_records(runner.result_path(self.tmp, "m-loop", "honesty"))
+        self.assertTrue(all(r["score"] == 0 and "repeat limit" in r["error"] for r in recs))
+
+    def test_unreachable_server_still_stops_the_run(self):
+        from catbench.ollama import OllamaError
+
+        class Down(FakeClient):
+            def chat(self, model, user, **kw):
+                raise OllamaError("cannot reach Ollama at localhost:11434")
+
+        with mock.patch.object(runner.time, "sleep"), self.assertRaises(OllamaError):
+            runner.run_model(Down(), "m-down", ["honesty"], [1], self.tmp, log=lambda *a: None, limit=1)
 
     def test_tag_with_special_characters_becomes_a_safe_folder_name(self):
         self.assertEqual(runner.safe("hf.co/QuantFactory/Foundation-Sec-8B-GGUF:Q4_K_M"), "hf.co_QuantFactory_Foundation-Sec-8B-GGUF_Q4_K_M")
