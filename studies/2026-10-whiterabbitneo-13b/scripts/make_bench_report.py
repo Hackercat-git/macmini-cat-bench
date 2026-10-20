@@ -8,7 +8,6 @@ Every number in the text is computed from those files; nothing is typed in by ha
 import glob
 import html
 import json
-import re
 import statistics
 from datetime import date
 from pathlib import Path

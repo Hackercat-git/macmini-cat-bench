@@ -61,9 +61,7 @@ def parallel(client: Client, model: str, agents: int = 5, tokens: int = 120, not
     """Sends `agents` requests at the same moment and records memory and total time. What it shows depends on how the server is
     configured (OLLAMA_NUM_PARALLEL); pass a note describing that setting."""
     client.unload(model)
-    solo_t = time.time()
     _generate(client, model, "Explain topic 0 of network security in detail.", 40)
-    solo_s = time.time() - solo_t
     solo_mem = memory_of(client, model)
     threads = [threading.Thread(target=_generate, args=(client, model, f"Explain topic {i} of network security in detail.", tokens)) for i in range(agents)]
     t = time.time()

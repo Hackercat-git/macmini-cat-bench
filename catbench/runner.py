@@ -7,7 +7,7 @@ from pathlib import Path
 from . import system
 from .ollama import Client, OllamaError
 from .scoring import score_task
-from .tasks import TRACKS, load_track, task_prompt
+from .tasks import load_track, task_prompt
 
 MAX_ANSWER_CHARS = 6000
 

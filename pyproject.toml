@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "catbench"
+version = "0.1.0"
+description = "Honest, reproducible AI benchmarks for local models on the Mac mini"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = []
+
+[project.scripts]
+catbench = "catbench.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["catbench*"]
+
+[tool.ruff]
+line-length = 140
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E9", "F"]

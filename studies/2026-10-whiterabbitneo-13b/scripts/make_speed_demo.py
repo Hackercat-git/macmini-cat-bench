@@ -5,7 +5,6 @@
   python make_speed_demo.py            # docs/snelheidsdemo.html (zelf af te spelen) en docs/snelheidsdemo.gif (te delen, bv. in Discord)
   python make_speed_demo.py --html     # alleen de HTML
 """
-import html
 import json
 import sys
 import textwrap

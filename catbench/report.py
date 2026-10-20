@@ -7,7 +7,7 @@ import statistics
 from pathlib import Path
 
 from .models import display_name, load_models
-from .runner import read_records, safe
+from .runner import read_records
 from .system import describe
 from .tasks import TRACK_LABELS, TRACKS, all_tracks
 
@@ -87,7 +87,7 @@ def radar_svg(values: dict, tracks: list, size: int = 200) -> str:
         lx, ly = cx + (r + 14) * math.cos(a), cy + (r + 14) * math.sin(a)
         anchor = "middle" if abs(math.cos(a)) < 0.3 else ("start" if math.cos(a) > 0 else "end")
         labels.append(f'<text x="{lx:.1f}" y="{ly + 3:.1f}" text-anchor="{anchor}" class="rl">{html.escape(TRACK_LABELS[t].split(" ")[0])}</text>')
-    rings = "".join(f'<polygon points="' + " ".join(f"{cx + r * k * math.cos(-math.pi / 2 + 2 * math.pi * i / n):.1f},{cy + r * k * math.sin(-math.pi / 2 + 2 * math.pi * i / n):.1f}"
+    rings = "".join('<polygon points="' + " ".join(f"{cx + r * k * math.cos(-math.pi / 2 + 2 * math.pi * i / n):.1f},{cy + r * k * math.sin(-math.pi / 2 + 2 * math.pi * i / n):.1f}"
                                                   for i in range(n)) + f'" fill="none" stroke="{LINE}"/>' for k in (0.5, 1.0))
     return (f'<svg viewBox="0 0 {size} {size}" class="radar" role="img">{rings}<polygon points="{" ".join(pts)}" fill="{BLUE}" fill-opacity="0.25" '
             f'stroke="{BLUE}" stroke-width="2"/>{"".join(labels)}</svg>')
