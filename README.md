@@ -30,8 +30,45 @@ Energy per answer is supported when the machine allows it (see below).
 ## Results
 
 <!-- RESULTS -->
-See [docs/RESULTS.md](docs/RESULTS.md) and the generated site in [docs/](docs/) (`index.html`, `hairball.html`, `vote.html`). The first complete round is
-being filled in; the table appears here when it is done.
+
+Mac mini (Apple M6, 32 GB), Ollama 0.40.5, 2026-10-20.
+
+| Model | Track average | Cybersecurity | Daily use | Coding | Dutch | Tools and JSON | Honesty and safety | Reasoning and maths | Long context |
+|---|---|---|---|---|---|---|---|---|---|
+| gemma4 12B | 0.97 | 0.95 (0.95–0.95) | 1.00 (1.00–1.00) | 0.94 (0.94–0.94) | 0.96 (0.96–0.96) | 1.00 (1.00–1.00) | 0.92 (0.92–0.92) | 1.00 (1.00–1.00) | 1.00 (1.00–1.00) |
+| qwen3.8 27B | 0.95 | 0.94 (0.94–0.95) | 0.92 (0.92–0.92) | 1.00 (1.00–1.00) | 0.92 (0.92–0.92) | 0.89 (0.83–0.92) | 1.00 (1.00–1.00) | 0.97 (0.92–1.00) | 1.00 (1.00–1.00) |
+| qwen3.5 9B | 0.94 | 0.95 (0.93–0.95) | 0.92 (0.92–0.92) | 1.00 (1.00–1.00) | 0.79 (0.79–0.79) | 1.00 (1.00–1.00) | 0.85 (0.79–0.92) | 1.00 (1.00–1.00) | 1.00 (1.00–1.00) |
+| qwen2.5-coder 14B | 0.93 | 0.84 (0.80–0.87) | 0.98 (0.96–1.00) | 1.00 (1.00–1.00) | 0.86 (0.85–0.88) | 1.00 (1.00–1.00) | 0.78 (0.67–0.83) | 0.94 (0.92–1.00) | 1.00 (1.00–1.00) |
+| Llama 3.1 8B | 0.92 | 0.76 (0.75–0.77) | 0.94 (0.92–0.96) | 0.93 (0.85–1.00) | 0.87 (0.85–0.88) | 0.97 (0.97–0.97) | 0.92 (0.92–0.92) | 1.00 (1.00–1.00) | 1.00 (1.00–1.00) |
+| qwen3 8B | 0.91 | 0.84 (0.83–0.85) | 0.88 (0.88–0.88) | 0.95 (0.95–0.95) | 0.89 (0.88–0.92) | 1.00 (1.00–1.00) | 0.69 (0.67–0.75) | 1.00 (1.00–1.00) | 1.00 (1.00–1.00) |
+| DeepHat V1 7B | 0.88 | 0.78 (0.73–0.81) | 0.92 (0.92–0.92) | 0.98 (0.95–1.00) | 0.87 (0.85–0.89) | 1.00 (1.00–1.00) | 0.50 (0.38–0.67) | 1.00 (1.00–1.00) | 1.00 (1.00–1.00) |
+| Foundation-Sec 8B | 0.28 | 0.49 (0.45–0.58) | 0.38 (0.29–0.47) | 0.12 (0.07–0.20) | 0.50 (0.44–0.54) | 0.00 (0.00–0.00) | 0.50 (0.42–0.58) | 0.11 (0.00–0.33) | 0.11 (0.00–0.33) |
+
+Run-to-run noise in this run reaches 0.33; smaller differences are not meaningful.
+
+### Speed and memory (single request)
+
+| Model | Load (s) | Reading (tok/s) | Writing (tok/s) | Memory (GB) |
+|---|---|---|---|---|
+| `qwen3:8b` | 0.8 | 647.1 | 28.3 | 5.24 |
+| `hf.co/mradermacher/DeepHat-V1-7B-GGUF:Q4_K_M` | 0.5 | 686.5 | 32.1 | 4.48 |
+| `llama3.1:8b` | 2.1 | 605.3 | 30.3 | 5.45 |
+| `qwen3.5:9b` | 1.7 | 908.6 | 36.0 | 7.74 |
+| `gemma4:12b` | 1.7 | 568.6 | 34.7 | 7.75 |
+| `qwen2.5-coder:14b` | 3.1 | 313.1 | 16.6 | 9.67 |
+| `hf.co/QuantFactory/Foundation-Sec-8B-GGUF:Q4_K_M` | 1.8 | 606.3 | 30.8 | 5.02 |
+| `qwen3.8:27b` | 6.4 | 172.8 | 15.6 | 16.46 |
+
+### Reading these results honestly
+
+- **Foundation-Sec 8B scores 0.28 because of how this GGUF is packaged, not necessarily the model.** The community GGUF has no chat template in Ollama:
+  its answers leak `<|im_start|>` tokens and loop. Treat it as "as shipped through Ollama", and see round 2 for a fixed Modelfile.
+- **Several tracks are at the ceiling (1.00 for most models).** Long context, tools and reasoning do not separate these models yet; round 2 adds harder tasks.
+- **Parallel agents:** with the default server setting only one request runs at a time (5 agents: 28.7 tok/s in total, 5.7 each, memory unchanged).
+  The `OLLAMA_NUM_PARALLEL=5` comparison is planned.
+- Three seeds per task at temperature 0.2; ranges are min–max over seeds. Differences below the stated noise are not meaningful.
+- Full data, raw answers and the blind vote: see the [site](docs/index.html) and `runs/2026-10-20-macmini-m6-32gb/`.
+
 <!-- /RESULTS -->
 
 The study that started this repository, a security-focused comparison including WhiteRabbitNeo 13B, is in

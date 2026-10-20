@@ -1,0 +1,153 @@
+{
+ "run_id": "2026-10-20-macmini-m6-32gb",
+ "date": "2026-10-20",
+ "machine": {
+  "os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "python": "3.14.8",
+  "catbench": "0.1.0",
+  "chip": "Apple M6",
+  "ram_gb": 32,
+  "macos": "27.0.1",
+  "model": "Mac mini",
+  "identifier": "Mac18,5",
+  "cores": "12 (2 Super, 4 Performance, and 6 Efficiency)"
+ },
+ "ollama": "0.40.5",
+ "settings": {
+  "seeds": 3,
+  "temperature": 0.2,
+  "tracks": [
+   "cybersecurity"
+  ]
+ },
+ "models": {
+  "qwen3.5:9b": {
+   "digest": "d63f830f28d515fe",
+   "size_gb": 7.64,
+   "details": {
+    "parent_model": "",
+    "format": "safetensors",
+    "family": "",
+    "families": null,
+    "parameter_size": "",
+    "quantization_level": "",
+    "runner": "mlx"
+   }
+  },
+  "gemma4:12b": {
+   "digest": "c7597fc90b86aff6",
+   "size_gb": 7.71,
+   "details": {
+    "parent_model": "",
+    "format": "safetensors",
+    "family": "",
+    "families": null,
+    "parameter_size": "",
+    "quantization_level": "",
+    "runner": "mlx"
+   }
+  },
+  "llama3.1:8b": {
+   "digest": "46e0c10c039e0191",
+   "size_gb": 4.92,
+   "details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "llama",
+    "families": [
+     "llama"
+    ],
+    "parameter_size": "8.0B",
+    "quantization_level": "Q4_K_M",
+    "context_length": 131072,
+    "embedding_length": 4096,
+    "runner": "ggml"
+   }
+  },
+  "hf.co/mradermacher/DeepHat-V1-7B-GGUF:Q4_K_M": {
+   "digest": "98939b830887262f",
+   "size_gb": 4.68,
+   "details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "qwen2",
+    "families": [
+     "qwen2"
+    ],
+    "parameter_size": "7.62B",
+    "quantization_level": "Q4_K_M",
+    "context_length": 32768,
+    "embedding_length": 3584,
+    "runner": "ggml"
+   }
+  },
+  "qwen3.8:27b": {
+   "digest": "aaee06c39dcf2437",
+   "size_gb": 17.74,
+   "details": {
+    "parent_model": "qwen3.8:27b-q4_K_M",
+    "format": "gguf",
+    "family": "qwen35",
+    "families": [
+     "qwen35"
+    ],
+    "parameter_size": "27.3B",
+    "quantization_level": "Q4_K_M",
+    "context_length": 262144,
+    "embedding_length": 5120,
+    "runner": "llamacpp"
+   }
+  },
+  "qwen2.5-coder:14b": {
+   "digest": "9ec8897f747e246e",
+   "size_gb": 8.99,
+   "details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "qwen2",
+    "families": [
+     "qwen2"
+    ],
+    "parameter_size": "14.8B",
+    "quantization_level": "Q4_K_M",
+    "context_length": 32768,
+    "embedding_length": 5120,
+    "runner": "ggml"
+   }
+  },
+  "qwen3:8b": {
+   "digest": "500a1f067a9f7826",
+   "size_gb": 5.23,
+   "details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "qwen3",
+    "families": [
+     "qwen3"
+    ],
+    "parameter_size": "8.2B",
+    "quantization_level": "Q4_K_M",
+    "context_length": 40960,
+    "embedding_length": 4096,
+    "runner": "ggml"
+   }
+  },
+  "hf.co/QuantFactory/Foundation-Sec-8B-GGUF:Q4_K_M": {
+   "digest": "3004e173637dc37f",
+   "size_gb": 4.92,
+   "details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "llama",
+    "families": [
+     "llama"
+    ],
+    "parameter_size": "8.03B",
+    "quantization_level": "Q4_K_M",
+    "context_length": 131072,
+    "embedding_length": 4096,
+    "runner": "ggml"
+   }
+  }
+ }
+}

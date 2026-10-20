@@ -1,0 +1,671 @@
+{
+ "run": "2026-10-20-macmini-m6-32gb",
+ "tracks": [
+  "cybersecurity",
+  "daily",
+  "coding",
+  "dutch",
+  "tools",
+  "honesty",
+  "reasoning",
+  "longcontext"
+ ],
+ "models": {
+  "gemma4:12b": {
+   "coding": {
+    "mean": 0.94,
+    "lo": 0.94,
+    "hi": 0.94,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 1.7313
+   },
+   "cybersecurity": {
+    "mean": 0.9545454545454546,
+    "lo": 0.9545454545454546,
+    "hi": 0.9545454545454546,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 1.8901363636363637
+   },
+   "daily": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 0.6311111111111111
+   },
+   "dutch": {
+    "mean": 0.9583333333333334,
+    "lo": 0.9583333333333334,
+    "hi": 0.9583333333333334,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 0.7336111111111111
+   },
+   "honesty": {
+    "mean": 0.9166666666666666,
+    "lo": 0.9166666666666666,
+    "hi": 0.9166666666666666,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 1.3433611111111112
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 3.5576666666666665
+   },
+   "reasoning": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 6.849222222222222
+   },
+   "tools": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 0.4502777777777778
+   }
+  },
+  "hf.co/mradermacher/DeepHat-V1-7B-GGUF:Q4_K_M": {
+   "coding": {
+    "mean": 0.9833333333333333,
+    "lo": 0.95,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 2.3858333333333333
+   },
+   "cybersecurity": {
+    "mean": 0.7765151515151515,
+    "lo": 0.7272727272727273,
+    "hi": 0.8068181818181818,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 1,
+    "answers": 66,
+    "secs": 3.187939393939394
+   },
+   "daily": {
+    "mean": 0.9166666666666666,
+    "lo": 0.9166666666666666,
+    "hi": 0.9166666666666666,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 2.2815555555555553
+   },
+   "dutch": {
+    "mean": 0.8680833333333333,
+    "lo": 0.8472500000000001,
+    "hi": 0.8889166666666667,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 1.0879722222222221
+   },
+   "honesty": {
+    "mean": 0.5,
+    "lo": 0.375,
+    "hi": 0.6666666666666666,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 3.122777777777778
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 3.855277777777778
+   },
+   "reasoning": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 13,
+    "answers": 36,
+    "secs": 11.155833333333334
+   },
+   "tools": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 0.7414444444444445
+   }
+  },
+  "hf.co/QuantFactory/Foundation-Sec-8B-GGUF:Q4_K_M": {
+   "coding": {
+    "mean": 0.12223333333333335,
+    "lo": 0.06670000000000001,
+    "hi": 0.2,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 30,
+    "answers": 30,
+    "secs": 16.772733333333335
+   },
+   "cybersecurity": {
+    "mean": 0.494969696969697,
+    "lo": 0.447,
+    "hi": 0.5757727272727273,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 66,
+    "answers": 66,
+    "secs": 10.055939393939394
+   },
+   "daily": {
+    "mean": 0.3842777777777778,
+    "lo": 0.2916666666666667,
+    "hi": 0.47225,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 36,
+    "answers": 36,
+    "secs": 8.368472222222222
+   },
+   "dutch": {
+    "mean": 0.5046111111111111,
+    "lo": 0.4444166666666667,
+    "hi": 0.5416666666666666,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 36,
+    "answers": 36,
+    "secs": 8.336194444444445
+   },
+   "honesty": {
+    "mean": 0.5,
+    "lo": 0.4166666666666667,
+    "hi": 0.5833333333333334,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 36,
+    "answers": 36,
+    "secs": 8.35061111111111
+   },
+   "longcontext": {
+    "mean": 0.1111111111111111,
+    "lo": 0.0,
+    "hi": 0.3333333333333333,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 18,
+    "answers": 18,
+    "secs": 5.657777777777778
+   },
+   "reasoning": {
+    "mean": 0.1111111111111111,
+    "lo": 0.0,
+    "hi": 0.3333333333333333,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 36,
+    "answers": 36,
+    "secs": 24.702916666666667
+   },
+   "tools": {
+    "mean": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 36,
+    "answers": 36,
+    "secs": 8.3385
+   }
+  },
+  "llama3.1:8b": {
+   "coding": {
+    "mean": 0.925,
+    "lo": 0.85,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 2.5124666666666666
+   },
+   "cybersecurity": {
+    "mean": 0.7576212121212121,
+    "lo": 0.7500454545454546,
+    "hi": 0.7727727272727273,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 2.3487424242424244
+   },
+   "daily": {
+    "mean": 0.9444444444444444,
+    "lo": 0.9166666666666666,
+    "hi": 0.9583333333333334,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 0.9550000000000001
+   },
+   "dutch": {
+    "mean": 0.8680555555555556,
+    "lo": 0.8541666666666666,
+    "hi": 0.875,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 0.6607500000000001
+   },
+   "honesty": {
+    "mean": 0.9166666666666666,
+    "lo": 0.9166666666666666,
+    "hi": 0.9166666666666666,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 1.9190833333333333
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 3.7124444444444444
+   },
+   "reasoning": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 4.684111111111111
+   },
+   "tools": {
+    "mean": 0.9722500000000001,
+    "lo": 0.9722500000000001,
+    "hi": 0.9722500000000001,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 0.6895833333333333
+   }
+  },
+  "qwen2.5-coder:14b": {
+   "coding": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 4.630133333333333
+   },
+   "cybersecurity": {
+    "mean": 0.8421969696969697,
+    "lo": 0.8030454545454545,
+    "hi": 0.8674545454545455,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 4.795318181818182
+   },
+   "daily": {
+    "mean": 0.9814722222222222,
+    "lo": 0.9583333333333334,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 1.3269722222222222
+   },
+   "dutch": {
+    "mean": 0.8565,
+    "lo": 0.8472500000000001,
+    "hi": 0.875,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 1.3183333333333334
+   },
+   "honesty": {
+    "mean": 0.7777777777777778,
+    "lo": 0.6666666666666666,
+    "hi": 0.8333333333333334,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 4.177666666666666
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 7.657166666666666
+   },
+   "reasoning": {
+    "mean": 0.9444444444444444,
+    "lo": 0.9166666666666666,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 15.958722222222223
+   },
+   "tools": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 1.4060277777777779
+   }
+  },
+  "qwen3.5:9b": {
+   "coding": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 2.0320666666666667
+   },
+   "cybersecurity": {
+    "mean": 0.946969696969697,
+    "lo": 0.9318181818181818,
+    "hi": 0.9545454545454546,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 2.0818787878787877
+   },
+   "daily": {
+    "mean": 0.9166666666666666,
+    "lo": 0.9166666666666666,
+    "hi": 0.9166666666666666,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 0.49280555555555555
+   },
+   "dutch": {
+    "mean": 0.7916666666666666,
+    "lo": 0.7916666666666666,
+    "hi": 0.7916666666666666,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 0.5863055555555555
+   },
+   "honesty": {
+    "mean": 0.8472222222222222,
+    "lo": 0.7916666666666666,
+    "hi": 0.9166666666666666,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 1.7673611111111112
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 2.3463333333333334
+   },
+   "reasoning": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 5.686222222222222
+   },
+   "tools": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 0.48916666666666664
+   }
+  },
+  "qwen3.8:27b": {
+   "coding": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 3.8811
+   },
+   "cybersecurity": {
+    "mean": 0.9444545454545454,
+    "lo": 0.9394090909090909,
+    "hi": 0.9545454545454546,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 4.670090909090909
+   },
+   "daily": {
+    "mean": 0.9166666666666666,
+    "lo": 0.9166666666666666,
+    "hi": 0.9166666666666666,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 1.942
+   },
+   "dutch": {
+    "mean": 0.9166666666666666,
+    "lo": 0.9166666666666666,
+    "hi": 0.9166666666666666,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 1.9766944444444445
+   },
+   "honesty": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 4.037222222222222
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 10.075388888888888
+   },
+   "reasoning": {
+    "mean": 0.9722222222222222,
+    "lo": 0.9166666666666666,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 1,
+    "answers": 36,
+    "secs": 15.663361111111112
+   },
+   "tools": {
+    "mean": 0.8888888888888888,
+    "lo": 0.8333333333333334,
+    "hi": 0.9166666666666666,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 1.2953611111111112
+   }
+  },
+  "qwen3:8b": {
+   "coding": {
+    "mean": 0.95,
+    "lo": 0.95,
+    "hi": 0.95,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 2.5609333333333333
+   },
+   "cybersecurity": {
+    "mean": 0.8358787878787879,
+    "lo": 0.8257727272727273,
+    "hi": 0.8485,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 1.944590909090909
+   },
+   "daily": {
+    "mean": 0.875,
+    "lo": 0.875,
+    "hi": 0.875,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 0.847
+   },
+   "dutch": {
+    "mean": 0.8888888888888888,
+    "lo": 0.875,
+    "hi": 0.9166666666666666,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 0.8176944444444445
+   },
+   "honesty": {
+    "mean": 0.6944444444444444,
+    "lo": 0.6666666666666666,
+    "hi": 0.75,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 2.060111111111111
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 4.002611111111111
+   },
+   "reasoning": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 5.83125
+   },
+   "tools": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 0.7715833333333333
+   }
+  }
+ }
+}
