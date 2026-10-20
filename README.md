@@ -38,10 +38,20 @@ Mac mini (Apple M6, 32 GB), Ollama 0.40.5, 2026-10-20.
 | gemma4 12B | 0.97 | 0.95 (0.95–0.95) | 1.00 (1.00–1.00) | 0.94 (0.94–0.94) | 0.96 (0.96–0.96) | 1.00 (1.00–1.00) | 0.92 (0.92–0.92) | 1.00 (1.00–1.00) | 1.00 (1.00–1.00) |
 | qwen3.8 27B | 0.95 | 0.94 (0.94–0.95) | 0.92 (0.92–0.92) | 1.00 (1.00–1.00) | 0.92 (0.92–0.92) | 0.89 (0.83–0.92) | 1.00 (1.00–1.00) | 0.97 (0.92–1.00) | 1.00 (1.00–1.00) |
 | qwen3.5 9B | 0.94 | 0.95 (0.93–0.95) | 0.92 (0.92–0.92) | 1.00 (1.00–1.00) | 0.79 (0.79–0.79) | 1.00 (1.00–1.00) | 0.85 (0.79–0.92) | 1.00 (1.00–1.00) | 1.00 (1.00–1.00) |
+| gpt-oss 20B | 0.94 | 0.89 (0.87–0.91) | 0.99 (0.99–0.99) | 1.00 (1.00–1.00) | 0.90 (0.85–0.92) | 1.00 (1.00–1.00) | 0.72 (0.58–0.83) | 1.00 (1.00–1.00) | 1.00 (1.00–1.00) |
+| phi4 14B | 0.93 | 0.85 (0.84–0.86) | 0.99 (0.96–1.00) | 1.00 (1.00–1.00) | 0.95 (0.93–0.96) | 1.00 (1.00–1.00) | 0.75 (0.75–0.75) | 0.92 (0.92–0.92) | 1.00 (1.00–1.00) |
 | qwen2.5-coder 14B | 0.93 | 0.84 (0.80–0.87) | 0.98 (0.96–1.00) | 1.00 (1.00–1.00) | 0.86 (0.85–0.88) | 1.00 (1.00–1.00) | 0.78 (0.67–0.83) | 0.94 (0.92–1.00) | 1.00 (1.00–1.00) |
 | Llama 3.1 8B | 0.92 | 0.76 (0.75–0.77) | 0.94 (0.92–0.96) | 0.93 (0.85–1.00) | 0.87 (0.85–0.88) | 0.97 (0.97–0.97) | 0.92 (0.92–0.92) | 1.00 (1.00–1.00) | 1.00 (1.00–1.00) |
+| gemma3 12B | 0.91 | 0.80 (0.79–0.81) | 0.92 (0.92–0.92) | 1.00 (1.00–1.00) | 0.83 (0.83–0.83) | 1.00 (1.00–1.00) | 0.75 (0.75–0.75) | 1.00 (1.00–1.00) | 1.00 (1.00–1.00) |
+| granite4 | 0.91 | 0.76 (0.73–0.78) | 0.97 (0.92–1.00) | 0.90 (0.85–0.93) | 0.88 (0.88–0.88) | 1.00 (1.00–1.00) | 0.75 (0.75–0.75) | 1.00 (1.00–1.00) | 1.00 (1.00–1.00) |
 | qwen3 8B | 0.91 | 0.84 (0.83–0.85) | 0.88 (0.88–0.88) | 0.95 (0.95–0.95) | 0.89 (0.88–0.92) | 1.00 (1.00–1.00) | 0.69 (0.67–0.75) | 1.00 (1.00–1.00) | 1.00 (1.00–1.00) |
+| WhiteRabbitNeo 2.5 (Qwen) 7B | 0.89 | 0.84 (0.81–0.87) | 0.96 (0.96–0.96) | 1.00 (0.99–1.00) | 0.78 (0.75–0.83) | 1.00 (1.00–1.00) | 0.61 (0.50–0.67) | 0.89 (0.83–1.00) | 1.00 (1.00–1.00) |
 | DeepHat V1 7B | 0.88 | 0.78 (0.73–0.81) | 0.92 (0.92–0.92) | 0.98 (0.95–1.00) | 0.87 (0.85–0.89) | 1.00 (1.00–1.00) | 0.50 (0.38–0.67) | 1.00 (1.00–1.00) | 1.00 (1.00–1.00) |
+| deepseek-r1 14B | 0.88 | 0.74 (0.70–0.80) | 0.89 (0.88–0.92) | 0.88 (0.85–0.90) | 0.87 (0.75–0.94) | 1.00 (1.00–1.00) | 0.64 (0.58–0.75) | 1.00 (1.00–1.00) | 1.00 (1.00–1.00) |
+| codestral 22B | 0.85 | 0.84 (0.81–0.88) | 0.88 (0.88–0.88) | 0.92 (0.90–0.95) | 0.79 (0.75–0.82) | 1.00 (1.00–1.00) | 0.72 (0.67–0.75) | 0.69 (0.67–0.75) | 1.00 (1.00–1.00) |
+| gemma3 4B | 0.85 | 0.66 (0.66–0.67) | 0.74 (0.74–0.74) | 0.87 (0.82–0.95) | 0.92 (0.92–0.92) | 1.00 (1.00–1.00) | 0.58 (0.58–0.58) | 1.00 (1.00–1.00) | 1.00 (1.00–1.00) |
+| WhiteRabbitNeo 13B (Llama 2) | 0.71 | 0.78 (0.70–0.84) | 0.47 (0.31–0.64) | 0.89 (0.83–0.95) | 0.84 (0.82–0.85) | 0.86 (0.75–0.92) | 0.56 (0.50–0.58) | 0.31 (0.17–0.42) | 1.00 (1.00–1.00) |
+| WhiteRabbitNeo (Llama 3) 8B | 0.69 | 0.78 (0.70–0.82) | 0.64 (0.60–0.71) | 0.79 (0.72–0.89) | 0.84 (0.78–0.93) | 0.68 (0.62–0.72) | 0.50 (0.42–0.58) | 0.58 (0.58–0.58) | 0.72 (0.50–0.83) |
 | Foundation-Sec 8B | 0.28 | 0.49 (0.45–0.58) | 0.38 (0.29–0.47) | 0.12 (0.07–0.20) | 0.50 (0.44–0.54) | 0.00 (0.00–0.00) | 0.50 (0.42–0.58) | 0.11 (0.00–0.33) | 0.11 (0.00–0.33) |
 
 Run-to-run noise in this run reaches 0.33; smaller differences are not meaningful.
@@ -62,10 +72,14 @@ Run-to-run noise in this run reaches 0.33; smaller differences are not meaningfu
 ### Reading these results honestly
 
 - **Foundation-Sec 8B scores 0.28 because of how this GGUF is packaged, not necessarily the model.** The community GGUF has no chat template in Ollama:
-  its answers leak `<|im_start|>` tokens and loop. Treat it as "as shipped through Ollama", and see round 2 for a fixed Modelfile.
-- **Several tracks are at the ceiling (1.00 for most models).** Long context, tools and reasoning do not separate these models yet; round 2 adds harder tasks.
+  its answers leak `<|im_start|>` tokens and loop. Treat it as "as shipped through Ollama".
+- **The WhiteRabbitNeo models are the weakest on general tracks** (0.69 to 0.89) but not on cybersecurity (0.78 to 0.84, about the level of general 8B to 14B models).
+  They are tuned for offensive security and lose ground on reasoning, honesty and safety.
+- **Several tracks are at the ceiling (1.00 for most models).** Long context, tools and reasoning do not separate the stronger models yet; a harder round is planned.
+- **Thinking models** (gpt-oss, deepseek-r1) run with a token floor of 3000, otherwise they score near zero for the wrong reason.
 - **Parallel agents:** with the default server setting only one request runs at a time (5 agents: 28.7 tok/s in total, 5.7 each, memory unchanged).
   The `OLLAMA_NUM_PARALLEL=5` comparison is planned.
+- "n/a" memory: the model was not listed by `ollama ps` under the requested name at measurement time.
 - Three seeds per task at temperature 0.2; ranges are min–max over seeds. Differences below the stated noise are not meaningful.
 - Full data, raw answers and the blind vote: see the [site](docs/index.html) and `runs/2026-10-20-macmini-m6-32gb/`.
 
