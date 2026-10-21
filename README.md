@@ -60,24 +60,16 @@ Run-to-run noise in this run reaches 0.33; smaller differences are not meaningfu
 
 | Model | Load (s) | Reading (tok/s) | Writing (tok/s) | Memory (GB) |
 |---|---|---|---|---|
-| `qwen3:8b` | 0.8 | 647.1 | 28.3 | 5.24 |
-| `hf.co/mradermacher/DeepHat-V1-7B-GGUF:Q4_K_M` | 0.5 | 686.5 | 32.1 | 4.48 |
-| `llama3.1:8b` | 2.1 | 605.3 | 30.3 | 5.45 |
-| `qwen3.5:9b` | 1.7 | 908.6 | 36.0 | 7.74 |
-| `gemma4:12b` | 1.7 | 568.6 | 34.7 | 7.75 |
-| `qwen2.5-coder:14b` | 3.1 | 313.1 | 16.6 | 9.67 |
-| `hf.co/QuantFactory/Foundation-Sec-8B-GGUF:Q4_K_M` | 1.8 | 606.3 | 30.8 | 5.02 |
-| `qwen3.8:27b` | 6.4 | 172.8 | 15.6 | 16.46 |
-| `phi4:14b` | 2.8 | 331.8 | 16.5 | 9.55 |
-| `gemma3:12b` | 3.3 | 481.6 | 19.2 | 7.22 |
-| `gpt-oss:20b` | 4.9 | 1088.7 | 39.3 | 12.85 |
-| `deepseek-r1:14b` | 3.1 | 333.8 | 16.4 | 9.03 |
-| `codestral:22b` | 4.3 | 219.8 | 11.3 | 13.77 |
-| `granite4` | 0.8 | 1513.1 | 61.7 | n/a |
-| `gemma3:4b` | 1.1 | 1612.9 | 51.4 | 2.38 |
-| `wrn13b` | 2.8 | 343.0 | 18.2 | n/a |
-| `hf.co/mradermacher/Llama-3-WhiteRabbitNeo-8B-v2.0-GGUF:Q4_K_M` | 1.8 | 609.1 | 30.2 | 5.45 |
-| `hf.co/bartowski/WhiteRabbitNeo-2.5-Qwen-2.5-Coder-7B-GGUF:Q4_K_M` | 1.6 | 692.1 | 32.2 | 4.93 |
+| `mistral-small:24b` | 1.8 | 243.5 | 10.4 | 14.36 |
+| `llama3.2:3b` | 0.8 | 1770.7 | 65.0 | 2.68 |
+
+### Five agents at once
+
+| Model | Server setting | Memory, 1 request (GB) | Memory, 5 agents (GB) | All 5 done in (s) | Total tok/s | Per agent tok/s |
+|---|---|---|---|---|---|---|
+| `qwen3:8b` | default (1 slot) | 5.24 | 5.24 | 20.9 | 28.7 | 5.7 |
+| `qwen3:8b` | `OLLAMA_NUM_PARALLEL=5` | 8.04 | 8.04 | 6.0 | 99.8 | 20.0 |
+| `gemma4:12b` | `OLLAMA_NUM_PARALLEL=5` | 7.68 | 7.71 | 16.4 | 36.5 | 7.3 |
 
 ### Reading these results honestly
 
@@ -87,8 +79,7 @@ Run-to-run noise in this run reaches 0.33; smaller differences are not meaningfu
   They are tuned for offensive security and lose ground on reasoning, honesty and safety.
 - **Several tracks are at the ceiling (1.00 for most models).** Long context, tools and reasoning do not separate the stronger models yet; a harder round is planned.
 - **Thinking models** (gpt-oss, deepseek-r1) run with a token floor of 3000, otherwise they score near zero for the wrong reason.
-- **Parallel agents:** with the default server setting only one request runs at a time (5 agents: 28.7 tok/s in total, 5.7 each, memory unchanged).
-  The `OLLAMA_NUM_PARALLEL=5` comparison is planned.
+- **Parallel agents:** the server setting decides. With the default (one slot) five agents queue up: 28.7 tok/s in total, memory unchanged. With `OLLAMA_NUM_PARALLEL=5` the same five agents finish about 3.5 times faster (99.8 tok/s in total for qwen3 8B). The price is memory, reserved when the model loads: qwen3 8B went from 5.2 to 8.0 GB (flash attention and a q8_0 KV cache on). gemma4 12B gains little (36.5 tok/s in total) and its memory barely changes.
 - "n/a" memory: the model was not listed by `ollama ps` under the requested name at measurement time.
 - Three seeds per task at temperature 0.2; ranges are min–max over seeds. Differences below the stated noise are not meaningful.
 - Full data, raw answers and the blind vote: see the [site](docs/index.html) and `runs/2026-10-20-macmini-m6-32gb/`.

@@ -291,6 +291,40 @@
     "embedding_length": 3840,
     "runner": "ggml"
    }
+  },
+  "llama3.2:3b": {
+   "digest": "a80c4f17acd55265",
+   "size_gb": 2.02,
+   "details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "llama",
+    "families": [
+     "llama"
+    ],
+    "parameter_size": "3.2B",
+    "quantization_level": "Q4_K_M",
+    "context_length": 131072,
+    "embedding_length": 3072,
+    "runner": "ggml"
+   }
+  },
+  "mistral-small:24b": {
+   "digest": "8039dd90c1138d77",
+   "size_gb": 14.33,
+   "details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "llama",
+    "families": [
+     "llama"
+    ],
+    "parameter_size": "23.6B",
+    "quantization_level": "Q4_K_M",
+    "context_length": 32768,
+    "embedding_length": 5120,
+    "runner": "ggml"
+   }
   }
  }
 }

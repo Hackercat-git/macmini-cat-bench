@@ -9,5 +9,27 @@
   "total_tok_s": 28.7,
   "per_agent_tok_s": 5.7,
   "note": "default server setting (OLLAMA_NUM_PARALLEL not set)"
+ },
+ {
+  "model": "qwen3:8b",
+  "agents": 5,
+  "tokens_per_request": 120,
+  "memory_one_request_gb": 8.04,
+  "memory_during_parallel_gb": 8.04,
+  "seconds_for_all": 6.0,
+  "total_tok_s": 99.8,
+  "per_agent_tok_s": 20.0,
+  "note": "OLLAMA_NUM_PARALLEL=5, flash attention, q8_0 KV cache"
+ },
+ {
+  "model": "gemma4:12b",
+  "agents": 5,
+  "tokens_per_request": 120,
+  "memory_one_request_gb": 7.68,
+  "memory_during_parallel_gb": 7.71,
+  "seconds_for_all": 16.4,
+  "total_tok_s": 36.5,
+  "per_agent_tok_s": 7.3,
+  "note": "OLLAMA_NUM_PARALLEL=5, flash attention, q8_0 KV cache"
  }
 ]

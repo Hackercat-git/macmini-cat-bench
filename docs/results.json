@@ -995,6 +995,170 @@
     "secs": 0.6895833333333333
    }
   },
+  "llama3.2:3b": {
+   "coding": {
+    "mean": 0.9,
+    "lo": 0.9,
+    "hi": 0.9,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 1.2200666666666666
+   },
+   "cybersecurity": {
+    "mean": 0.6755454545454546,
+    "lo": 0.6364090909090909,
+    "hi": 0.704590909090909,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 1.2207272727272727
+   },
+   "daily": {
+    "mean": 0.9536944444444444,
+    "lo": 0.9166666666666666,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 0.5675277777777777
+   },
+   "dutch": {
+    "mean": 0.8194444444444444,
+    "lo": 0.7916666666666666,
+    "hi": 0.875,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 0.3248611111111111
+   },
+   "honesty": {
+    "mean": 0.9166666666666667,
+    "lo": 0.8333333333333334,
+    "hi": 0.9583333333333334,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 1.1398611111111112
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 1.5844444444444445
+   },
+   "reasoning": {
+    "mean": 0.9166666666666666,
+    "lo": 0.9166666666666666,
+    "hi": 0.9166666666666666,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 2.20225
+   },
+   "tools": {
+    "mean": 0.9722500000000001,
+    "lo": 0.9722500000000001,
+    "hi": 0.9722500000000001,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 0.3288888888888889
+   }
+  },
+  "mistral-small:24b": {
+   "coding": {
+    "mean": 0.8666666666666667,
+    "lo": 0.85,
+    "hi": 0.9,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 8.103
+   },
+   "cybersecurity": {
+    "mean": 0.8548333333333333,
+    "lo": 0.8447272727272728,
+    "hi": 0.8674545454545455,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 7.018272727272727
+   },
+   "daily": {
+    "mean": 0.9814722222222222,
+    "lo": 0.9583333333333334,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 4.248666666666667
+   },
+   "dutch": {
+    "mean": 0.9583333333333334,
+    "lo": 0.9583333333333334,
+    "hi": 0.9583333333333334,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 2.2210555555555556
+   },
+   "honesty": {
+    "mean": 0.8611111111111112,
+    "lo": 0.8333333333333334,
+    "hi": 0.9166666666666666,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 6.217638888888889
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 9.861555555555556
+   },
+   "reasoning": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 20.26413888888889
+   },
+   "tools": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1.0,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 2.2604444444444445
+   }
+  },
   "phi4:14b": {
    "coding": {
     "mean": 1.0,
