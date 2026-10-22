@@ -14,11 +14,10 @@
  },
  "ollama": "0.40.5",
  "settings": {
-  "seeds": 2,
+  "seeds": 3,
   "temperature": 0.2,
   "tracks": [
-   "standard",
-   "pentest"
+   "scenario"
   ]
  },
  "models": {

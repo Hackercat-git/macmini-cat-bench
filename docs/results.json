@@ -11,7 +11,8 @@
   "longcontext",
   "hard",
   "standard",
-  "pentest"
+  "pentest",
+  "scenario"
  ],
  "models": {
   "codestral:22b": {
@@ -104,6 +105,16 @@
     "truncated": 0,
     "answers": 36,
     "secs": 15.779055555555555
+   },
+   "scenario": {
+    "mean": 0.5833333333333334,
+    "lo": 0.55,
+    "hi": 0.6,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 4.7226333333333335
    },
    "standard": {
     "mean": 0.8365384615384615,
@@ -217,6 +228,16 @@
     "answers": 36,
     "secs": 33.00091666666667
    },
+   "scenario": {
+    "mean": 0.6833333333333333,
+    "lo": 0.6,
+    "hi": 0.75,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 23.238966666666666
+   },
    "standard": {
     "mean": 0.9230769230769231,
     "lo": 0.9038461538461539,
@@ -328,6 +349,16 @@
     "truncated": 0,
     "answers": 36,
     "secs": 12.259944444444445
+   },
+   "scenario": {
+    "mean": 0.65,
+    "lo": 0.65,
+    "hi": 0.65,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 1.7734
    },
    "standard": {
     "mean": 0.9230769230769231,
@@ -441,6 +472,16 @@
     "answers": 36,
     "secs": 4.039555555555555
    },
+   "scenario": {
+    "mean": 0.55,
+    "lo": 0.55,
+    "hi": 0.55,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 0.7027333333333333
+   },
    "standard": {
     "mean": 0.9038461538461539,
     "lo": 0.8846153846153846,
@@ -552,6 +593,16 @@
     "truncated": 0,
     "answers": 36,
     "secs": 6.849222222222222
+   },
+   "scenario": {
+    "mean": 0.7166666666666667,
+    "lo": 0.7,
+    "hi": 0.75,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 0.7188333333333333
    },
    "standard": {
     "mean": 0.9423076923076923,
@@ -665,6 +716,16 @@
     "answers": 36,
     "secs": 3.389472222222222
    },
+   "scenario": {
+    "mean": 0.7333333333333333,
+    "lo": 0.7,
+    "hi": 0.8,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 5.627066666666667
+   },
    "standard": {
     "mean": 0.9326923076923077,
     "lo": 0.9230769230769231,
@@ -776,6 +837,16 @@
     "truncated": 0,
     "answers": 36,
     "secs": 2.4078055555555555
+   },
+   "scenario": {
+    "mean": 0.6833333333333333,
+    "lo": 0.65,
+    "hi": 0.7,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 0.4453666666666667
    },
    "standard": {
     "mean": 0.9230769230769231,
@@ -889,6 +960,16 @@
     "answers": 36,
     "secs": 3.237611111111111
    },
+   "scenario": {
+    "mean": 0.3333333333333333,
+    "lo": 0.3,
+    "hi": 0.35,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 0.7782
+   },
    "standard": {
     "mean": 0.8557692307692307,
     "lo": 0.8269230769230769,
@@ -1000,6 +1081,16 @@
     "truncated": 13,
     "answers": 36,
     "secs": 11.155833333333334
+   },
+   "scenario": {
+    "mean": 0.65,
+    "lo": 0.65,
+    "hi": 0.65,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 0.8107666666666666
    },
    "standard": {
     "mean": 0.8269230769230769,
@@ -1113,6 +1204,16 @@
     "answers": 36,
     "secs": 6.489194444444444
    },
+   "scenario": {
+    "mean": 0.23333333333333334,
+    "lo": 0.15,
+    "hi": 0.3,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 2,
+    "answers": 30,
+    "secs": 7.5375000000000005
+   },
    "standard": {
     "mean": 0.75,
     "lo": 0.6923076923076923,
@@ -1224,6 +1325,16 @@
     "truncated": 36,
     "answers": 36,
     "secs": 24.702916666666667
+   },
+   "scenario": {
+    "mean": 0.016666666666666666,
+    "lo": 0.0,
+    "hi": 0.05,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 30,
+    "answers": 30,
+    "secs": 10.594433333333333
    },
    "standard": {
     "mean": 0.47115384615384615,
@@ -1337,6 +1448,16 @@
     "answers": 36,
     "secs": 4.684111111111111
    },
+   "scenario": {
+    "mean": 0.6666666666666666,
+    "lo": 0.65,
+    "hi": 0.7,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 0.8388
+   },
    "standard": {
     "mean": 0.9038461538461539,
     "lo": 0.8846153846153846,
@@ -1448,6 +1569,16 @@
     "truncated": 0,
     "answers": 36,
     "secs": 2.20225
+   },
+   "scenario": {
+    "mean": 0.18333333333333335,
+    "lo": 0.05,
+    "hi": 0.45,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 0.4129
    },
    "standard": {
     "mean": 0.8525769230769231,
@@ -1561,6 +1692,16 @@
     "answers": 36,
     "secs": 20.26413888888889
    },
+   "scenario": {
+    "mean": 0.6666666666666666,
+    "lo": 0.65,
+    "hi": 0.7,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 3.3902
+   },
    "standard": {
     "mean": 1.0,
     "lo": 1.0,
@@ -1672,6 +1813,16 @@
     "truncated": 0,
     "answers": 36,
     "secs": 14.53363888888889
+   },
+   "scenario": {
+    "mean": 0.8,
+    "lo": 0.8,
+    "hi": 0.8,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 2.2276
    },
    "standard": {
     "mean": 0.9230769230769231,
@@ -1785,6 +1936,16 @@
     "answers": 36,
     "secs": 15.958722222222223
    },
+   "scenario": {
+    "mean": 0.6666666666666666,
+    "lo": 0.65,
+    "hi": 0.7,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 2.0740666666666665
+   },
    "standard": {
     "mean": 0.9134615384615385,
     "lo": 0.9038461538461539,
@@ -1896,6 +2057,16 @@
     "truncated": 0,
     "answers": 36,
     "secs": 5.686222222222222
+   },
+   "scenario": {
+    "mean": 0.6833333333333333,
+    "lo": 0.65,
+    "hi": 0.7,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 0.7197666666666667
    },
    "standard": {
     "mean": 0.9615384615384616,
@@ -2009,6 +2180,16 @@
     "answers": 36,
     "secs": 15.663361111111112
    },
+   "scenario": {
+    "mean": 0.85,
+    "lo": 0.85,
+    "hi": 0.85,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 2.6119333333333334
+   },
    "standard": {
     "mean": 0.9615384615384616,
     "lo": 0.9615384615384616,
@@ -2121,6 +2302,16 @@
     "answers": 36,
     "secs": 5.83125
    },
+   "scenario": {
+    "mean": 0.65,
+    "lo": 0.65,
+    "hi": 0.65,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 1.1794333333333333
+   },
    "standard": {
     "mean": 0.9230769230769231,
     "lo": 0.9038461538461539,
@@ -2232,6 +2423,16 @@
     "truncated": 1,
     "answers": 36,
     "secs": 14.09763888888889
+   },
+   "scenario": {
+    "mean": 0.5333333333333333,
+    "lo": 0.5,
+    "hi": 0.6,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 2,
+    "answers": 30,
+    "secs": 11.827166666666667
    },
    "standard": {
     "mean": 0.5769230769230769,
