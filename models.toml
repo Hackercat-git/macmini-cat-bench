@@ -247,3 +247,75 @@ source = "ollama library"
 tier = "huge"
 status = "wishlist"
 notes = "Does not fit a 32 GB Mac mini; wanted for Mac mini configurations with much more memory."
+
+[[model]]
+tag = "glm4:9b"
+name = "GLM-4 9B"
+family = "GLM"
+params_b = 9
+size_gb = 5.5
+source = "ollama library"
+tier = "small"
+status = "round7"
+
+[[model]]
+tag = "yi:9b"
+name = "Yi 9B"
+family = "Yi"
+params_b = 9
+size_gb = 5.0
+source = "ollama library"
+tier = "small"
+status = "round7"
+
+[[model]]
+tag = "zephyr:7b"
+name = "Zephyr 7B"
+family = "Zephyr (Mistral-based)"
+params_b = 7
+size_gb = 4.1
+source = "ollama library"
+tier = "small"
+status = "round7"
+
+[[model]]
+tag = "vicuna:7b"
+name = "Vicuna 7B"
+family = "Vicuna (Llama 2-based)"
+params_b = 7
+size_gb = 3.8
+source = "ollama library"
+tier = "small"
+status = "round7"
+notes = "An older (2023) baseline model, kept for historical comparison against the current field."
+
+[[model]]
+tag = "hermes3:8b"
+name = "Hermes 3 8B"
+family = "Hermes (Nous Research, Llama 3.1-based)"
+params_b = 8
+size_gb = 4.7
+source = "ollama library"
+tier = "small"
+status = "round7"
+
+[[model]]
+tag = "nous-hermes2:10.7b"
+name = "Nous Hermes 2 11B"
+family = "Hermes (Nous Research, Solar-based)"
+params_b = 11
+size_gb = 5.9
+source = "ollama library"
+tier = "medium"
+status = "round7"
+
+[[model]]
+tag = "command-r:35b"
+name = "Command R 35B"
+family = "Command R (Cohere)"
+params_b = 35
+size_gb = 18.0
+source = "ollama library"
+tier = "large"
+status = "round7"
+predict_min = 0
