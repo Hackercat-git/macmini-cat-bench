@@ -12,7 +12,7 @@ from .system import describe
 from .tasks import TRACK_LABELS, TRACKS, all_tracks
 
 BLUE, GREY, INK, INK2, LINE = "#2a78d6", "#a9a8a2", "#0b0b0b", "#52514e", "#dcdbd5"
-HAIRBALL_PRIORITY = {"honesty": 0, "cybersecurity": 1, "tools": 2, "dutch": 3, "daily": 4, "reasoning": 5, "coding": 6, "longcontext": 7}
+HAIRBALL_PRIORITY = {"honesty": 0, "cybersecurity": 1, "tools": 2, "dutch": 3, "daily": 4, "reasoning": 5, "coding": 6, "longcontext": 7, "hard": 8}
 
 
 def load_run(run_dir: Path) -> dict:

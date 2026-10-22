@@ -1,0 +1,343 @@
+{
+ "track": "hard",
+ "description": "Harder tasks to separate the strong models: multi-step maths, tight instructions, nested JSON, trick questions, merge/parse code and 24k-token documents.",
+ "defaults": {
+  "system": "You are a helpful assistant.",
+  "num_predict": 300
+ },
+ "tasks": [
+  {
+   "id": "hard-catchup",
+   "prompt": "Train A leaves a station at 09:00 at 60 km/h. Train B leaves the same station at 10:00 on the same track at 90 km/h. How many hours after 10:00 does B catch up with A?",
+   "system": "You are a careful problem solver. Think step by step, then give the final answer on the last line as 'Answer: <number>'.",
+   "num_predict": 900,
+   "checks": [
+    {
+     "type": "number",
+     "expected": 2,
+     "tol": 0.01
+    }
+   ],
+   "pass": "Answer: 2",
+   "fail": "Answer: 3"
+  },
+  {
+   "id": "hard-pumps",
+   "prompt": "Pump A fills a tank in 6 hours, pump B in 9 hours and pump C in 18 hours. How many hours do all three pumps working together need to fill the tank?",
+   "system": "You are a careful problem solver. Think step by step, then give the final answer on the last line as 'Answer: <number>'.",
+   "num_predict": 900,
+   "checks": [
+    {
+     "type": "number",
+     "expected": 3,
+     "tol": 0.01
+    }
+   ],
+   "pass": "Answer: 3",
+   "fail": "Answer: 11"
+  },
+  {
+   "id": "hard-interest",
+   "prompt": "You invest 1000 euros at 10% interest per year, compounded yearly. How many euros do you have after 3 years?",
+   "system": "You are a careful problem solver. Think step by step, then give the final answer on the last line as 'Answer: <number>'.",
+   "num_predict": 900,
+   "checks": [
+    {
+     "type": "number",
+     "expected": 1331,
+     "tol": 0.01
+    }
+   ],
+   "pass": "Answer: 1331",
+   "fail": "Answer: 1300"
+  },
+  {
+   "id": "hard-dice",
+   "prompt": "Two fair six-sided dice are rolled. What is the probability, in percent rounded to one decimal, that the sum is 9?",
+   "system": "You are a careful problem solver. Think step by step, then give the final answer on the last line as 'Answer: <number>'.",
+   "num_predict": 900,
+   "checks": [
+    {
+     "type": "number",
+     "expected": 11.1,
+     "tol": 0.06
+    }
+   ],
+   "pass": "Answer: 11.1",
+   "fail": "Answer: 16.7"
+  },
+  {
+   "id": "hard-ages",
+   "prompt": "Anna is twice as old as Ben was when Anna was as old as Ben is now. Together they are 63 years old. How old is Anna?",
+   "system": "You are a careful problem solver. Think step by step, then give the final answer on the last line as 'Answer: <number>'.",
+   "num_predict": 1200,
+   "checks": [
+    {
+     "type": "number",
+     "expected": 36,
+     "tol": 0.01
+    }
+   ],
+   "pass": "Answer: 36",
+   "fail": "Answer: 42"
+  },
+  {
+   "id": "hard-modular",
+   "prompt": "What is the remainder when 7 to the power 2026 is divided by 5?",
+   "system": "You are a careful problem solver. Think step by step, then give the final answer on the last line as 'Answer: <number>'.",
+   "num_predict": 900,
+   "checks": [
+    {
+     "type": "number",
+     "expected": 4,
+     "tol": 0.01
+    }
+   ],
+   "pass": "Answer: 4",
+   "fail": "Answer: 2"
+  },
+  {
+   "id": "hard-letters",
+   "prompt": "How many distinct arrangements of all the letters of the word LEVEL are there?",
+   "system": "You are a careful problem solver. Think step by step, then give the final answer on the last line as 'Answer: <number>'.",
+   "num_predict": 900,
+   "checks": [
+    {
+     "type": "number",
+     "expected": 30,
+     "tol": 0.01
+    }
+   ],
+   "pass": "Answer: 30",
+   "fail": "Answer: 120"
+  },
+  {
+   "id": "hard-months",
+   "prompt": "How many months of the year have at least 28 days?",
+   "system": "You are a careful problem solver. Think step by step, then give the final answer on the last line as 'Answer: <number>'.",
+   "num_predict": 900,
+   "checks": [
+    {
+     "type": "number",
+     "expected": 12,
+     "tol": 0.01
+    }
+   ],
+   "pass": "Answer: 12",
+   "fail": "Answer: 1"
+  },
+  {
+   "id": "hard-cidr",
+   "prompt": "How many usable host addresses does the IPv4 network 10.0.0.0/22 have? (Subtract network and broadcast address.)",
+   "system": "You are a careful problem solver. Think step by step, then give the final answer on the last line as 'Answer: <number>'.",
+   "num_predict": 700,
+   "checks": [
+    {
+     "type": "number",
+     "expected": 1022,
+     "tol": 0.01
+    }
+   ],
+   "pass": "Answer: 1022",
+   "fail": "Answer: 1024"
+  },
+  {
+   "id": "hard-tallest",
+   "system": "Reply with only the answer, nothing else.",
+   "num_predict": 40,
+   "prompt": "Ann is taller than Tom. Tom is taller than Sam. Sam is taller than Lee. Kim is shorter than Lee. Who is the second tallest of the five? Reply with only the answer, nothing else.",
+   "checks": [
+    {
+     "type": "regex",
+     "pattern": "^\\W*tom\\W*$"
+    }
+   ],
+   "pass": "Tom",
+   "fail": "Ann"
+  },
+  {
+   "id": "hard-bullets",
+   "system": "You are a helpful assistant.",
+   "num_predict": 200,
+   "prompt": "List exactly three risks of reusing the same password on several sites. Use a bullet list, no introduction, and at most 40 words in total.",
+   "checks": [
+    {
+     "type": "bullets",
+     "n": 3
+    },
+    {
+     "type": "max_words",
+     "n": 40
+    }
+   ],
+   "pass": "- Credential stuffing\n- One breach exposes every account\n- Hard to notice or contain the damage",
+   "fail": "Reusing passwords is risky for many reasons, and here are some of them in a long paragraph."
+  },
+  {
+   "id": "hard-letter-c",
+   "system": "You are a helpful assistant. Reply with the sentence only.",
+   "num_predict": 80,
+   "prompt": "Write one sentence about cats in which every single word starts with the letter C.",
+   "checks": [
+    {
+     "type": "regex",
+     "pattern": "^\\W*(c[a-z']*[ ,]+)*c[a-z']*[.!]?\\W*$"
+    }
+   ],
+   "pass": "Calm cats curl contentedly, cuddling closely.",
+   "fail": "My cat sleeps all day long."
+  },
+  {
+   "id": "hard-invoice",
+   "system": "Answer ONLY with one valid JSON object, no explanation and no code block.",
+   "num_predict": 200,
+   "prompt": "Extract JSON with keys \"total\" (the invoice total as a number) and \"lines\" (the number of line items) from this invoice:\n3 x notebook at 4.50 each\n2 x desk lamp at 12.25 each\n1 x delivery at 8.00",
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "total": {
+       "num": 46
+      },
+      "lines": {
+       "num": 3
+      }
+     }
+    }
+   ],
+   "pass": "{\"total\": 46, \"lines\": 3}",
+   "fail": "{\"total\": 24.75, \"lines\": 6}"
+  },
+  {
+   "id": "hard-tool",
+   "system": "Answer ONLY with one valid JSON object, no explanation and no code block.",
+   "num_predict": 200,
+   "prompt": "Tools: search_flights(city, date), book_hotel(city, nights), get_weather(city). The user says: \"Find me a plane to Rome on 3 November.\" Reply as JSON with keys \"tool\", \"city\" and \"date\" (ISO format, year 2026).",
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "tool": "search_flights",
+      "city": {
+       "contains": "rome"
+      },
+      "date": {
+       "contains": "2026-11-03"
+      }
+     }
+    }
+   ],
+   "pass": "{\"tool\": \"search_flights\", \"city\": \"Rome\", \"date\": \"2026-11-03\"}",
+   "fail": "{\"tool\": \"get_weather\", \"city\": \"Rome\", \"date\": \"3 November\"}"
+  },
+  {
+   "id": "hard-redos",
+   "system": "Reply with only the answer, nothing else.",
+   "num_predict": 40,
+   "prompt": "Which of these regular expressions is vulnerable to catastrophic backtracking (ReDoS)?\n(a) ^[a-z]+$\n(b) ^(a+)+$\n(c) ^\\d{3}$\nReply with the letter only.",
+   "checks": [
+    {
+     "type": "regex",
+     "pattern": "^\\W*\\(?b\\)?\\W*$"
+    }
+   ],
+   "pass": "(b)",
+   "fail": "(a)"
+  },
+  {
+   "id": "hard-honest-func",
+   "num_predict": 250,
+   "system": "You are a helpful assistant. Answer concisely (at most 5 sentences). If you do not know something, or it does not exist, say so plainly.",
+   "prompt": "Explain how Python's built-in function os.listdir_recursive() works and show its return type.",
+   "checks": [
+    {
+     "type": "honest",
+     "forbid": [
+      "returns a list of",
+      "walks the directory tree and returns"
+     ]
+    }
+   ],
+   "pass": "There is no built-in os.listdir_recursive(); it does not exist. Use os.walk() or pathlib's rglob instead.",
+   "fail": "os.listdir_recursive() walks the directory tree and returns a list of all file paths."
+  },
+  {
+   "id": "hard-code-intervals",
+   "system": "You are a Python programmer. Reply with the requested function in one ```python code block, no explanation and no example usage.",
+   "num_predict": 600,
+   "prompt": "Write merge_intervals(intervals: list[list[int]]) -> list[list[int]]: merge all overlapping or touching intervals (touching means the end equals the next start), return them sorted by start. The input may be unsorted and must not be modified.",
+   "checks": [
+    {
+     "type": "code",
+     "tests": [
+      "assert merge_intervals([[1,3],[2,6],[8,10]])==[[1,6],[8,10]]",
+      "assert merge_intervals([[8,10],[1,3],[3,5]])==[[1,5],[8,10]]",
+      "assert merge_intervals([])==[]",
+      "x=[[2,3],[1,2]]; merge_intervals(x); assert x==[[2,3],[1,2]]",
+      "assert merge_intervals([[1,10],[2,3]])==[[1,10]]"
+     ]
+    }
+   ],
+   "pass": "```python\ndef merge_intervals(intervals):\n    out = []\n    for s, e in sorted(intervals):\n        if out and s <= out[-1][1]:\n            out[-1][1] = max(out[-1][1], e)\n        else:\n            out.append([s, e])\n    return out\n```",
+   "fail": "```python\ndef merge_intervals(intervals):\n    return intervals\n```"
+  },
+  {
+   "id": "hard-code-roman",
+   "system": "You are a Python programmer. Reply with the requested function in one ```python code block, no explanation and no example usage.",
+   "num_predict": 600,
+   "prompt": "Write roman_to_int(s: str) -> int for Roman numerals up to 3999, including subtractive forms such as IV, IX, XL, XC, CD and CM.",
+   "checks": [
+    {
+     "type": "code",
+     "tests": [
+      "assert roman_to_int('III')==3",
+      "assert roman_to_int('IV')==4",
+      "assert roman_to_int('MCMXCIV')==1994",
+      "assert roman_to_int('MMMCMXCIX')==3999",
+      "assert roman_to_int('XL')==40"
+     ]
+    }
+   ],
+   "pass": "```python\ndef roman_to_int(s):\n    v = {'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000}\n    t = 0\n    for i, c in enumerate(s):\n        if i + 1 < len(s) and v[c] < v[s[i+1]]:\n            t -= v[c]\n        else:\n            t += v[c]\n    return t\n```",
+   "fail": "```python\ndef roman_to_int(s):\n    return len(s)\n```"
+  },
+  {
+   "id": "hard-long-24k-middle",
+   "checks": [
+    {
+     "type": "needle",
+     "value": "4417-OTTER"
+    }
+   ],
+   "pass": "4417-OTTER",
+   "fail": "The document does not contain a code.",
+   "long": {
+    "approx_tokens": 24000,
+    "position": 0.5,
+    "needle_sentence": "The maintenance override code for the east gate is 4417-OTTER.",
+    "filler_seed": 31,
+    "question": "What is the maintenance override code for the east gate? Answer with the code only."
+   },
+   "num_ctx": 32768
+  },
+  {
+   "id": "hard-long-24k-late",
+   "checks": [
+    {
+     "type": "needle",
+     "value": "8820-HERON"
+    }
+   ],
+   "pass": "8820-HERON",
+   "fail": "The document does not contain a code.",
+   "long": {
+    "approx_tokens": 24000,
+    "position": 0.96,
+    "needle_sentence": "The maintenance override code for the east gate is 8820-HERON.",
+    "filler_seed": 32,
+    "question": "What is the maintenance override code for the east gate? Answer with the code only."
+   },
+   "num_ctx": 32768
+  }
+ ]
+}
