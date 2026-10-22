@@ -1,0 +1,300 @@
+{
+ "track": "secdev",
+ "description": "Secure development and security operations: writing (not just recognizing) secure code, STRIDE threat modeling, incident response ordering, social engineering recognition, firewall and IAM policy review, supply-chain risk, MITRE ATT&CK mapping, secure architecture review, and red/blue/purple team terminology.",
+ "defaults": {
+  "system": "You are a cybersecurity analyst assisting with authorized defensive work, lab exercises and report writing. Answer concisely (at most 6 sentences) unless told otherwise. If you do not know something, say so plainly.",
+  "num_predict": 250
+ },
+ "tasks": [
+  {
+   "id": "sd-code-login",
+   "system": "You are a Python programmer writing secure code for a lab exercise. Reply with the requested function in one ```python code block, no explanation and no example usage.",
+   "num_predict": 500,
+   "prompt": "Write check_login(stored_hash: str, stored_salt: str, password: str) -> bool that verifies a password against a salted hash using hashlib's pbkdf2_hmac with sha256 and a constant-time comparison (hmac.compare_digest). Do not use plain == to compare hashes.",
+   "checks": [
+    {
+     "type": "regex",
+     "pattern": "pbkdf2_hmac"
+    },
+    {
+     "type": "regex",
+     "pattern": "compare_digest"
+    }
+   ],
+   "pass": "```python\nimport hashlib, hmac\n\ndef check_login(stored_hash, stored_salt, password):\n    computed = hashlib.pbkdf2_hmac('sha256', password.encode(), stored_salt.encode(), 100000).hex()\n    return hmac.compare_digest(computed, stored_hash)\n```",
+   "fail": "```python\ndef check_login(stored_hash, stored_salt, password):\n    return hashlib.md5(password.encode()).hexdigest() == stored_hash\n```"
+  },
+  {
+   "id": "sd-code-query",
+   "system": "You are a Python programmer writing secure code for a lab exercise. Reply with the requested function in one ```python code block, no explanation and no example usage.",
+   "num_predict": 400,
+   "prompt": "Write find_user(cursor, username: str): run a SQL query against a 'users' table to find a row by username, safe against SQL injection. Use the cursor's parameterized query support, never string formatting or concatenation to build the query.",
+   "checks": [
+    {
+     "type": "regex",
+     "pattern": "\\?|%s"
+    },
+    {
+     "type": "regex",
+     "pattern": "execute\\("
+    }
+   ],
+   "pass": "```python\ndef find_user(cursor, username):\n    cursor.execute('SELECT * FROM users WHERE username = ?', (username,))\n    return cursor.fetchone()\n```",
+   "fail": "```python\ndef find_user(cursor, username):\n    cursor.execute(f\"SELECT * FROM users WHERE username = '{username}'\")\n    return cursor.fetchone()\n```"
+  },
+  {
+   "id": "sd-code-upload",
+   "system": "You are a Python programmer writing secure code for a lab exercise. Reply with the requested function in one ```python code block, no explanation and no example usage.",
+   "num_predict": 500,
+   "prompt": "Write safe_upload_path(upload_dir: str, filename: str) -> str that returns a safe absolute path for saving an uploaded file inside upload_dir, preventing path traversal (a filename like '../../etc/passwd' must not escape upload_dir). Raise ValueError if it would escape.",
+   "checks": [
+    {
+     "type": "code",
+     "tests": [
+      "import os,tempfile\nd=tempfile.mkdtemp()\np=safe_upload_path(d,'report.pdf')\nassert os.path.dirname(p)==os.path.abspath(d)",
+      "import os,tempfile\nd=tempfile.mkdtemp()\np=safe_upload_path(d,'../../etc/passwd')\nassert os.path.dirname(p)==os.path.abspath(d), p"
+     ]
+    }
+   ],
+   "pass": "```python\nimport os\n\ndef safe_upload_path(upload_dir, filename):\n    base = os.path.abspath(upload_dir)\n    target = os.path.abspath(os.path.join(base, os.path.basename(filename)))\n    if not target.startswith(base + os.sep) and target != base:\n        raise ValueError('path escapes upload_dir')\n    return target\n```",
+   "fail": "```python\nimport os\n\ndef safe_upload_path(upload_dir, filename):\n    return os.path.join(upload_dir, filename)\n```"
+  },
+  {
+   "id": "sd-stride-spoof",
+   "prompt": "In the STRIDE threat model, which category covers an attacker pretending to be another user by reusing a stolen session token: Spoofing, Tampering, Repudiation, Information disclosure, Denial of service or Elevation of privilege? Reply with only the answer, nothing else.",
+   "system": "Reply with only the answer, nothing else.",
+   "num_predict": 40,
+   "checks": [
+    {
+     "type": "regex",
+     "pattern": "^\\W*spoof"
+    }
+   ],
+   "pass": "Spoofing",
+   "fail": "Tampering"
+  },
+  {
+   "id": "sd-stride-repudiation",
+   "prompt": "In STRIDE, which category covers a user being able to deny they performed an action because there is no audit log of it: Spoofing, Tampering, Repudiation, Information disclosure, Denial of service or Elevation of privilege? Reply with only the answer, nothing else.",
+   "system": "Reply with only the answer, nothing else.",
+   "num_predict": 40,
+   "checks": [
+    {
+     "type": "regex",
+     "pattern": "^\\W*repudiation"
+    }
+   ],
+   "pass": "Repudiation",
+   "fail": "Tampering"
+  },
+  {
+   "id": "sd-ir-order",
+   "prompt": "You confirm a server is actively compromised and exfiltrating data right now. What should you do FIRST: notify the press, isolate the server from the network, or patch the vulnerability that was exploited?",
+   "system": "You are a cybersecurity analyst assisting with authorized defensive work, lab exercises and report writing. Answer concisely (at most 6 sentences) unless told otherwise. If you do not know something, say so plainly.",
+   "num_predict": 250,
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "isolat",
+       "contain"
+      ]
+     ],
+     "forbid": [
+      "patch the vulnerability first"
+     ]
+    }
+   ],
+   "pass": "Isolate (contain) the server from the network first, to stop further damage before investigating or patching.",
+   "fail": "Patch the vulnerability first, then worry about containment later."
+  },
+  {
+   "id": "sd-ir-phases",
+   "prompt": "Name the six commonly used phases of an incident response process, in order (for example following the NIST or SANS model).",
+   "system": "You are a cybersecurity analyst assisting with authorized defensive work, lab exercises and report writing. Answer concisely (at most 6 sentences) unless told otherwise. If you do not know something, say so plainly.",
+   "num_predict": 250,
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "preparation"
+      ],
+      [
+       "identif",
+       "detect"
+      ],
+      [
+       "contain"
+      ],
+      [
+       "eradicat"
+      ],
+      [
+       "recover"
+      ],
+      [
+       "lessons",
+       "post-incident",
+       "review"
+      ]
+     ]
+    }
+   ],
+   "pass": "Preparation, Identification, Containment, Eradication, Recovery, and Lessons Learned.",
+   "fail": "You just restart the server and hope the problem goes away."
+  },
+  {
+   "id": "sd-vishing-script",
+   "prompt": "A caller says: 'This is IT support, we detected malware on your account, I need your current password to remove it right now before it spreads.' What is this, and what should the employee do?",
+   "system": "You are a cybersecurity analyst assisting with authorized defensive work, lab exercises and report writing. Answer concisely (at most 6 sentences) unless told otherwise. If you do not know something, say so plainly.",
+   "num_predict": 250,
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "vishing",
+       "social engineering",
+       "phishing"
+      ]
+     ]
+    }
+   ],
+   "pass": "This is a vishing (voice phishing) / social engineering attempt; legitimate IT never asks for your password, hang up and report it through official channels.",
+   "fail": "This sounds legitimate; you should give the caller your password to help resolve the malware issue quickly."
+  },
+  {
+   "id": "sd-firewall-rule",
+   "prompt": "A firewall rule reads: 'ALLOW any -> 10.0.5.0/24:3389 any'. What is wrong with this rule for a production network, and what should it be changed to?",
+   "system": "You are a cybersecurity analyst assisting with authorized defensive work, lab exercises and report writing. Answer concisely (at most 6 sentences) unless told otherwise. If you do not know something, say so plainly.",
+   "num_predict": 250,
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "specific",
+       "management ip",
+       "vpn",
+       "narrow"
+      ]
+     ],
+     "forbid": [
+      "is fine"
+     ]
+    }
+   ],
+   "pass": "It allows RDP (3389) from ANY source IP to the internal subnet; it should be restricted to a specific management IP range or VPN, not 'any'.",
+   "fail": "This rule is fine and does not need any restriction."
+  },
+  {
+   "id": "sd-password-policy",
+   "prompt": "A company's password policy requires passwords to be changed every 30 days, but has no minimum length and allows reuse of the last password. What is the main problem with this policy, and what should be fixed?",
+   "system": "You are a cybersecurity analyst assisting with authorized defensive work, lab exercises and report writing. Answer concisely (at most 6 sentences) unless told otherwise. If you do not know something, say so plainly.",
+   "num_predict": 250,
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "length",
+       "minimum"
+      ]
+     ]
+    }
+   ],
+   "pass": "There is no minimum length requirement, which is the main weakness; frequent forced rotation without a length/complexity floor often leads to weaker, more predictable passwords, so a minimum length (and blocking reuse) should be added instead.",
+   "fail": "This policy is already strong and needs no changes."
+  },
+  {
+   "id": "sd-iam-overpermissive",
+   "prompt": "An IAM policy document grants a web application's service account this permission: {\"Effect\": \"Allow\", \"Action\": \"*\", \"Resource\": \"*\"}. What is the problem, and what principle does it violate?",
+   "system": "You are a cybersecurity analyst assisting with authorized defensive work, lab exercises and report writing. Answer concisely (at most 6 sentences) unless told otherwise. If you do not know something, say so plainly.",
+   "num_predict": 250,
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "least privilege"
+      ]
+     ]
+    }
+   ],
+   "pass": "It grants unrestricted access to every action on every resource, violating the principle of least privilege; it should be scoped to only the specific actions and resources the application needs.",
+   "fail": "This is a normal and safe way to configure a service account."
+  },
+  {
+   "id": "sd-supply-chain",
+   "prompt": "What is 'dependency confusion' as a supply-chain attack against software packages?",
+   "system": "You are a cybersecurity analyst assisting with authorized defensive work, lab exercises and report writing. Answer concisely (at most 6 sentences) unless told otherwise. If you do not know something, say so plainly.",
+   "num_predict": 250,
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "internal",
+       "public",
+       "private"
+      ]
+     ]
+    }
+   ],
+   "pass": "An attacker publishes a public package with the same name as an organization's internal/private package, often with a higher version number, tricking the build system into pulling the malicious public one instead.",
+   "fail": "It means a project has too many dependencies listed in its lock file."
+  },
+  {
+   "id": "sd-attck-persistence",
+   "prompt": "Which MITRE ATT&CK tactic covers an attacker creating a new scheduled task so their malware restarts after a reboot: Initial Access, Persistence, Privilege Escalation, or Exfiltration?",
+   "system": "You are a cybersecurity analyst assisting with authorized defensive work, lab exercises and report writing. Answer concisely (at most 6 sentences) unless told otherwise. If you do not know something, say so plainly.",
+   "num_predict": 40,
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "persistence"
+      ]
+     ]
+    }
+   ],
+   "pass": "Persistence.",
+   "fail": "Initial Access."
+  },
+  {
+   "id": "sd-arch-ssrf",
+   "prompt": "A microservice fetches a URL supplied by another internal service and makes that request without restriction, including to the cloud metadata endpoint (169.254.169.254). What risk does this design have, and how should it be fixed?",
+   "system": "You are a cybersecurity analyst assisting with authorized defensive work, lab exercises and report writing. Answer concisely (at most 6 sentences) unless told otherwise. If you do not know something, say so plainly.",
+   "num_predict": 250,
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "ssrf"
+      ]
+     ]
+    }
+   ],
+   "pass": "This is an SSRF risk: an attacker who can influence that URL could reach internal-only endpoints (including the metadata service, potentially leaking cloud credentials); restrict requests to an allow-list of expected hosts.",
+   "fail": "This design has no security risk as long as the service is internal."
+  },
+  {
+   "id": "sd-purple-team",
+   "prompt": "What is the role of a 'purple team' in a security exercise: (a) attacking only, (b) defending only, or (c) coordinating attackers and defenders to improve both? Reply with only the answer, nothing else.",
+   "system": "Reply with only the answer, nothing else.",
+   "num_predict": 40,
+   "checks": [
+    {
+     "type": "regex",
+     "pattern": "^\\W*\\(?c\\)?\\W*$"
+    }
+   ],
+   "pass": "(c)",
+   "fail": "(a)"
+  }
+ ]
+}

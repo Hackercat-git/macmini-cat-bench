@@ -5,9 +5,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 TASK_DIR = ROOT / "tasks"
-TRACKS = ["cybersecurity", "daily", "coding", "dutch", "tools", "honesty", "reasoning", "longcontext", "hard", "standard", "pentest", "scenario"]
+TRACKS = ["cybersecurity", "daily", "coding", "dutch", "tools", "honesty", "reasoning", "longcontext", "hard", "standard", "pentest", "scenario", "secdev"]
 TRACK_LABELS = {"cybersecurity": "Cybersecurity", "daily": "Daily use", "coding": "Coding", "dutch": "Dutch", "tools": "Tools and JSON",
-                "honesty": "Honesty and safety", "reasoning": "Reasoning and maths", "longcontext": "Long context", "hard": "Hard mixed", "standard": "Standard topics", "pentest": "Pentesting", "scenario": "Triage under noise"}
+                "honesty": "Honesty and safety", "reasoning": "Reasoning and maths", "longcontext": "Long context", "hard": "Hard mixed", "standard": "Standard topics", "pentest": "Pentesting", "scenario": "Triage under noise", "secdev": "Secure dev & ops"}
 FILLER_SENTENCES = [
     "The committee reviewed the quarterly figures and noted a modest change in the regional totals.",
     "Several departments reported that routine maintenance had been completed on schedule.",
