@@ -1,0 +1,190 @@
+{
+ "track": "scenario",
+ "description": "Realistic, noisy scan, log and review output with several findings mixed in, most of them minor: the model must pick out the one that actually matters and rate its severity. Tests prioritization under distraction, not just recognition of a single clean signal.",
+ "defaults": {
+  "system": "You are a cybersecurity analyst assisting with authorized defensive work, lab exercises and report writing. You will be given noisy, realistic scan or log output. Find the single most important finding and answer ONLY with one valid JSON object, no explanation and no code block, with keys \"finding\" (short string) and \"severity\" (one of \"critical\", \"high\", \"medium\", \"low\").",
+  "num_predict": 300
+ },
+ "tasks": [
+  {
+   "id": "sc-nmap-rdp",
+   "prompt": "Nmap scan of a server reachable from the internet:\n21/tcp open ftp (anonymous login allowed)\n22/tcp open ssh\n80/tcp open http (default Apache test page)\n443/tcp open https (valid certificate)\n3389/tcp open ms-wbt-server (RDP, no network level authentication)\n8080/tcp open http-proxy (internal admin panel, no login found)\nWhich single finding is most urgent, and how severe is it?",
+   "num_predict": 300,
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "finding": {
+       "contains": "rdp"
+      },
+      "severity": "critical"
+     }
+    }
+   ],
+   "pass": "{\"finding\": \"rdp\", \"severity\": \"critical\"}",
+   "fail": "{\"finding\": \"nothing of note\", \"severity\": \"low\"}"
+  },
+  {
+   "id": "sc-weblog-sqli",
+   "prompt": "Access log excerpt from a web application:\n203.0.113.5 GET /search?q=laptop 200\n203.0.113.5 GET /search?q=' OR '1'='1 200\n203.0.113.5 GET /search?q=UNION SELECT username,password FROM users-- 200\n198.51.100.7 GET /favicon.ico 404\n203.0.113.5 GET /search?q=1' AND SLEEP(5)-- 200\nWhat is the most important thing happening in this log, and how severe is it?",
+   "num_predict": 300,
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "finding": {
+       "contains": "sql injection"
+      },
+      "severity": "critical"
+     }
+    }
+   ],
+   "pass": "{\"finding\": \"sql injection\", \"severity\": \"critical\"}",
+   "fail": "{\"finding\": \"nothing of note\", \"severity\": \"low\"}"
+  },
+  {
+   "id": "sc-code-review-mixed",
+   "prompt": "A code review turns up these three issues in the same file:\n1) a missing docstring on a private helper function\n2) `eval(request.form['expr'])` used to compute a user-supplied formula\n3) a variable named 'temp' instead of something more descriptive\nWhich of these three should be fixed first, and how severe is it?",
+   "num_predict": 300,
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "finding": {
+       "contains": "eval"
+      },
+      "severity": "critical"
+     }
+    }
+   ],
+   "pass": "{\"finding\": \"eval\", \"severity\": \"critical\"}",
+   "fail": "{\"finding\": \"nothing of note\", \"severity\": \"low\"}"
+  },
+  {
+   "id": "sc-ad-enum",
+   "prompt": "Active Directory enumeration output for a low-privileged domain user:\n- Password policy: minimum length 8, no lockout threshold\n- Domain Admins group has 2 members\n- 14 service accounts found with Service Principal Names (SPNs) set, several with passwords unchanged since account creation\n- SMB signing not required on 3 file servers\nWhich finding creates the most immediate risk, and how severe is it?",
+   "num_predict": 300,
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "finding": {
+       "contains": "spn"
+      },
+      "severity": "high"
+     }
+    }
+   ],
+   "pass": "{\"finding\": \"spn\", \"severity\": \"high\"}",
+   "fail": "{\"finding\": \"nothing of note\", \"severity\": \"low\"}"
+  },
+  {
+   "id": "sc-tls-mixed",
+   "prompt": "TLS scan of a public web server:\n- TLS 1.3 supported\n- TLS 1.0 and SSLv3 still enabled\n- Certificate valid, expires in 11 months\n- HTTP Strict Transport Security (HSTS) header present\nWhich finding is the real weakness here, and how severe is it?",
+   "num_predict": 300,
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "finding": {
+       "contains": "ssl"
+      },
+      "severity": "medium"
+     }
+    }
+   ],
+   "pass": "{\"finding\": \"ssl\", \"severity\": \"medium\"}",
+   "fail": "{\"finding\": \"nothing of note\", \"severity\": \"low\"}"
+  },
+  {
+   "id": "sc-s3-bucket",
+   "prompt": "Cloud configuration review:\n- An S3 bucket named 'company-backups' has public read access enabled and contains files with .sql extensions\n- CloudTrail logging is enabled\n- IAM password policy requires MFA for console users\nWhat is the most serious issue, and how severe is it?",
+   "num_predict": 300,
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "finding": {
+       "contains": "public"
+      },
+      "severity": "critical"
+     }
+    }
+   ],
+   "pass": "{\"finding\": \"public\", \"severity\": \"critical\"}",
+   "fail": "{\"finding\": \"nothing of note\", \"severity\": \"low\"}"
+  },
+  {
+   "id": "sc-phish-log",
+   "prompt": "Email gateway log for one afternoon:\n14:02 inbound, sender 'it-support@company-helpdesk-verify.com', subject 'Password expires today', 1 click recorded\n14:10 inbound, newsletter from a known marketing list, no clicks\n14:15 inbound, sender 'colleague@company.com', internal memo, no links\nWhat is the most concerning item here, and how severe is it?",
+   "num_predict": 300,
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "finding": {
+       "contains": "phish"
+      },
+      "severity": "high"
+     }
+    }
+   ],
+   "pass": "{\"finding\": \"phish\", \"severity\": \"high\"}",
+   "fail": "{\"finding\": \"nothing of note\", \"severity\": \"low\"}"
+  },
+  {
+   "id": "sc-container-mixed",
+   "prompt": "A container security scan reports:\n- base image is 14 months out of date, 3 known CVEs with available patches, none remotely exploitable without local access\n- the container runs as root instead of a non-root user\n- the container exposes the Docker socket (/var/run/docker.sock) to the application\nWhich finding is the most severe, and why?",
+   "num_predict": 300,
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "finding": {
+       "contains": "docker.sock"
+      },
+      "severity": "critical"
+     }
+    }
+   ],
+   "pass": "{\"finding\": \"docker.sock\", \"severity\": \"critical\"}",
+   "fail": "{\"finding\": \"nothing of note\", \"severity\": \"low\"}"
+  },
+  {
+   "id": "sc-backup-mixed",
+   "prompt": "Infrastructure review findings:\n1) backups are encrypted but the encryption key is stored in the same backup bucket\n2) the monitoring dashboard uses a slightly outdated favicon\n3) disk usage on the backup server is at 61%\nWhich finding matters, and how severe is it?",
+   "num_predict": 300,
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "finding": {
+       "contains": "key"
+      },
+      "severity": "high"
+     }
+    }
+   ],
+   "pass": "{\"finding\": \"key\", \"severity\": \"high\"}",
+   "fail": "{\"finding\": \"nothing of note\", \"severity\": \"low\"}"
+  },
+  {
+   "id": "sc-api-mixed",
+   "prompt": "API review findings for a public mobile-app backend:\n- the /api/users/<id> endpoint returns full user records (including email and phone) for any id, with no check that the requester owns that account\n- API responses are not gzip-compressed, slightly increasing bandwidth use\n- the changelog endpoint returns the exact framework version in a header\nWhich finding is most serious, and how severe is it?",
+   "num_predict": 350,
+   "checks": [
+    {
+     "type": "json",
+     "expected": {
+      "finding": {
+       "contains": "idor"
+      },
+      "severity": "critical"
+     }
+    }
+   ],
+   "pass": "{\"finding\": \"idor\", \"severity\": \"critical\"}",
+   "fail": "{\"finding\": \"nothing of note\", \"severity\": \"low\"}"
+  }
+ ]
+}
