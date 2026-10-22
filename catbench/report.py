@@ -164,7 +164,8 @@ pre { white-space:pre-wrap; background:var(--soft); border:1px solid var(--line)
 .balls { display:grid; gap:14px; } .ball { border:1px solid var(--line); border-radius:14px; padding:12px 16px; background:var(--panel); box-shadow:var(--shadow); }
 button { font:inherit; font-weight:600; padding:9px 16px; border:1px solid var(--line); background:var(--panel); color:var(--ink); border-radius:10px; cursor:pointer; }
 button:hover { border-color:var(--blue); } button.go { background:var(--blue); border-color:var(--blue); color:#fff; }
-.legend { display:flex; gap:16px; flex-wrap:wrap; font-size:12.5px; color:var(--ink2); padding:12px 16px 0; }
+.legend { display:flex; gap:16px; flex-wrap:wrap; font-size:12.5px; color:var(--ink2); padding:12px 16px 0; align-items:center; }
+.legend label { display:flex; align-items:center; gap:5px; cursor:pointer; } .legend input { accent-color:var(--blue); cursor:pointer; }
 svg.scatter { width:100%; height:auto; display:block; } .scatter text { font:11px -apple-system,Segoe UI,sans-serif; fill:var(--ink2); } .scatter .pl { fill:var(--ink); font-weight:600; }
 .scatter circle { fill:var(--blue); stroke:var(--panel); stroke-width:2; } .scatter circle:hover { fill:var(--ink); } .scatter .grid { stroke:var(--line); }
 .pars { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px; }
@@ -231,6 +232,8 @@ document.querySelectorAll('table.sortable').forEach(t => { const body = t.tBodie
     const val = r => { const v = r.cells[c].dataset.v; return v === undefined ? r.cells[c].textContent : parseFloat(v); };
     [...body.rows].sort((a, b) => { const x = val(a), y = val(b); const r = typeof x === 'number' ? x - y : String(x).localeCompare(String(y)); return dir === 'desc' ? -r : r; })
       .forEach((r, i) => { body.appendChild(r); r.cells[0].textContent = i + 1; }); })); });
+document.querySelectorAll('.legend input[data-track]').forEach(cb => cb.addEventListener('change', () => {
+  const t = document.getElementById('lb'); if (!t) return; t.classList.toggle('hide-' + cb.dataset.track, !cb.checked); }));
 """
 
 
@@ -267,18 +270,20 @@ def render_index(run: dict, agg: dict, models_cfg: dict, tracks: list) -> str:
     finds_html = "".join(f'<div class="find"><small>{esc(a)}</small><b>{esc(b)}</b><span>{esc(c)}</span></div>' for a, b, c in finds)
 
     # --- leaderboard
-    head = "".join(f"<th>{esc(TRACK_LABELS[t])}</th>" for t in tracks)
+    head = "".join(f'<th class="trk-{t}">{esc(TRACK_LABELS[t])}</th>' for t in tracks)
+    track_css = "".join(f"table.sortable.hide-{t} .trk-{t}{{display:none}}" for t in tracks)
+    filters = "".join(f'<label><input type="checkbox" checked data-track="{t}"> {esc(TRACK_LABELS[t])}</label>' for t in tracks)
     rows = ""
     for i, model in enumerate(order, 1):
         cells = ""
         for t in tracks:
             a = agg[model].get(t)
             if not a:
-                cells += '<td data-v="-1">—</td>'
+                cells += f'<td class="trk-{t}" data-v="-1">—</td>'
                 continue
             rng = f"{a['lo']:.2f}–{a['hi']:.2f}" if a["seeds"] > 1 else "1 run"
             cut = f' <span class="warn" title="answers cut off by the token limit">⚠{a["truncated"]}</span>' if a["truncated"] else ""
-            cells += (f'<td data-v="{a["mean"]:.3f}"><div class="cell" style="background:rgba(42,120,214,{0.05 + 0.5 * a["mean"] ** 2:.2f})">{a["mean"]:.2f}{cut}'
+            cells += (f'<td class="trk-{t}" data-v="{a["mean"]:.3f}"><div class="cell" style="background:rgba(42,120,214,{0.05 + 0.5 * a["mean"] ** 2:.2f})">{a["mean"]:.2f}{cut}'
                       f"<small>{rng}</small></div></td>")
         p = pm.get(model, {})
         speed = f'<td data-v="{p.get("generation_tok_s", -1)}">{p["generation_tok_s"]:.0f}</td>' if p else '<td data-v="-1">—</td>'
@@ -286,7 +291,8 @@ def render_index(run: dict, agg: dict, models_cfg: dict, tracks: list) -> str:
         fam = (models_cfg.get(model) or {}).get("family", "")
         rows += (f'<tr><td class="rank">{i}</td><th class="l mname">{esc(name(model))}<small>{esc(fam)}</small></th>'
                  f'<td data-v="{avg[model]:.3f}"><div class="avg"><s><i style="width:{avg[model] * 100:.0f}%"></i></s>{avg[model]:.2f}</div></td>{cells}{speed}{mem}</tr>')
-    table = (f'<div class="panel scroll"><table class="sortable"><thead><tr><th class="l">#</th><th class="l">Model</th><th>Average</th>{head}'
+    table = (f"<style>{track_css}</style><div class='legend' style='padding:0 0 10px'><span class='muted'>Show tracks:</span>{filters}</div>"
+             f'<div class="panel scroll"><table class="sortable" id="lb"><thead><tr><th class="l">#</th><th class="l">Model</th><th>Average</th>{head}'
              f"<th>Speed<br>(tok/s)</th><th>Memory</th></tr></thead><tbody>{rows}</tbody></table></div>")
 
     # --- quality against speed
