@@ -14,17 +14,11 @@
  },
  "ollama": "0.40.5",
  "settings": {
-  "seeds": 3,
+  "seeds": 2,
   "temperature": 0.2,
   "tracks": [
-   "cybersecurity",
-   "daily",
-   "coding",
-   "dutch",
-   "tools",
-   "honesty",
-   "reasoning",
-   "longcontext"
+   "standard",
+   "pentest"
   ]
  },
  "models": {
