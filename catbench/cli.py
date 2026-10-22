@@ -1,5 +1,6 @@
 """Command line: python -m catbench <command>"""
 import argparse
+import json
 import sys
 import time
 from pathlib import Path
@@ -42,6 +43,11 @@ def cmd_perf(a) -> int:
     client = Client(a.host)
     run_dir = Path(a.out) / (a.run_id or default_run_id(system.machine_info()))
     result = {"models": {}}
+    try:  # keep what earlier rounds measured: measuring more models adds to perf.json, it does not replace it
+        old = json.loads((run_dir / "perf.json").read_text(encoding="utf-8"))
+        result["models"].update(old.get("models", {}))
+    except (OSError, ValueError):
+        pass
     for model in a.models:
         r = perf.measure(client, model)
         result["models"][model] = r
@@ -58,7 +64,6 @@ def cmd_parallel(a) -> int:
     path = run_dir / "parallel.json"
     old = []
     try:
-        import json
         old = json.loads(path.read_text(encoding="utf-8"))
         old = old if isinstance(old, list) else [old]
     except (OSError, ValueError):

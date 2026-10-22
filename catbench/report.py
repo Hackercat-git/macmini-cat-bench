@@ -112,91 +112,239 @@ def hairball(data: dict, per_model: int = 3) -> dict:
     return out
 
 
-CSS = f"""
-:root {{ --ink:{INK}; --ink2:{INK2}; --line:{LINE}; --blue:{BLUE}; --bg:#fff; --panel:#fafaf8; }}
-@media (prefers-color-scheme: dark) {{ :root {{ --ink:#f0efec; --ink2:#c3c2b7; --line:#3a3a37; --blue:#3987e5; --bg:#1a1a19; --panel:#222220; }} }}
-* {{ box-sizing:border-box; }}
-body {{ margin:0; background:var(--bg); color:var(--ink); font:15px/1.5 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }}
-main {{ max-width:1100px; margin:0 auto; padding:28px 18px 60px; }}
-h1 {{ font-size:28px; margin:0 0 4px; }} h2 {{ font-size:19px; margin:30px 0 8px; padding-top:10px; border-top:1px solid var(--line); }}
-p {{ margin:6px 0 10px; }} .sub {{ color:var(--ink2); }} a {{ color:var(--blue); }}
-nav a {{ margin-right:14px; font-weight:600; }}
-table {{ border-collapse:collapse; width:100%; font-size:13px; margin:8px 0; }}
-th,td {{ border-bottom:1px solid var(--line); padding:6px 8px; text-align:right; }} th {{ text-align:left; font-weight:600; }}
-thead th {{ text-align:right; vertical-align:bottom; font-size:12px; }} thead th:first-child {{ text-align:left; }}
-td small {{ display:block; color:var(--ink2); font-size:10.5px; }}
-.cards {{ display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:12px; }}
-.card {{ border:1px solid var(--line); border-radius:10px; background:var(--panel); padding:8px 10px; }} .card b {{ font-size:14px; }}
-.radar {{ width:100%; height:auto; }} .rl {{ font-size:9.5px; fill:var(--ink2); }}
-.note {{ color:var(--ink2); font-size:12.5px; }} .warn {{ color:#b45309; }}
-pre {{ white-space:pre-wrap; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:8px 10px; font-size:12.5px; }}
-.balls {{ display:grid; gap:14px; }} .ball {{ border:1px solid var(--line); border-radius:10px; padding:10px 12px; background:var(--panel); }}
-button {{ font:inherit; padding:8px 14px; border:1px solid var(--line); background:var(--panel); color:var(--ink); border-radius:8px; cursor:pointer; }}
-button.go {{ background:var(--blue); border-color:var(--blue); color:#fff; font-weight:600; }}
+CSS = """
+:root { --ink:#14161a; --ink2:#5b616b; --line:#e3e5e9; --blue:#2a78d6; --bg:#f6f7f9; --panel:#ffffff; --soft:#eef3fb; --good:#1a7f4b; --warn:#b45309; --shadow:0 1px 2px rgba(20,22,26,.06),0 4px 14px rgba(20,22,26,.05); }
+@media (prefers-color-scheme: dark) { :root { --ink:#eceef2; --ink2:#a3a9b4; --line:#2b2f36; --blue:#4d94ec; --bg:#101216; --panel:#171a1f; --soft:#1b2433; --good:#46c07f; --warn:#e0a24a; --shadow:none; } }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; -webkit-font-smoothing:antialiased; }
+a { color:var(--blue); text-decoration:none; } a:hover { text-decoration:underline; }
+code { background:var(--soft); padding:1px 6px; border-radius:5px; font-size:.9em; }
+.top { position:sticky; top:0; z-index:5; background:color-mix(in srgb,var(--bg) 88%,transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+.top .in { max-width:1180px; margin:0 auto; padding:10px 20px; display:flex; align-items:center; gap:22px; }
+.brand { font-weight:700; letter-spacing:-.01em; color:var(--ink); display:flex; align-items:center; gap:8px; } .brand:hover { text-decoration:none; }
+.brand i { width:22px; height:22px; border-radius:7px; background:var(--blue); display:inline-block; position:relative; }
+.brand i:after { content:""; position:absolute; inset:6px; border-radius:50%; background:#fff; opacity:.9; }
+nav { display:flex; gap:4px; margin-left:auto; } nav a { color:var(--ink2); font-weight:600; font-size:14px; padding:6px 12px; border-radius:8px; } nav a:hover { background:var(--soft); text-decoration:none; color:var(--ink); }
+nav a.on { background:var(--soft); color:var(--blue); }
+main { max-width:1180px; margin:0 auto; padding:34px 20px 70px; }
+.hero h1 { font-size:clamp(30px,5vw,46px); line-height:1.08; letter-spacing:-.025em; margin:0 0 12px; }
+.hero p { font-size:17px; color:var(--ink2); max-width:760px; margin:0 0 6px; }
+.chips { display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 4px; } .chip { font-size:12.5px; color:var(--ink2); background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:3px 11px; }
+.stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:26px 0 8px; }
+.stat { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:14px 16px; box-shadow:var(--shadow); }
+.stat b { display:block; font-size:30px; line-height:1.1; letter-spacing:-.02em; } .stat span { color:var(--ink2); font-size:13px; }
+h2 { font-size:22px; letter-spacing:-.015em; margin:46px 0 6px; } h3 { font-size:16px; margin:14px 0 6px; }
+.lead { color:var(--ink2); margin:0 0 16px; max-width:820px; }
+.finds { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; }
+.find { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px; box-shadow:var(--shadow); }
+.find small { color:var(--ink2); text-transform:uppercase; letter-spacing:.06em; font-size:11px; font-weight:700; }
+.find b { display:block; font-size:19px; margin:4px 0 2px; letter-spacing:-.01em; } .find span { color:var(--ink2); font-size:13.5px; }
+.panel { background:var(--panel); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); }
+.scroll { overflow-x:auto; }
+table { border-collapse:collapse; width:100%; font-size:13.5px; }
+th,td { padding:9px 10px; text-align:right; white-space:nowrap; border-bottom:1px solid var(--line); }
+tbody tr:last-child th, tbody tr:last-child td { border-bottom:0; }
+th { font-weight:600; } thead th { position:sticky; top:0; background:var(--panel); color:var(--ink2); font-size:12px; vertical-align:bottom; white-space:normal; line-height:1.25; cursor:pointer; user-select:none; }
+thead th:hover { color:var(--blue); } th.l, td.l { text-align:left; }
+tbody tr:hover td, tbody tr:hover th { background:var(--soft); }
+.rank { color:var(--ink2); width:34px; text-align:left; font-variant-numeric:tabular-nums; }
+.mname { font-weight:650; } .mname small { display:block; color:var(--ink2); font-weight:400; font-size:11.5px; }
+.avg { display:flex; align-items:center; gap:8px; justify-content:flex-end; min-width:130px; font-weight:700; font-variant-numeric:tabular-nums; }
+.avg i { display:block; height:7px; border-radius:4px; background:var(--blue); min-width:2px; } .avg s { display:block; width:70px; height:7px; border-radius:4px; background:var(--line); text-decoration:none; }
+.cell { font-variant-numeric:tabular-nums; border-radius:6px; } .cell small { display:block; color:var(--ink2); font-size:10.5px; }
+.warn { color:var(--warn); }
+.muted { color:var(--ink2); }
+.cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:12px; }
+.card { border:1px solid var(--line); border-radius:12px; background:var(--panel); padding:10px 12px; } .card b { font-size:14px; }
+.radar { width:100%; height:auto; } .rl { font-size:9.5px; fill:var(--ink2); }
+.note { color:var(--ink2); font-size:13px; }
+details { margin:10px 0; } summary { cursor:pointer; font-weight:600; color:var(--blue); }
+pre { white-space:pre-wrap; background:var(--soft); border:1px solid var(--line); border-radius:10px; padding:10px 12px; font-size:12.5px; }
+.balls { display:grid; gap:14px; } .ball { border:1px solid var(--line); border-radius:14px; padding:12px 16px; background:var(--panel); box-shadow:var(--shadow); }
+button { font:inherit; font-weight:600; padding:9px 16px; border:1px solid var(--line); background:var(--panel); color:var(--ink); border-radius:10px; cursor:pointer; }
+button:hover { border-color:var(--blue); } button.go { background:var(--blue); border-color:var(--blue); color:#fff; }
+.legend { display:flex; gap:16px; flex-wrap:wrap; font-size:12.5px; color:var(--ink2); padding:12px 16px 0; }
+svg.scatter { width:100%; height:auto; display:block; } .scatter text { font:11px -apple-system,Segoe UI,sans-serif; fill:var(--ink2); } .scatter .pl { fill:var(--ink); font-weight:600; }
+.scatter circle { fill:var(--blue); stroke:var(--panel); stroke-width:2; } .scatter circle:hover { fill:var(--ink); } .scatter .grid { stroke:var(--line); }
+.pars { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px; }
+.par { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px; box-shadow:var(--shadow); } .par b { font-size:15px; } .par .big { font-size:30px; font-weight:700; letter-spacing:-.02em; margin:6px 0 0; } .par ul { margin:8px 0 0; padding-left:18px; color:var(--ink2); font-size:13.5px; }
+footer { margin-top:50px; padding-top:18px; border-top:1px solid var(--line); color:var(--ink2); font-size:13px; }
+@media (max-width:640px) { .top .in { gap:10px; padding:8px 14px; } .brand span { display:none; } main { padding:22px 14px 50px; } nav a { padding:6px 9px; } }
 """
 
 
-def page(title: str, body: str, extra_head: str = "") -> str:
+def page(title: str, body: str, extra_head: str = "", active: str = "index") -> str:
     return (f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-            f"<title>{html.escape(title)}</title><style>{CSS}</style>{extra_head}</head><body><main>{body}</main></body></html>")
+            f'<meta name="color-scheme" content="light dark"><title>{html.escape(title)}</title><style>{CSS}</style>{extra_head}</head><body>'
+            f'<header class="top"><div class="in"><a class="brand" href="index.html"><i></i><span>macmini-cat-bench</span></a>{nav(active)}</div></header>'
+            f"<main>{body}</main></body></html>")
 
 
 def nav(active: str) -> str:
     items = [("index", "Results"), ("hairball", "Hairball"), ("vote", "Blind vote")]
-    parts = []
-    for page_name, label in items:
-        style = ' style="text-decoration:underline"' if page_name == active else ""
-        parts.append(f'<a href="{page_name}.html"{style}>{label}</a>')
-    return "<nav>" + "".join(parts) + "</nav>"
+    links = "".join(f'<a href="{n}.html"' + (' class="on"' if n == active else "") + f">{label}</a>" for n, label in items)
+    return links.join(["<nav>", '<a href="https://github.com/Hackercat-git/macmini-cat-bench">GitHub</a></nav>'])
+
+
+def _scatter(points: list) -> str:
+    """points: [(label, x tok/s, y score)]. Direct labels placed greedily so they do not overlap; every point has a tooltip."""
+    W, H, L, R, T, B = 900, 460, 54, 24, 16, 46
+    xmax = max(p[1] for p in points) * 1.08
+    ymin = max(0.0, math.floor((min(p[2] for p in points) - 0.05) * 10) / 10)
+
+    def X(v):
+        return L + (W - L - R) * v / xmax
+
+    def Y(v):
+        return T + (H - T - B) * (1 - (v - ymin) / (1 - ymin + 0.02))
+    out = [f'<svg class="scatter" viewBox="0 0 {W} {H}" role="img" aria-label="Quality against speed">']
+    step = 0.1
+    v = math.ceil(ymin / step) * step
+    while v <= 1.0001:
+        out.append(f'<line class="grid" x1="{L}" x2="{W - R}" y1="{Y(v):.1f}" y2="{Y(v):.1f}"/><text x="{L - 8}" y="{Y(v) + 4:.1f}" text-anchor="end">{v:.1f}</text>')
+        v += step
+    tick = 10 if xmax <= 100 else 20
+    for k in range(0, int(xmax) + 1, tick):
+        out.append(f'<line class="grid" x1="{X(k):.1f}" x2="{X(k):.1f}" y1="{T}" y2="{H - B}"/><text x="{X(k):.1f}" y="{H - B + 18}" text-anchor="middle">{k}</text>')
+    out.append(f'<text x="{(L + W - R) / 2}" y="{H - 8}" text-anchor="middle">writing speed (tokens per second) → faster</text>')
+    out.append(f'<text transform="translate(14 {(T + H - B) / 2}) rotate(-90)" text-anchor="middle">average score → better</text>')
+    placed = [(X(x) - 8, Y(y) - 8, X(x) + 8, Y(y) + 8) for _, x, y in points]            # the dots themselves are obstacles too
+    for label, x, y in sorted(points, key=lambda p: -p[2]):
+        cx, cy = X(x), Y(y)
+        w = 6.2 * len(label)
+        for dx, dy in ((9, 0), (9, -13), (9, 13), (9, -26), (9, 26), (-9 - w, 0), (-9 - w, -13), (-9 - w, 13), (9, -39), (9, 39)):
+            box = (cx + dx, cy + dy - 9, cx + dx + w, cy + dy + 3)
+            if all(box[2] < b[0] or box[0] > b[2] or box[3] < b[1] or box[1] > b[3] for b in placed) and box[2] < W:
+                placed.append(box)
+                out.append(f'<text class="pl" x="{cx + dx + 1:.1f}" y="{cy + dy:.1f}">{html.escape(label)}</text>')
+                break
+        out.append(f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="6"><title>{html.escape(label)}: score {y:.2f}, {x:.1f} tok/s</title></circle>')
+    out.append("</svg>")
+    return "".join(out)
+
+
+SORT_JS = """
+document.querySelectorAll('table.sortable').forEach(t => { const body = t.tBodies[0];
+  t.tHead.querySelectorAll('th').forEach((th, c) => th.addEventListener('click', () => { const dir = th.dataset.dir === 'desc' ? 'asc' : 'desc';
+    t.tHead.querySelectorAll('th').forEach(x => delete x.dataset.dir); th.dataset.dir = dir;
+    const val = r => { const v = r.cells[c].dataset.v; return v === undefined ? r.cells[c].textContent : parseFloat(v); };
+    [...body.rows].sort((a, b) => { const x = val(a), y = val(b); const r = typeof x === 'number' ? x - y : String(x).localeCompare(String(y)); return dir === 'desc' ? -r : r; })
+      .forEach((r, i) => { body.appendChild(r); r.cells[0].textContent = i + 1; }); })); });
+"""
 
 
 def render_index(run: dict, agg: dict, models_cfg: dict, tracks: list) -> str:
     m = run["manifest"]
     mach = m.get("machine", {})
+    esc = html.escape
     order = sorted(agg, key=lambda k: -track_average(agg[k], tracks))
-    head = "".join(f"<th>{html.escape(TRACK_LABELS[t])}</th>" for t in tracks)
+    pm = {}
+    if "perf" in run:
+        pm = run["perf"].get("models", run["perf"])
+    name = lambda k: display_name(k, models_cfg)                                  # noqa: E731
+    avg = {k: track_average(agg[k], tracks) for k in agg}
+    n_tasks = max(sum(a["n_tasks"] for a in agg[k].values()) for k in agg)
+    n_answers = sum(a["answers"] for k in agg for a in agg[k].values())
+    seeds = max((a["seeds"] for k in agg for a in agg[k].values()), default=1)
+
+    # --- findings, all computed from the data
+    finds = []
+    best = order[0]
+    finds.append(("Best overall", name(best), f"{avg[best]:.2f} average over {len(tracks)} tracks"))
+    cyber = [k for k in agg if "cybersecurity" in agg[k]]
+    if cyber:
+        c = max(cyber, key=lambda k: agg[k]["cybersecurity"]["mean"])
+        finds.append(("Best at cybersecurity", name(c), f"{agg[c]['cybersecurity']['mean']:.2f} on the cybersecurity track"))
+    good = [k for k in agg if avg[k] >= 0.9 and k in pm]
+    if good:
+        f = max(good, key=lambda k: pm[k]["generation_tok_s"])
+        finds.append(("Fastest model that is still good", name(f), f"{pm[f]['generation_tok_s']:.0f} tok/s with an average of {avg[f]:.2f}"))
+        mem = [k for k in good if pm[k].get("memory_gb")]
+        if mem:
+            s = min(mem, key=lambda k: pm[k]["memory_gb"])
+            finds.append(("Smallest model that is still good", name(s), f"{pm[s]['memory_gb']} GB of memory with an average of {avg[s]:.2f}"))
+    finds_html = "".join(f'<div class="find"><small>{esc(a)}</small><b>{esc(b)}</b><span>{esc(c)}</span></div>' for a, b, c in finds)
+
+    # --- leaderboard
+    head = "".join(f"<th>{esc(TRACK_LABELS[t])}</th>" for t in tracks)
     rows = ""
-    for model in order:
+    for i, model in enumerate(order, 1):
         cells = ""
         for t in tracks:
             a = agg[model].get(t)
             if not a:
-                cells += "<td>—</td>"
+                cells += '<td data-v="-1">—</td>'
                 continue
             rng = f"{a['lo']:.2f}–{a['hi']:.2f}" if a["seeds"] > 1 else "1 run"
             cut = f' <span class="warn" title="answers cut off by the token limit">⚠{a["truncated"]}</span>' if a["truncated"] else ""
-            cells += f'<td style="{heat(a["mean"])}">{a["mean"]:.2f}{cut}<small>{rng}</small></td>'
-        rows += f"<tr><th>{html.escape(display_name(model, models_cfg))}</th><td>{track_average(agg[model], tracks):.2f}</td>{cells}</tr>"
-    cards = "".join(f'<div class="card"><b>{html.escape(display_name(k, models_cfg))}</b>{radar_svg({t: agg[k][t]["mean"] for t in tracks if t in agg[k]}, tracks)}</div>' for k in order)
+            cells += (f'<td data-v="{a["mean"]:.3f}"><div class="cell" style="background:rgba(42,120,214,{0.05 + 0.5 * a["mean"] ** 2:.2f})">{a["mean"]:.2f}{cut}'
+                      f"<small>{rng}</small></div></td>")
+        p = pm.get(model, {})
+        speed = f'<td data-v="{p.get("generation_tok_s", -1)}">{p["generation_tok_s"]:.0f}</td>' if p else '<td data-v="-1">—</td>'
+        mem = f'<td data-v="{p.get("memory_gb") or -1}">{p["memory_gb"]} GB</td>' if p.get("memory_gb") else '<td data-v="-1">—</td>'
+        fam = (models_cfg.get(model) or {}).get("family", "")
+        rows += (f'<tr><td class="rank">{i}</td><th class="l mname">{esc(name(model))}<small>{esc(fam)}</small></th>'
+                 f'<td data-v="{avg[model]:.3f}"><div class="avg"><s><i style="width:{avg[model] * 100:.0f}%"></i></s>{avg[model]:.2f}</div></td>{cells}{speed}{mem}</tr>')
+    table = (f'<div class="panel scroll"><table class="sortable"><thead><tr><th class="l">#</th><th class="l">Model</th><th>Average</th>{head}'
+             f"<th>Speed<br>(tok/s)</th><th>Memory</th></tr></thead><tbody>{rows}</tbody></table></div>")
+
+    # --- quality against speed
+    pts = [(name(k), pm[k]["generation_tok_s"], avg[k]) for k in agg if k in pm]
+    scatter = ""
+    if pts:
+        scatter = ("<h2>Quality against speed</h2><p class='lead'>Top left is what you want: a high score <i>and</i> fast writing. "
+                   "Hover a dot for the numbers.</p><div class='panel' style='padding:8px 10px 4px'>" + _scatter(pts) + "</div>")
+
+    # --- speed table
     perf = ""
-    if "perf" in run:
-        pm = run["perf"].get("models", run["perf"])
-        prow = "".join(f"<tr><th>{html.escape(display_name(k, models_cfg))}</th><td>{v['cold_load_s']} s</td><td>{v['reading_tok_s']:.0f}</td>"
-                       f"<td>{v['first_token_long_prompt_s']} s</td><td>{v['generation_tok_s']}</td><td>{v.get('memory_gb', '—')} GB</td></tr>"
+    if pm:
+        top = max(v["generation_tok_s"] for v in pm.values())
+        prow = "".join(f"<tr><th class='l'>{esc(name(k))}</th><td>{v['cold_load_s']} s</td><td>{v['reading_tok_s']:.0f}</td>"
+                       f"<td>{v['first_token_long_prompt_s']} s</td><td><div class='avg'><s><i style='width:{v['generation_tok_s'] / top * 100:.0f}%'></i></s>"
+                       f"{v['generation_tok_s']}</div></td><td>{v.get('memory_gb') or '—'}{' GB' if v.get('memory_gb') else ''}</td></tr>"
                        for k, v in sorted(pm.items(), key=lambda kv: -kv[1]["generation_tok_s"]))
-        perf = ("<h2>Speed and memory</h2><p class='sub'>Counters reported by Ollama; median of 3 rounds, model freshly loaded, context 8192. Reading = a log of about "
-                "3,000 tokens; generating = 256 tokens.</p><table><thead><tr><th>Model</th><th>Cold load</th><th>Reading (tok/s)</th><th>First token after long prompt</th>"
-                f"<th>Generating (tok/s)</th><th>Memory</th></tr></thead><tbody>{prow}</tbody></table>")
+        perf = ("<h2>Speed and memory</h2><p class='lead'>Counters reported by Ollama; median of 3 rounds, model freshly loaded, context 8192. "
+                "Reading = a log of about 3,000 tokens; generating = 256 tokens.</p><div class='panel scroll'><table><thead><tr><th class='l'>Model</th><th>Cold load</th>"
+                "<th>Reading (tok/s)</th><th>First token after long prompt</th><th>Generating (tok/s)</th><th>Memory</th></tr></thead>"
+                f"<tbody>{prow}</tbody></table></div>")
+
+    # --- parallel
     par = ""
     if "parallel" in run:
-        rows_p = "".join(f"<tr><th>{html.escape(display_name(p['model'], models_cfg))}</th><td>{p['agents']}</td><td>{p['memory_one_request_gb']} GB</td>"
-                         f"<td>{p['memory_during_parallel_gb']} GB</td><td>{p['seconds_for_all']} s</td><td>{p['total_tok_s']}</td><td>{html.escape(p.get('note', ''))}</td></tr>"
-                         for p in (run["parallel"] if isinstance(run["parallel"], list) else [run["parallel"]]))
-        par = ("<h2>Several agents at once</h2><table><thead><tr><th>Model</th><th>Agents</th><th>Memory, one request</th><th>Memory, all at once</th><th>Time for all</th>"
-               f"<th>Total tok/s</th><th>Setting</th></tr></thead><tbody>{rows_p}</tbody></table>")
-    body = (f"<h1>macmini-cat-bench</h1><p class='sub'>Honest AI benchmarks on the Mac mini. Run <code>{html.escape(m.get('run_id', '?'))}</code> on "
-            f"{html.escape(describe(mach))}, macOS {html.escape(str(mach.get('macos', '?')))}, Ollama {html.escape(str(m.get('ollama', '?')))}, {html.escape(str(m.get('date', '')))}.</p>"
-            f"{nav('index')}<h2>Profile per track</h2><p>Score from 0 to 1 per track: mean over seeds, with the range between seeds underneath. There is no single winner: "
-            f"look at the tracks that matter to you. The second column is the plain average of the tracks, for sorting only. "
+        items = ""
+        for p in (run["parallel"] if isinstance(run["parallel"], list) else [run["parallel"]]):
+            items += (f"<div class='par'><b>{esc(name(p['model']))}</b> <span class='muted'>· {p['agents']} agents</span><div class='big'>{p['total_tok_s']} <span class='muted' style='font-size:14px'>tok/s in total</span></div>"
+                      f"<ul><li>{p['per_agent_tok_s']} tok/s per agent, all done in {p['seconds_for_all']} s</li>"
+                      f"<li>Memory: {p['memory_one_request_gb']} GB with one request, {p['memory_during_parallel_gb']} GB with all agents</li>"
+                      f"<li>{esc(p.get('note', ''))}</li></ul></div>")
+        par = ("<h2>Several agents at once</h2><p class='lead'>What happens when five agents talk to the same Ollama server. The server setting decides: "
+               f"one slot makes them queue, several slots cost memory but share the work.</p><div class='pars'>{items}</div>")
+
+    cards = "".join(f'<div class="card"><b>{esc(name(k))}</b>{radar_svg({t: agg[k][t]["mean"] for t in tracks if t in agg[k]}, tracks)}</div>' for k in order)
+    body = (f"<section class='hero'><h1>Honest AI benchmarks on the Mac mini</h1>"
+            f"<p>Local language models, measured the same way on the same machine: quality over {len(tracks)} tracks (cybersecurity, daily use, coding, Dutch and more), "
+            f"speed, memory and what happens when several agents share one server.</p>"
+            f"<div class='chips'><span class='chip'>{esc(describe(mach))}</span><span class='chip'>macOS {esc(str(mach.get('macos', '?')))}</span>"
+            f"<span class='chip'>Ollama {esc(str(m.get('ollama', '?')))}</span><span class='chip'>{esc(str(m.get('date', '')))}</span>"
+            f"<span class='chip'>run {esc(m.get('run_id', '?'))}</span></div></section>"
+            f"<div class='stats'><div class='stat'><b>{len(agg)}</b><span>models</span></div><div class='stat'><b>{len(tracks)}</b><span>tracks</span></div>"
+            f"<div class='stat'><b>{n_tasks}</b><span>tasks per model</span></div><div class='stat'><b>{n_answers:,}</b><span>answers scored</span></div>"
+            f"<div class='stat'><b>{seeds}</b><span>seeds per task</span></div></div>"
+            f"<h2>The short version</h2><div class='finds'>{finds_html}</div>"
+            f"<h2>Profile per track</h2><p class='lead'>Score from 0 to 1 per track: mean over seeds, with the range between seeds underneath. There is no single winner: "
+            f"look at the tracks that matter to you. The average is for sorting only. Click a column heading to sort. "
             f"Run-to-run noise in this run reaches {noise(agg):.2f}: differences smaller than that are not meaningful. "
-            f"<span class='warn'>⚠n</span> means n answers were cut off by the token limit.</p>"
-            f"<table><thead><tr><th>Model</th><th>Track average</th>{head}</tr></thead><tbody>{rows}</tbody></table>"
-            f"<h2>Profiles</h2><div class='cards'>{cards}</div>{perf}{par}"
-            "<h2>Limitations</h2><ul><li>Small task sets per track and automatic scoring on keywords, numbers, JSON and executed code; a human check of a sample is planned.</li>"
+            f"<span class='warn'>⚠n</span> means n answers were cut off by the token limit.</p>{table}"
+            f"{scatter}{perf}{par}"
+            f"<h2>Profiles</h2><details><summary>Show a radar chart per model</summary><div class='cards' style='margin-top:12px'>{cards}</div></details>"
+            "<h2>Limitations</h2><ul class='lead'><li>Small task sets per track and automatic scoring on keywords, numbers, JSON and executed code; a human check of a sample is planned.</li>"
             "<li>One machine, one quantisation per model, English prompts except the Dutch track.</li>"
             "<li>Model-written code is executed on the benchmark machine.</li></ul>"
-            "<p class='note'>Prompts, scoring rules, raw answers and scripts are in the repository. See the Hairball page for the worst answers.</p>")
-    return page("macmini-cat-bench", body)
+            "<footer>Prompts, scoring rules, raw answers and scripts are in the <a href='https://github.com/Hackercat-git/macmini-cat-bench'>repository</a> (MIT licence). "
+            "Run it on your own Mac mini and send a pull request. See the Hairball page for the worst answers and the Blind vote page to judge answers yourself.</footer>"
+            f"<script>{SORT_JS}</script>")
+    return page("macmini-cat-bench", body, active="index")
 
 
 def render_hairball(run: dict, models_cfg: dict, tasks: dict) -> str:
@@ -215,8 +363,8 @@ def render_hairball(run: dict, models_cfg: dict, tasks: dict) -> str:
                       f"<pre>Q: {html.escape(p[:500])}</pre><pre>A: {html.escape(r['answer'][:700]) or '(empty answer)'}</pre>")
         blocks += f"<div class='ball'><h3 style='margin:0 0 6px'>{html.escape(display_name(model, models_cfg))}</h3>{items}</div>"
     body = (f"<h1>Hairball</h1><p class='sub'>The worst answers of every model, verbatim: where it invented things, ignored the format or simply got it wrong. "
-            f"Shown only when the mean score of that task is below 0.34.</p>{nav('hairball')}<div class='balls'>{blocks}</div>")
-    return page("Hairball: macmini-cat-bench", body)
+            f"Shown only when the mean score of that task is below 0.34.</p><div class='balls'>{blocks}</div>")
+    return page("Hairball: macmini-cat-bench", body, active="hairball")
 
 
 def vote_pairs(run: dict, tasks: dict, models_cfg: dict, n: int = 40, seed: int = 7) -> list:
@@ -266,14 +414,14 @@ document.querySelectorAll('[data-w]').forEach(b => b.onclick = () => vote(b.data
 def render_vote(run: dict, models_cfg: dict, tasks: dict) -> str:
     pairs = vote_pairs(run, tasks, models_cfg)
     data = json.dumps({"pairs": pairs}, ensure_ascii=False).replace("</", "<\\/")
-    body = (f"<h1>Blind vote</h1><p class='sub'>Two answers to the same question, without model names. Pick the better one. Votes stay in your browser (nothing is sent anywhere); "
-            f"download them as CSV to share. This complements the automatic scores, which cannot judge style.</p>{nav('vote')}"
+    body = ("<h1>Blind vote</h1><p class='sub'>Two answers to the same question, without model names. Pick the better one. Votes stay in your browser (nothing is sent anywhere); "
+            "download them as CSV to share. This complements the automatic scores, which cannot judge style.</p>"
             "<div id='card'><p id='count' class='note'></p><h3>Question</h3><pre id='prompt'></pre><div style='display:grid;grid-template-columns:1fr 1fr;gap:12px'>"
             "<div><h3>Answer A</h3><pre id='a'></pre></div><div><h3>Answer B</h3><pre id='b'></pre></div></div>"
             "<p><button class='go' data-w='a'>A is better</button> <button class='go' data-w='b'>B is better</button> <button data-w='tie'>Tie</button> "
             "<button data-w='bad'>Both bad</button></p><p id='reveal' class='note'></p></div>"
             "<h2>Your ranking so far (<span id='n'>0</span> votes)</h2><table><tbody id='elo'></tbody></table><p><button id='dl'>Download votes (CSV)</button></p>")
-    return page("Blind vote: macmini-cat-bench", body, f"<script>const DATA = {data};</script>") .replace("</main>", f"<script>{VOTE_JS}</script></main>")
+    return page("Blind vote: macmini-cat-bench", body, f"<script>const DATA = {data};</script>", active="vote").replace("</main>", f"<script>{VOTE_JS}</script></main>")
 
 
 def markdown_summary(run: dict, agg: dict, models_cfg: dict, tracks: list) -> str:

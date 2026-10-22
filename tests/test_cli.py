@@ -21,6 +21,18 @@ class CliTests(unittest.TestCase):
         self.assertEqual(code, 0, out)
         self.assertIn("0 problem(s)", out)
 
+    def test_perf_adds_to_earlier_measurements_instead_of_replacing_them(self):
+        from unittest import mock
+        with tempfile.TemporaryDirectory() as tmp:
+            run = Path(tmp) / "r1"
+            run.mkdir()
+            (run / "perf.json").write_text(json.dumps({"models": {"old-model": {"generation_tok_s": 30}}}), encoding="utf-8")
+            fake = {"cold_load_s": 1, "reading_tok_s": 2, "generation_tok_s": 3, "first_token_long_prompt_s": 1, "memory_gb": 4}
+            with mock.patch.object(cli.perf, "measure", return_value=fake):
+                self.run_cli("perf", "--models", "new-model", "--out", tmp, "--run-id", "r1")
+            saved = json.loads((run / "perf.json").read_text(encoding="utf-8"))["models"]
+            self.assertEqual(set(saved), {"old-model", "new-model"})
+
     def test_list_shows_tracks_and_models(self):
         code, out = self.run_cli("list")
         self.assertEqual(code, 0)
