@@ -1,0 +1,466 @@
+{
+ "track": "standard",
+ "description": "Broad general-knowledge and everyday-use questions: geography, science, maths, grammar, health, business, creative writing and basic coding, each with one clearly correct answer.",
+ "defaults": {
+  "system": "You are a helpful assistant.",
+  "num_predict": 250
+ },
+ "tasks": [
+  {
+   "id": "std-capital-aus",
+   "prompt": "What is the capital of Australia? Reply with only the answer, nothing else.",
+   "system": "Reply with only the answer, nothing else.",
+   "num_predict": 40,
+   "checks": [
+    {
+     "type": "regex",
+     "pattern": "^\\W*canberra\\W*$"
+    }
+   ],
+   "pass": "Canberra",
+   "fail": "Sydney"
+  },
+  {
+   "id": "std-year-ww2",
+   "prompt": "In what year did the Second World War end?",
+   "system": "You are a careful problem solver. Think step by step, then give the final answer on the last line as 'Answer: <number>'.",
+   "num_predict": 400,
+   "checks": [
+    {
+     "type": "number",
+     "expected": 1945,
+     "tol": 0
+    }
+   ],
+   "pass": "Answer: 1945",
+   "fail": "Answer: 1944"
+  },
+  {
+   "id": "std-river-longest",
+   "prompt": "Which river is generally considered the longest in the world?",
+   "system": "You are a helpful assistant.",
+   "num_predict": 250,
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "nile"
+      ]
+     ]
+    }
+   ],
+   "pass": "The Nile.",
+   "fail": "The Amazon."
+  },
+  {
+   "id": "std-eiffel-city",
+   "prompt": "In which city is the Eiffel Tower located?",
+   "system": "You are a helpful assistant.",
+   "num_predict": 250,
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "paris"
+      ]
+     ]
+    }
+   ],
+   "pass": "Paris.",
+   "fail": "London."
+  },
+  {
+   "id": "std-continents",
+   "prompt": "How many continents are there in the standard model used in most of Europe?",
+   "system": "You are a careful problem solver. Think step by step, then give the final answer on the last line as 'Answer: <number>'.",
+   "num_predict": 400,
+   "checks": [
+    {
+     "type": "number",
+     "expected": 7,
+     "tol": 0
+    }
+   ],
+   "pass": "Answer: 7",
+   "fail": "Answer: 5"
+  },
+  {
+   "id": "std-water-formula",
+   "prompt": "What is the chemical formula of water?",
+   "system": "You are a helpful assistant.",
+   "num_predict": 250,
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "h2o",
+       "h₂o"
+      ]
+     ]
+    }
+   ],
+   "pass": "H2O.",
+   "fail": "CO2."
+  },
+  {
+   "id": "std-planet-closest-sun",
+   "prompt": "Which planet is closest to the Sun?",
+   "system": "You are a helpful assistant.",
+   "num_predict": 250,
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "mercury"
+      ]
+     ]
+    }
+   ],
+   "pass": "Mercury.",
+   "fail": "Venus."
+  },
+  {
+   "id": "std-speed-of-light",
+   "prompt": "What is the speed of light in a vacuum, in kilometers per second, rounded to the nearest whole number?",
+   "system": "You are a careful problem solver. Think step by step, then give the final answer on the last line as 'Answer: <number>'.",
+   "num_predict": 400,
+   "checks": [
+    {
+     "type": "number",
+     "expected": 299792,
+     "tol": 0.01
+    }
+   ],
+   "pass": "Answer: 299792",
+   "fail": "Answer: 150000"
+  },
+  {
+   "id": "std-photosynthesis-gas",
+   "prompt": "Which gas do plants absorb from the air during photosynthesis?",
+   "system": "You are a helpful assistant.",
+   "num_predict": 250,
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "carbon dioxide",
+       "co2",
+       "co₂"
+      ]
+     ]
+    }
+   ],
+   "pass": "Carbon dioxide.",
+   "fail": "Oxygen."
+  },
+  {
+   "id": "std-dna-shape",
+   "prompt": "What shape is a DNA molecule commonly described as?",
+   "system": "You are a helpful assistant.",
+   "num_predict": 250,
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "double helix",
+       "helix"
+      ]
+     ]
+    }
+   ],
+   "pass": "A double helix.",
+   "fail": "A square."
+  },
+  {
+   "id": "std-percent-tip",
+   "prompt": "A restaurant bill is 68 euros. You want to leave a 15% tip. How many euros is the tip, rounded to the nearest euro?",
+   "system": "You are a careful problem solver. Think step by step, then give the final answer on the last line as 'Answer: <number>'.",
+   "num_predict": 400,
+   "checks": [
+    {
+     "type": "number",
+     "expected": 10,
+     "tol": 0.5
+    }
+   ],
+   "pass": "Answer: 10",
+   "fail": "Answer: 15"
+  },
+  {
+   "id": "std-average",
+   "prompt": "What is the average of the numbers 12, 18, 22 and 28?",
+   "system": "You are a careful problem solver. Think step by step, then give the final answer on the last line as 'Answer: <number>'.",
+   "num_predict": 400,
+   "checks": [
+    {
+     "type": "number",
+     "expected": 20,
+     "tol": 0.01
+    }
+   ],
+   "pass": "Answer: 20",
+   "fail": "Answer: 22"
+  },
+  {
+   "id": "std-logic-fruit",
+   "system": "Reply with only the answer, nothing else.",
+   "num_predict": 40,
+   "prompt": "I have more apples than pears. I have fewer pears than bananas. Do I have more apples or more bananas? Reply with 'apples', 'bananas' or 'not enough information'.",
+   "checks": [
+    {
+     "type": "regex",
+     "pattern": "not enough information"
+    }
+   ],
+   "pass": "Not enough information.",
+   "fail": "Apples."
+  },
+  {
+   "id": "std-grammar-fix",
+   "system": "You are a helpful assistant. Reply with only the corrected sentence.",
+   "num_predict": 60,
+   "prompt": "Correct the grammar in this sentence: 'She don't like to went there yesterday.'",
+   "checks": [
+    {
+     "type": "regex",
+     "pattern": "she did(n't| not) (like|want) to go"
+    }
+   ],
+   "pass": "She didn't like to go there yesterday.",
+   "fail": "She don't like to went there yesterday."
+  },
+  {
+   "id": "std-synonym-happy",
+   "prompt": "Give one synonym for the word 'happy'. Reply with one word only.",
+   "system": "You are a helpful assistant.",
+   "num_predict": 20,
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "joyful",
+       "glad",
+       "cheerful",
+       "content",
+       "pleased",
+       "delighted"
+      ]
+     ]
+    }
+   ],
+   "pass": "Joyful.",
+   "fail": "Purple."
+  },
+  {
+   "id": "std-unit-convert",
+   "prompt": "How many centimeters are in 3.5 meters?",
+   "system": "You are a careful problem solver. Think step by step, then give the final answer on the last line as 'Answer: <number>'.",
+   "num_predict": 400,
+   "checks": [
+    {
+     "type": "number",
+     "expected": 350,
+     "tol": 0
+    }
+   ],
+   "pass": "Answer: 350",
+   "fail": "Answer: 35"
+  },
+  {
+   "id": "std-first-aid-burn",
+   "prompt": "Someone has a minor kitchen burn. What is the first thing you should do, in one sentence?",
+   "system": "You are a helpful assistant.",
+   "num_predict": 250,
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "cool",
+       "cold water",
+       "run"
+      ]
+     ]
+    }
+   ],
+   "pass": "Cool the burn under cold running water for several minutes.",
+   "fail": "Apply butter to the burn immediately."
+  },
+  {
+   "id": "std-recipe-bullets",
+   "system": "You are a helpful assistant.",
+   "num_predict": 150,
+   "prompt": "List exactly 4 basic ingredients needed to bake a simple white bread, as a bullet list, nothing else.",
+   "checks": [
+    {
+     "type": "bullets",
+     "n": 4
+    },
+    {
+     "type": "count",
+     "items": [
+      "flour",
+      "water",
+      "yeast",
+      "salt"
+     ],
+     "n": 3
+    }
+   ],
+   "pass": "- Flour\n- Water\n- Yeast\n- Salt",
+   "fail": "Bread needs flour and some other things, which I will describe here in one long paragraph without a list."
+  },
+  {
+   "id": "std-compound-simple",
+   "prompt": "You save 200 euros a month for 12 months, earning no interest. How many euros have you saved after a year?",
+   "system": "You are a careful problem solver. Think step by step, then give the final answer on the last line as 'Answer: <number>'.",
+   "num_predict": 400,
+   "checks": [
+    {
+     "type": "number",
+     "expected": 2400,
+     "tol": 0
+    }
+   ],
+   "pass": "Answer: 2400",
+   "fail": "Answer: 2000"
+  },
+  {
+   "id": "std-invoice-term",
+   "prompt": "In business, what does the abbreviation 'VAT' stand for?",
+   "system": "You are a helpful assistant.",
+   "num_predict": 250,
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "value added tax",
+       "value-added tax"
+      ]
+     ]
+    }
+   ],
+   "pass": "Value Added Tax.",
+   "fail": "Various Asset Transfer."
+  },
+  {
+   "id": "std-sleep-hours",
+   "prompt": "How many hours of sleep per night are generally recommended for a healthy adult?",
+   "system": "You are a helpful assistant.",
+   "num_predict": 250,
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "7",
+       "8",
+       "9"
+      ]
+     ]
+    }
+   ],
+   "pass": "Around 7 to 9 hours.",
+   "fail": "Around 2 to 3 hours."
+  },
+  {
+   "id": "std-not-medical-advice",
+   "system": "You are a helpful assistant. Answer concisely (at most 5 sentences). If you do not know something, or it does not exist, say so plainly.",
+   "num_predict": 200,
+   "prompt": "I have a persistent headache that has lasted three weeks and is getting worse. What is wrong with me and what medication should I take?",
+   "checks": [
+    {
+     "type": "no_refusal"
+    },
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "doctor",
+       "medical professional",
+       "physician",
+       "see a doctor"
+      ]
+     ]
+    }
+   ],
+   "pass": "I can't diagnose this. A headache that persists for three weeks and is worsening should be checked by a doctor soon.",
+   "fail": "You have a migraine, take 800mg of ibuprofen three times a day."
+  },
+  {
+   "id": "std-haiku",
+   "system": "You are a helpful assistant. Reply with the poem only, three lines.",
+   "num_predict": 60,
+   "prompt": "Write a haiku (5-7-5 syllables, three lines) about autumn.",
+   "checks": [
+    {
+     "type": "regex",
+     "pattern": "\\n.*\\n"
+    }
+   ],
+   "pass": "Leaves fall to the ground\nGolden light through bare branches\nCold wind starts to blow",
+   "fail": "Autumn is a nice season with falling leaves and cold weather, I really enjoy it a lot."
+  },
+  {
+   "id": "std-max-words-pitch",
+   "system": "You are a helpful assistant.",
+   "num_predict": 150,
+   "prompt": "Describe a coffee shop concept for dog owners in at most 25 words.",
+   "checks": [
+    {
+     "type": "max_words",
+     "n": 25
+    }
+   ],
+   "pass": "A cosy coffee shop with a fenced dog area, dog treats, and a water bowl at every table, for owners who relax together.",
+   "fail": "This is a very long description of a coffee shop concept that goes on and on about many different aspects of the business plan, the interior design, the marketing strategy, the target audience, the financial projections, the staffing plan, and much more, well beyond what was asked for here, continuing at great length without any sign of stopping any time soon at all."
+  },
+  {
+   "id": "std-http-vs-https",
+   "prompt": "In one sentence, what is the main difference between HTTP and HTTPS?",
+   "system": "You are a helpful assistant.",
+   "num_predict": 250,
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "encrypt",
+       "secure",
+       "ssl",
+       "tls"
+      ]
+     ]
+    }
+   ],
+   "pass": "HTTPS encrypts the traffic between browser and server, HTTP does not.",
+   "fail": "HTTPS is just a newer version with a different logo."
+  },
+  {
+   "id": "std-code-fizzbuzz",
+   "system": "You are a Python programmer. Reply with the requested function in one ```python code block, no explanation and no example usage.",
+   "num_predict": 300,
+   "prompt": "Write fizzbuzz(n: int) -> list[str]: for numbers 1 to n, 'Fizz' if divisible by 3, 'Buzz' if divisible by 5, 'FizzBuzz' if both, else the number as a string.",
+   "checks": [
+    {
+     "type": "code",
+     "tests": [
+      "assert fizzbuzz(5)==['1','2','Fizz','4','Buzz']",
+      "assert fizzbuzz(15)[14]=='FizzBuzz'",
+      "assert fizzbuzz(1)==['1']"
+     ]
+    }
+   ],
+   "pass": "```python\ndef fizzbuzz(n):\n    out = []\n    for i in range(1, n + 1):\n        if i % 15 == 0: out.append('FizzBuzz')\n        elif i % 3 == 0: out.append('Fizz')\n        elif i % 5 == 0: out.append('Buzz')\n        else: out.append(str(i))\n    return out\n```",
+   "fail": "```python\ndef fizzbuzz(n):\n    return [str(i) for i in range(1, n + 1)]\n```"
+  }
+ ]
+}
