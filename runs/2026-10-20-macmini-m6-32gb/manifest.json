@@ -18,17 +18,7 @@
   "temperature": 0.2,
   "tracks": [
    "cybersecurity",
-   "daily",
-   "coding",
-   "dutch",
-   "tools",
-   "honesty",
-   "reasoning",
-   "longcontext",
-   "hard",
-   "standard",
    "pentest",
-   "scenario",
    "secdev"
   ]
  },
