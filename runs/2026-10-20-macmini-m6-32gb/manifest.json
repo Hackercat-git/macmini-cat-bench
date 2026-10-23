@@ -17,7 +17,19 @@
   "seeds": 3,
   "temperature": 0.2,
   "tracks": [
-   "scenario"
+   "cybersecurity",
+   "daily",
+   "coding",
+   "dutch",
+   "tools",
+   "honesty",
+   "reasoning",
+   "longcontext",
+   "hard",
+   "standard",
+   "pentest",
+   "scenario",
+   "secdev"
   ]
  },
  "models": {
@@ -316,6 +328,123 @@
     "quantization_level": "Q4_K_M",
     "context_length": 32768,
     "embedding_length": 5120,
+    "runner": "ggml"
+   }
+  },
+  "command-r:35b": {
+   "digest": "7d96360d357f979f",
+   "size_gb": 18.72,
+   "details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "command-r",
+    "families": [
+     "command-r"
+    ],
+    "parameter_size": "32.3B",
+    "quantization_level": "Q4_0",
+    "context_length": 131072,
+    "embedding_length": 8192,
+    "runner": "ggml"
+   }
+  },
+  "nous-hermes2:10.7b": {
+   "digest": "d50977d0b36ae577",
+   "size_gb": 6.07,
+   "details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "llama",
+    "families": [
+     "llama"
+    ],
+    "parameter_size": "11B",
+    "quantization_level": "Q4_0",
+    "context_length": 4096,
+    "embedding_length": 4096,
+    "runner": "ggml"
+   }
+  },
+  "glm4:9b": {
+   "digest": "5b699761eca535dc",
+   "size_gb": 5.46,
+   "details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "chatglm",
+    "families": [
+     "chatglm"
+    ],
+    "parameter_size": "9.4B",
+    "quantization_level": "Q4_0",
+    "context_length": 131072,
+    "embedding_length": 4096,
+    "runner": "ggml"
+   }
+  },
+  "hermes3:8b": {
+   "digest": "4f6b83f30b62bc3d",
+   "size_gb": 4.66,
+   "details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "llama",
+    "families": [
+     "llama"
+    ],
+    "parameter_size": "8.0B",
+    "quantization_level": "Q4_0",
+    "context_length": 131072,
+    "embedding_length": 4096,
+    "runner": "ggml"
+   }
+  },
+  "zephyr:7b": {
+   "digest": "bbe38b81adec6be8",
+   "size_gb": 4.11,
+   "details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "llama",
+    "families": [
+     "llama"
+    ],
+    "parameter_size": "7B",
+    "quantization_level": "Q4_0",
+    "context_length": 32768,
+    "embedding_length": 4096,
+    "runner": "ggml"
+   }
+  },
+  "vicuna:7b": {
+   "digest": "370739dc897bba01",
+   "size_gb": 3.83,
+   "details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "llama",
+    "families": null,
+    "parameter_size": "7B",
+    "quantization_level": "Q4_0",
+    "context_length": 4096,
+    "embedding_length": 4096,
+    "runner": "ggml"
+   }
+  },
+  "yi:9b": {
+   "digest": "3af70141e8ebd597",
+   "size_gb": 5.04,
+   "details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "llama",
+    "families": [
+     "llama"
+    ],
+    "parameter_size": "9B",
+    "quantization_level": "Q4_0",
+    "context_length": 4096,
+    "embedding_length": 4096,
     "runner": "ggml"
    }
   }
