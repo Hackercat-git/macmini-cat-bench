@@ -1,0 +1,102 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>Models: macmini-cat-bench</title><style>
+:root { --ink:#14161a; --ink2:#5b616b; --line:#e3e5e9; --blue:#2a78d6; --bg:#f6f7f9; --panel:#ffffff; --soft:#eef3fb; --good:#1a7f4b; --warn:#b45309; --shadow:0 1px 2px rgba(20,22,26,.06),0 4px 14px rgba(20,22,26,.05); }
+@media (prefers-color-scheme: dark) { :root { --ink:#eceef2; --ink2:#a3a9b4; --line:#2b2f36; --blue:#4d94ec; --bg:#101216; --panel:#171a1f; --soft:#1b2433; --good:#46c07f; --warn:#e0a24a; --shadow:none; } }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; -webkit-font-smoothing:antialiased; }
+a { color:var(--blue); text-decoration:none; } a:hover { text-decoration:underline; }
+code { background:var(--soft); padding:1px 6px; border-radius:5px; font-size:.9em; }
+.top { position:sticky; top:0; z-index:5; background:color-mix(in srgb,var(--bg) 88%,transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+.top .in { max-width:1180px; margin:0 auto; padding:10px 20px; display:flex; align-items:center; gap:22px; }
+.brand { font-weight:700; letter-spacing:-.01em; color:var(--ink); display:flex; align-items:center; gap:8px; } .brand:hover { text-decoration:none; }
+.brand i { width:22px; height:22px; border-radius:7px; background:var(--blue); display:inline-block; position:relative; }
+.brand i:after { content:""; position:absolute; inset:6px; border-radius:50%; background:#fff; opacity:.9; }
+nav { display:flex; gap:4px; margin-left:auto; } nav a { color:var(--ink2); font-weight:600; font-size:14px; padding:6px 12px; border-radius:8px; } nav a:hover { background:var(--soft); text-decoration:none; color:var(--ink); }
+nav a.on { background:var(--soft); color:var(--blue); }
+main { max-width:1180px; margin:0 auto; padding:34px 20px 70px; }
+.hero h1 { font-size:clamp(30px,5vw,46px); line-height:1.08; letter-spacing:-.025em; margin:0 0 12px; }
+.hero p { font-size:17px; color:var(--ink2); max-width:760px; margin:0 0 6px; }
+.chips { display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 4px; } .chip { font-size:12.5px; color:var(--ink2); background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:3px 11px; }
+.stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:26px 0 8px; }
+.stat { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:14px 16px; box-shadow:var(--shadow); }
+.stat b { display:block; font-size:30px; line-height:1.1; letter-spacing:-.02em; } .stat span { color:var(--ink2); font-size:13px; }
+h2 { font-size:22px; letter-spacing:-.015em; margin:46px 0 6px; } h3 { font-size:16px; margin:14px 0 6px; }
+.lead { color:var(--ink2); margin:0 0 16px; max-width:820px; }
+.finds { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; }
+.find { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px; box-shadow:var(--shadow); }
+.find small { color:var(--ink2); text-transform:uppercase; letter-spacing:.06em; font-size:11px; font-weight:700; }
+.find b { display:block; font-size:19px; margin:4px 0 2px; letter-spacing:-.01em; } .find span { color:var(--ink2); font-size:13.5px; }
+.panel { background:var(--panel); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); }
+.scroll { overflow-x:auto; }
+table { border-collapse:collapse; width:100%; font-size:13.5px; }
+th,td { padding:9px 10px; text-align:right; white-space:nowrap; border-bottom:1px solid var(--line); }
+tbody tr:last-child th, tbody tr:last-child td { border-bottom:0; }
+th { font-weight:600; } thead th { position:sticky; top:0; background:var(--panel); color:var(--ink2); font-size:12px; vertical-align:bottom; white-space:normal; line-height:1.25; cursor:pointer; user-select:none; }
+thead th:hover { color:var(--blue); } th.l, td.l { text-align:left; }
+tbody tr:hover td, tbody tr:hover th { background:var(--soft); }
+.rank { color:var(--ink2); width:34px; text-align:left; font-variant-numeric:tabular-nums; }
+.mname { font-weight:650; } .mname small { display:block; color:var(--ink2); font-weight:400; font-size:11.5px; }
+.avg { display:flex; align-items:center; gap:8px; justify-content:flex-end; min-width:130px; font-weight:700; font-variant-numeric:tabular-nums; }
+.avg i { display:block; height:7px; border-radius:4px; background:var(--blue); min-width:2px; } .avg s { display:block; width:70px; height:7px; border-radius:4px; background:var(--line); text-decoration:none; }
+.cell { font-variant-numeric:tabular-nums; border-radius:6px; } .cell small { display:block; color:var(--ink2); font-size:10.5px; }
+.warn { color:var(--warn); }
+.muted { color:var(--ink2); }
+.cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:12px; }
+.card { border:1px solid var(--line); border-radius:12px; background:var(--panel); padding:10px 12px; } .card b { font-size:14px; }
+.radar { width:100%; height:auto; } .rl { font-size:9.5px; fill:var(--ink2); }
+.note { color:var(--ink2); font-size:13px; }
+details { margin:10px 0; } summary { cursor:pointer; font-weight:600; color:var(--blue); }
+pre { white-space:pre-wrap; background:var(--soft); border:1px solid var(--line); border-radius:10px; padding:10px 12px; font-size:12.5px; }
+.balls { display:grid; gap:14px; } .ball { border:1px solid var(--line); border-radius:14px; padding:12px 16px; background:var(--panel); box-shadow:var(--shadow); }
+button { font:inherit; font-weight:600; padding:9px 16px; border:1px solid var(--line); background:var(--panel); color:var(--ink); border-radius:10px; cursor:pointer; }
+button:hover { border-color:var(--blue); } button.go { background:var(--blue); border-color:var(--blue); color:#fff; }
+.legend { display:flex; gap:16px; flex-wrap:wrap; font-size:12.5px; color:var(--ink2); padding:12px 16px 0; align-items:center; }
+.legend label { display:flex; align-items:center; gap:5px; cursor:pointer; } .legend input { accent-color:var(--blue); cursor:pointer; }
+.toolbar { display:flex; flex-wrap:wrap; gap:10px; align-items:center; padding:10px 0 12px; }
+.toolbar input[type=search] { font:inherit; font-size:13.5px; padding:8px 12px; border:1px solid var(--line); background:var(--panel); color:var(--ink); border-radius:9px; min-width:180px; flex:1 1 180px; }
+.ramf { display:flex; gap:6px; align-items:center; font-size:12.5px; color:var(--ink2); }
+.ramf button { padding:5px 11px; font-size:12.5px; font-weight:600; border-radius:999px; }
+.ramf button.on { background:var(--blue); border-color:var(--blue); color:#fff; }
+#csv { font-size:12.5px; padding:8px 14px; }
+tr.hide-row { display:none; }
+svg.scatter { width:100%; height:auto; display:block; } .scatter text { font:11px -apple-system,Segoe UI,sans-serif; fill:var(--ink2); } .scatter .pl { fill:var(--ink); font-weight:600; }
+.scatter circle { fill:var(--blue); stroke:var(--panel); stroke-width:2; } .scatter circle:hover { fill:var(--ink); } .scatter .grid { stroke:var(--line); }
+.pars { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px; }
+.par { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px; box-shadow:var(--shadow); } .par b { font-size:15px; } .par .big { font-size:30px; font-weight:700; letter-spacing:-.02em; margin:6px 0 0; } .par ul { margin:8px 0 0; padding-left:18px; color:var(--ink2); font-size:13.5px; }
+footer { margin-top:50px; padding-top:18px; border-top:1px solid var(--line); color:var(--ink2); font-size:13px; }
+@media (max-width:640px) { .top .in { gap:10px; padding:8px 14px; } .brand span { display:none; } main { padding:22px 14px 50px; } nav a { padding:6px 9px; } }
+</style><script>const MNAME = {"codestral:22b": "codestral 22B", "command-r:35b": "Command R 35B", "deepseek-r1:14b": "deepseek-r1 14B", "gemma3:12b": "gemma3 12B", "gemma3:4b": "gemma3 4B", "gemma4:12b": "gemma4 12B", "glm4:9b": "GLM-4 9B", "gpt-oss:20b": "gpt-oss 20B", "granite4": "granite4", "hermes3:8b": "Hermes 3 8B", "hf.co/bartowski/WhiteRabbitNeo-2.5-Qwen-2.5-Coder-7B-GGUF:Q4_K_M": "WhiteRabbitNeo 2.5 (Qwen) 7B", "hf.co/mradermacher/DeepHat-V1-7B-GGUF:Q4_K_M": "DeepHat V1 7B", "hf.co/mradermacher/Llama-3-WhiteRabbitNeo-8B-v2.0-GGUF:Q4_K_M": "WhiteRabbitNeo (Llama 3) 8B", "hf.co/QuantFactory/Foundation-Sec-8B-GGUF:Q4_K_M": "Foundation-Sec 8B", "llama3.1:8b": "Llama 3.1 8B", "llama3.2:3b": "Llama 3.2 3B", "mistral-small:24b": "Mistral Small 24B", "nous-hermes2:10.7b": "Nous Hermes 2 11B", "phi4:14b": "phi4 14B", "qwen2.5-coder:14b": "qwen2.5-coder 14B", "qwen3.5:9b": "qwen3.5 9B", "qwen3.8:27b": "qwen3.8 27B", "qwen3:8b": "qwen3 8B", "vicuna:7b": "Vicuna 7B", "wrn13b": "WhiteRabbitNeo 13B (Llama 2)", "yi:9b": "Yi 9B", "zephyr:7b": "Zephyr 7B"};const MFAM = {"codestral:22b": "Mistral", "command-r:35b": "Command R (Cohere)", "deepseek-r1:14b": "DeepSeek R1 distill", "gemma3:12b": "Gemma", "gemma3:4b": "Gemma", "gemma4:12b": "Gemma", "glm4:9b": "GLM", "gpt-oss:20b": "gpt-oss", "granite4": "Granite", "hermes3:8b": "Hermes (Nous Research, Llama 3.1-based)", "hf.co/bartowski/WhiteRabbitNeo-2.5-Qwen-2.5-Coder-7B-GGUF:Q4_K_M": "Qwen 2.5 Coder (security-tuned)", "hf.co/mradermacher/DeepHat-V1-7B-GGUF:Q4_K_M": "Qwen 2.5 Coder (security-tuned)", "hf.co/mradermacher/Llama-3-WhiteRabbitNeo-8B-v2.0-GGUF:Q4_K_M": "Llama 3 (security-tuned)", "hf.co/QuantFactory/Foundation-Sec-8B-GGUF:Q4_K_M": "Llama 3.1 (security-tuned, Cisco)", "llama3.1:8b": "Llama", "llama3.2:3b": "Llama", "mistral-small:24b": "Mistral", "nous-hermes2:10.7b": "Hermes (Nous Research, Solar-based)", "phi4:14b": "Phi", "qwen2.5-coder:14b": "Qwen", "qwen3.5:9b": "Qwen", "qwen3.8:27b": "Qwen", "qwen3:8b": "Qwen", "vicuna:7b": "Vicuna (Llama 2-based)", "wrn13b": "Llama 2 (security-tuned)", "yi:9b": "Yi", "zephyr:7b": "Zephyr (Mistral-based)"};const TLABEL = {"cybersecurity": "Cybersecurity", "daily": "Daily use", "coding": "Coding", "dutch": "Dutch", "tools": "Tools and JSON", "honesty": "Honesty and safety", "reasoning": "Reasoning and maths", "longcontext": "Long context", "hard": "Hard mixed", "standard": "Standard topics", "pentest": "Pentesting", "scenario": "Triage under noise", "secdev": "Secure dev &amp; ops"};
+(async () => {
+  const [res, ans, prm] = await Promise.all([fetch('results.json').then(r => r.json()), fetch('answers.json').then(r => r.json()), fetch('prompts.json').then(r => r.json())]);
+  const sel = document.getElementById('msel'), q = document.getElementById('tq'), body = document.getElementById('mbody'), head = document.getElementById('mhead');
+  const models = Object.keys(res.models);
+  sel.innerHTML = models.map(m => `<option value="${m}">${MNAME[m] || m}</option>`).join('');
+  const params = new URLSearchParams(location.search);
+  if (params.get('m') && models.includes(params.get('m'))) sel.value = params.get('m');
+  function heat(v) { return `background:rgba(42,120,214,${(0.05 + 0.5 * v * v).toFixed(2)})`; }
+  function render() {
+    const m = sel.value; history.replaceState(null, '', '?m=' + encodeURIComponent(m));
+    const r = res.models[m] || {}; const fam = MFAM[m] || '';
+    head.innerHTML = `<h2 style="margin-top:0">${MNAME[m] || m}</h2><p class="lead">${fam}</p>` +
+      `<div class="cards">${res.tracks.filter(t => r[t]).map(t => `<div class="card"><b>${TLABEL[t]}</b><div class="avg" style="justify-content:flex-start;margin-top:6px">` +
+        `<s style="width:70px"><i style="width:${(r[t].mean * 100).toFixed(0)}%"></i></s>${r[t].mean.toFixed(2)}</div></div>`).join('')}</div>`;
+    const term = (q.value || '').trim().toLowerCase();
+    const a = ans[m] || {};
+    let rows = '';
+    for (const t of res.tracks) {
+      for (const item of (a[t] || [])) {
+        const prompt = (prm[t] && prm[t][item.id]) || '';
+        if (term && !(item.id + ' ' + prompt + ' ' + item.answer).toLowerCase().includes(term)) continue;
+        const cut = item.truncated ? ' <span class="warn" title="cut off by the token limit">⚠</span>' : '';
+        rows += `<div class="ball"><p><b>${TLABEL[t]}</b> / <code>${item.id}</code> ` +
+          `<span style="${heat(item.score)};float:right;padding:2px 9px;border-radius:6px;font-weight:600">${item.score.toFixed(2)}${cut}</span></p>` +
+          (prompt ? `<pre>Q: ${esc(prompt)}</pre>` : '') + `<pre>A: ${esc(item.answer) || '(empty answer)'}</pre></div>`;
+      }
+    }
+    body.innerHTML = rows || "<p class='note'>No tasks match that search.</p>";
+  }
+  function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+  sel.addEventListener('change', render); q.addEventListener('input', render);
+  render();
+})();
+</script></head><body><header class="top"><div class="in"><a class="brand" href="index.html"><i></i><span>macmini-cat-bench</span></a><nav><a href="index.html">Results</a><a href="models.html" class="on">Models</a><a href="hairball.html">Hairball</a><a href="vote.html">Blind vote</a><a href="https://github.com/Hackercat-git/macmini-cat-bench">GitHub</a></nav></div></header><main><h1>Models</h1><p class='sub'>Every task, grouped by track, for one model at a time — the mean score across seeds and the first answer, verbatim. Compare this against the leaderboard average to see <i>why</i> a model scored what it did.</p><div class='toolbar'><select id='msel' aria-label='Model'></select><input id='tq' type='search' placeholder='Search tasks or answers…' aria-label='Search tasks'></div><div id='mhead'></div><div class='balls' id='mbody' style='margin-top:14px'></div></main></body></html>

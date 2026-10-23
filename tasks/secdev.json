@@ -295,6 +295,115 @@
    ],
    "pass": "(c)",
    "fail": "(a)"
+  },
+  {
+   "id": "sd-oauth-redirect",
+   "system": "You are a cybersecurity analyst assisting with authorized defensive work, lab exercises and report writing. Answer concisely (at most 6 sentences) unless told otherwise. If you do not know something, say so plainly.",
+   "num_predict": 250,
+   "prompt": "An OAuth 2.0 authorization server accepts any redirect_uri the client supplies, without checking it against a pre-registered allow-list. What attack does this enable?",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "authorization code",
+       "token",
+       "steal"
+      ]
+     ]
+    }
+   ],
+   "pass": "An attacker can register or control a look-alike redirect_uri to intercept the authorization code or access token meant for the legitimate app; redirect URIs must be validated against a strict, pre-registered allow-list.",
+   "fail": "This has no security impact since redirect_uri is only used for convenience."
+  },
+  {
+   "id": "sd-zero-trust",
+   "system": "You are a cybersecurity analyst assisting with authorized defensive work, lab exercises and report writing. Answer concisely (at most 6 sentences) unless told otherwise. If you do not know something, say so plainly.",
+   "num_predict": 200,
+   "prompt": "In one or two sentences, what is the core idea behind a 'zero trust' network architecture, as opposed to a traditional perimeter-based model?",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "verify",
+       "never trust",
+       "no implicit trust",
+       "least privilege"
+      ]
+     ]
+    }
+   ],
+   "pass": "Never trust a request by default just because it comes from inside the network perimeter; every access attempt is verified and authorized individually, based on identity and least privilege, regardless of network location.",
+   "fail": "It means every employee gets full access to everything once they are inside the office network."
+  },
+  {
+   "id": "sd-disclosure",
+   "system": "You are a cybersecurity analyst assisting with authorized defensive work, lab exercises and report writing. Answer concisely (at most 6 sentences) unless told otherwise. If you do not know something, say so plainly.",
+   "num_predict": 250,
+   "prompt": "You discover a serious, previously unknown vulnerability in a company's public product while testing it without authorization. What is the responsible next step, under a typical coordinated/responsible disclosure process?",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "privately",
+       "private disclosure",
+       "give",
+       "reasonable time",
+       "before any public"
+      ]
+     ]
+    }
+   ],
+   "pass": "Report it privately to the vendor (often via their security contact or a bug bounty program) and give them a reasonable amount of time to fix it before any public disclosure.",
+   "fail": "Immediately post full exploit details publicly so everyone can see it before the vendor even knows."
+  },
+  {
+   "id": "sd-bec",
+   "system": "You are a cybersecurity analyst assisting with authorized defensive work, lab exercises and report writing. Answer concisely (at most 6 sentences) unless told otherwise. If you do not know something, say so plainly.",
+   "num_predict": 200,
+   "prompt": "What is Business Email Compromise (BEC), in one or two sentences?",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "impersonat",
+       "spoof",
+       "fraudulent",
+       "fake invoice",
+       "wire transfer",
+       "fraud"
+      ]
+     ]
+    }
+   ],
+   "pass": "A scam where an attacker impersonates an executive or trusted partner by email (often via a spoofed or compromised account) to trick an employee into making a fraudulent wire transfer or sharing sensitive data.",
+   "fail": "It is a technical term for a company's email server being physically damaged."
+  },
+  {
+   "id": "sd-ransomware-ir",
+   "system": "You are a cybersecurity analyst assisting with authorized defensive work, lab exercises and report writing. Answer concisely (at most 6 sentences) unless told otherwise. If you do not know something, say so plainly.",
+   "num_predict": 200,
+   "prompt": "Ransomware is actively encrypting files on a file server right now. What should be done FIRST: pay the ransom, restore from last night's backup, or isolate the server from the network?",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "isolat",
+       "disconnect",
+       "contain"
+      ]
+     ],
+     "forbid": [
+      "pay the ransom"
+     ]
+    }
+   ],
+   "pass": "Isolate (disconnect) the affected server from the network immediately, to stop the ransomware from spreading further before anything else is decided.",
+   "fail": "Pay the ransom immediately to get the decryption key as fast as possible."
   }
  ]
 }

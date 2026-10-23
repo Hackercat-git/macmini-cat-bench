@@ -500,6 +500,61 @@
    "pass": "{\"attack\": \"none\", \"src_ip\": null, \"compromised\": false}",
    "fail": "{\"attack\": \"brute force\", \"src_ip\": \"192.168.1.20\", \"compromised\": true}",
    "system": "Answer ONLY with one valid JSON object, no explanation and no code block."
+  },
+  {
+   "id": "cyb-hash-vs-encrypt",
+   "system": "You are a cybersecurity analyst assisting with authorized defensive work, lab exercises and report writing. Answer concisely (at most 6 sentences) unless told otherwise. If you do not know something, say so plainly.",
+   "num_predict": 200,
+   "prompt": "In one sentence, what is the key difference between hashing and encryption?",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "revers",
+       "decrypt",
+       "one-way",
+       "irreversible"
+      ]
+     ]
+    }
+   ],
+   "pass": "Hashing is a one-way function (you cannot recover the original input), while encryption is reversible with the right key.",
+   "fail": "They are the same thing, just different names for the same process."
+  },
+  {
+   "id": "cyb-cert-pinning",
+   "system": "You are a cybersecurity analyst assisting with authorized defensive work, lab exercises and report writing. Answer concisely (at most 6 sentences) unless told otherwise. If you do not know something, say so plainly.",
+   "num_predict": 200,
+   "prompt": "What problem does certificate pinning in a mobile app help prevent?",
+   "checks": [
+    {
+     "type": "keywords",
+     "groups": [
+      [
+       "man-in-the-middle",
+       "mitm",
+       "intercept"
+      ]
+     ]
+    }
+   ],
+   "pass": "It helps prevent man-in-the-middle attacks, including ones using a fraudulent but technically valid certificate (for example from a compromised or coerced certificate authority).",
+   "fail": "It prevents the app from being installed on rooted or jailbroken devices."
+  },
+  {
+   "id": "cyb-bugbounty-sev",
+   "system": "You are a cybersecurity analyst assisting with authorized defensive work, lab exercises and report writing. Answer concisely (at most 6 sentences) unless told otherwise. If you do not know something, say so plainly.",
+   "num_predict": 200,
+   "prompt": "A bug bounty report shows that any logged-in user can view any other user's private messages by changing a numeric ID in the URL, with no further steps needed. What severity would this typically be rated: low, medium, high or critical?",
+   "checks": [
+    {
+     "type": "regex",
+     "pattern": "high|critical"
+    }
+   ],
+   "pass": "High to critical, since it is a trivial, unauthenticated-beyond-login IDOR exposing private user data at scale.",
+   "fail": "Low, since it only affects one user at a time."
   }
  ]
 }

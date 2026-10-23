@@ -5,6 +5,7 @@ import math
 import random
 import statistics
 from pathlib import Path
+from urllib.parse import quote
 
 from .models import display_name, load_models
 from .runner import read_records
@@ -190,7 +191,7 @@ def page(title: str, body: str, extra_head: str = "", active: str = "index") -> 
 
 
 def nav(active: str) -> str:
-    items = [("index", "Results"), ("hairball", "Hairball"), ("vote", "Blind vote")]
+    items = [("index", "Results"), ("models", "Models"), ("hairball", "Hairball"), ("vote", "Blind vote")]
     links = "".join(f'<a href="{n}.html"' + (' class="on"' if n == active else "") + f">{label}</a>" for n, label in items)
     return links.join(["<nav>", '<a href="https://github.com/Hackercat-git/macmini-cat-bench">GitHub</a></nav>'])
 
@@ -334,7 +335,8 @@ def render_index(run: dict, agg: dict, models_cfg: dict, tracks: list) -> str:
         mem = f'<td data-v="{mem_gb or -1}">{p["memory_gb"]} GB</td>' if p.get("memory_gb") else '<td data-v="-1">—</td>'
         fam = (models_cfg.get(model) or {}).get("family", "")
         search_key = esc((name(model) + " " + fam).lower())
-        rows += (f'<tr data-name="{search_key}" data-mem="{mem_gb}"><td class="rank">{i}</td><th class="l mname">{esc(name(model))}<small>{esc(fam)}</small></th>'
+        rows += (f'<tr data-name="{search_key}" data-mem="{mem_gb}"><td class="rank">{i}</td><th class="l mname">'
+                 f'<a href="models.html?m={quote(model)}">{esc(name(model))}</a><small>{esc(fam)}</small></th>'
                  f'<td data-v="{avg[model]:.3f}"><div class="avg"><s><i style="width:{avg[model] * 100:.0f}%"></i></s>{avg[model]:.2f}</div></td>{cells}{speed}{mem}</tr>')
     ram_opts = "".join(f'<button type="button" data-ram="{v}">{l}</button>' for v, l in
                         (("0", "All"), ("8", "≤8 GB"), ("16", "≤16 GB"), ("32", "≤32 GB"), ("64", "≤64 GB")))
@@ -491,6 +493,86 @@ def markdown_summary(run: dict, agg: dict, models_cfg: dict, tracks: list) -> st
     return "\n".join(lines) + "\n"
 
 
+def model_answers(run: dict, tasks: dict) -> dict:
+    """{model: {track: [{id, score, seed, truncated, answer}]}} — one representative answer (lowest seed) per task, score is its mean over seeds."""
+    out = {}
+    for model, by_track in run["data"].items():
+        out[model] = {}
+        for track, recs in by_track.items():
+            by_task = {}
+            for r in recs:
+                by_task.setdefault(r["task"], []).append(r)
+            items = []
+            for task_id, rs in by_task.items():
+                pick = min(rs, key=lambda r: r["seed"])
+                items.append({"id": task_id, "score": round(statistics.mean(x["score"] for x in rs), 3), "seed": pick["seed"],
+                              "truncated": bool(pick.get("truncated") or pick.get("cut_in_thinking")), "answer": pick["answer"]})
+            items.sort(key=lambda x: x["score"])
+            out[model][track] = items
+    return out
+
+
+def task_prompts(tasks: dict) -> dict:
+    """{track: {id: short prompt}} for display next to an answer; long-document tasks show their question instead of the filler text."""
+    out = {}
+    for track, d in tasks.items():
+        out[track] = {}
+        for t in d["tasks"]:
+            p = t["long"]["question"] if "long" in t else t.get("prompt", "")
+            out[track][t["id"]] = p[:600]
+    return out
+
+
+MODELS_JS = """
+(async () => {
+  const [res, ans, prm] = await Promise.all([fetch('results.json').then(r => r.json()), fetch('answers.json').then(r => r.json()), fetch('prompts.json').then(r => r.json())]);
+  const sel = document.getElementById('msel'), q = document.getElementById('tq'), body = document.getElementById('mbody'), head = document.getElementById('mhead');
+  const models = Object.keys(res.models);
+  sel.innerHTML = models.map(m => `<option value="${m}">${MNAME[m] || m}</option>`).join('');
+  const params = new URLSearchParams(location.search);
+  if (params.get('m') && models.includes(params.get('m'))) sel.value = params.get('m');
+  function heat(v) { return `background:rgba(42,120,214,${(0.05 + 0.5 * v * v).toFixed(2)})`; }
+  function render() {
+    const m = sel.value; history.replaceState(null, '', '?m=' + encodeURIComponent(m));
+    const r = res.models[m] || {}; const fam = MFAM[m] || '';
+    head.innerHTML = `<h2 style="margin-top:0">${MNAME[m] || m}</h2><p class="lead">${fam}</p>` +
+      `<div class="cards">${res.tracks.filter(t => r[t]).map(t => `<div class="card"><b>${TLABEL[t]}</b><div class="avg" style="justify-content:flex-start;margin-top:6px">` +
+        `<s style="width:70px"><i style="width:${(r[t].mean * 100).toFixed(0)}%"></i></s>${r[t].mean.toFixed(2)}</div></div>`).join('')}</div>`;
+    const term = (q.value || '').trim().toLowerCase();
+    const a = ans[m] || {};
+    let rows = '';
+    for (const t of res.tracks) {
+      for (const item of (a[t] || [])) {
+        const prompt = (prm[t] && prm[t][item.id]) || '';
+        if (term && !(item.id + ' ' + prompt + ' ' + item.answer).toLowerCase().includes(term)) continue;
+        const cut = item.truncated ? ' <span class="warn" title="cut off by the token limit">⚠</span>' : '';
+        rows += `<div class="ball"><p><b>${TLABEL[t]}</b> / <code>${item.id}</code> ` +
+          `<span style="${heat(item.score)};float:right;padding:2px 9px;border-radius:6px;font-weight:600">${item.score.toFixed(2)}${cut}</span></p>` +
+          (prompt ? `<pre>Q: ${esc(prompt)}</pre>` : '') + `<pre>A: ${esc(item.answer) || '(empty answer)'}</pre></div>`;
+      }
+    }
+    body.innerHTML = rows || "<p class='note'>No tasks match that search.</p>";
+  }
+  function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+  sel.addEventListener('change', render); q.addEventListener('input', render);
+  render();
+})();
+"""
+
+
+def render_models(run: dict, agg: dict, models_cfg: dict, tracks: list) -> str:
+    esc = html.escape
+    mname = {m: esc(display_name(m, models_cfg)) for m in agg}
+    mfam = {m: esc((models_cfg.get(m) or {}).get("family", "")) for m in agg}
+    tlabel = {t: esc(TRACK_LABELS[t]) for t in tracks}
+    data = f"const MNAME = {json.dumps(mname, ensure_ascii=False)};const MFAM = {json.dumps(mfam, ensure_ascii=False)};const TLABEL = {json.dumps(tlabel, ensure_ascii=False)};"
+    body = ("<h1>Models</h1><p class='sub'>Every task, grouped by track, for one model at a time — the mean score across seeds and the first answer, verbatim. "
+            "Compare this against the leaderboard average to see <i>why</i> a model scored what it did.</p>"
+            "<div class='toolbar'><select id='msel' aria-label='Model'></select><input id='tq' type='search' placeholder='Search tasks or answers…' aria-label='Search tasks'></div>"
+            "<div id='mhead'></div><div class='balls' id='mbody' style='margin-top:14px'></div>")
+    return page("Models: macmini-cat-bench", body, f"<script>{data}{MODELS_JS}</script>", active="models")
+
+
 def build(run_dir: Path, site_dir: Path, models_path: Path = None) -> dict:
     run = load_run(run_dir)
     if not run["data"]:
@@ -502,10 +584,13 @@ def build(run_dir: Path, site_dir: Path, models_path: Path = None) -> dict:
     site_dir = Path(site_dir)
     site_dir.mkdir(parents=True, exist_ok=True)
     (site_dir / "index.html").write_text(render_index(run, agg, models_cfg, tracks), encoding="utf-8")
+    (site_dir / "models.html").write_text(render_models(run, agg, models_cfg, tracks), encoding="utf-8")
     (site_dir / "hairball.html").write_text(render_hairball(run, models_cfg, tasks), encoding="utf-8")
     (site_dir / "vote.html").write_text(render_vote(run, models_cfg, tasks), encoding="utf-8")
     (site_dir / "results.json").write_text(json.dumps({"run": run["manifest"].get("run_id"), "tracks": tracks,
                                                      "models": {m: {t: {k: v for k, v in a.items() if k != "tasks"} for t, a in tr.items()} for m, tr in agg.items()}},
                                                     indent=1, ensure_ascii=False), encoding="utf-8")
+    (site_dir / "answers.json").write_text(json.dumps(model_answers(run, tasks), ensure_ascii=False), encoding="utf-8")
+    (site_dir / "prompts.json").write_text(json.dumps(task_prompts(tasks), ensure_ascii=False), encoding="utf-8")
     (site_dir / "RESULTS.md").write_text(markdown_summary(run, agg, models_cfg, tracks), encoding="utf-8")
     return {"models": len(agg), "tracks": tracks, "noise": noise(agg)}
