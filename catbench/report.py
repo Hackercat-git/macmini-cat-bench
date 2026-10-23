@@ -166,6 +166,13 @@ button { font:inherit; font-weight:600; padding:9px 16px; border:1px solid var(-
 button:hover { border-color:var(--blue); } button.go { background:var(--blue); border-color:var(--blue); color:#fff; }
 .legend { display:flex; gap:16px; flex-wrap:wrap; font-size:12.5px; color:var(--ink2); padding:12px 16px 0; align-items:center; }
 .legend label { display:flex; align-items:center; gap:5px; cursor:pointer; } .legend input { accent-color:var(--blue); cursor:pointer; }
+.toolbar { display:flex; flex-wrap:wrap; gap:10px; align-items:center; padding:10px 0 12px; }
+.toolbar input[type=search] { font:inherit; font-size:13.5px; padding:8px 12px; border:1px solid var(--line); background:var(--panel); color:var(--ink); border-radius:9px; min-width:180px; flex:1 1 180px; }
+.ramf { display:flex; gap:6px; align-items:center; font-size:12.5px; color:var(--ink2); }
+.ramf button { padding:5px 11px; font-size:12.5px; font-weight:600; border-radius:999px; }
+.ramf button.on { background:var(--blue); border-color:var(--blue); color:#fff; }
+#csv { font-size:12.5px; padding:8px 14px; }
+tr.hide-row { display:none; }
 svg.scatter { width:100%; height:auto; display:block; } .scatter text { font:11px -apple-system,Segoe UI,sans-serif; fill:var(--ink2); } .scatter .pl { fill:var(--ink); font-weight:600; }
 .scatter circle { fill:var(--blue); stroke:var(--panel); stroke-width:2; } .scatter circle:hover { fill:var(--ink); } .scatter .grid { stroke:var(--line); }
 .pars { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px; }
@@ -234,6 +241,42 @@ document.querySelectorAll('table.sortable').forEach(t => { const body = t.tBodie
       .forEach((r, i) => { body.appendChild(r); r.cells[0].textContent = i + 1; }); })); });
 document.querySelectorAll('.legend input[data-track]').forEach(cb => cb.addEventListener('change', () => {
   const t = document.getElementById('lb'); if (!t) return; t.classList.toggle('hide-' + cb.dataset.track, !cb.checked); }));
+(() => {
+  const tbl = document.getElementById('lb'); if (!tbl) return;
+  const q = document.getElementById('q'), ramBtns = [...document.querySelectorAll('.ramf button')], none = document.getElementById('novisible');
+  let ramMax = 0;
+  function apply() {
+    const term = (q.value || '').trim().toLowerCase();
+    let shown = 0;
+    [...tbl.tBodies[0].rows].forEach(r => {
+      const matchesName = !term || (r.dataset.name || '').includes(term);
+      const mem = parseFloat(r.dataset.mem || '0');
+      const matchesRam = ramMax === 0 || mem === 0 || mem <= ramMax;
+      const show = matchesName && matchesRam;
+      r.classList.toggle('hide-row', !show);
+      if (show) shown++;
+    });
+    none.style.display = shown ? 'none' : 'block';
+  }
+  q.addEventListener('input', apply);
+  ramBtns.forEach(b => b.addEventListener('click', () => { ramBtns.forEach(x => x.classList.remove('on')); b.classList.add('on'); ramMax = parseFloat(b.dataset.ram); apply(); }));
+  ramBtns[0].classList.add('on');
+  const csvBtn = document.getElementById('csv');
+  if (csvBtn) csvBtn.addEventListener('click', () => {
+    const heads = [...tbl.tHead.rows[0].cells].map(th => th.textContent.trim().replace(/\\s+/g, ' '));
+    const lines = [heads.join(',')];
+    [...tbl.tBodies[0].rows].forEach(r => {
+      const cells = [...r.cells].map(td => {
+        if (td.classList.contains('mname')) return '"' + td.childNodes[0].textContent.trim().replace(/"/g, '""') + '"';
+        const txt = (td.querySelector('.cell, .avg') || td).textContent.trim().split('\\n')[0];
+        return '"' + txt.replace(/"/g, '""') + '"';
+      });
+      lines.push(cells.join(','));
+    });
+    const blob = new Blob([lines.join('\\n')], { type: 'text/csv' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'macmini-cat-bench-results.csv'; a.click();
+  });
+})();
 """
 
 
@@ -287,13 +330,20 @@ def render_index(run: dict, agg: dict, models_cfg: dict, tracks: list) -> str:
                       f"<small>{rng}</small></div></td>")
         p = pm.get(model, {})
         speed = f'<td data-v="{p.get("generation_tok_s", -1)}">{p["generation_tok_s"]:.0f}</td>' if p else '<td data-v="-1">—</td>'
-        mem = f'<td data-v="{p.get("memory_gb") or -1}">{p["memory_gb"]} GB</td>' if p.get("memory_gb") else '<td data-v="-1">—</td>'
+        mem_gb = p.get("memory_gb") or 0
+        mem = f'<td data-v="{mem_gb or -1}">{p["memory_gb"]} GB</td>' if p.get("memory_gb") else '<td data-v="-1">—</td>'
         fam = (models_cfg.get(model) or {}).get("family", "")
-        rows += (f'<tr><td class="rank">{i}</td><th class="l mname">{esc(name(model))}<small>{esc(fam)}</small></th>'
+        search_key = esc((name(model) + " " + fam).lower())
+        rows += (f'<tr data-name="{search_key}" data-mem="{mem_gb}"><td class="rank">{i}</td><th class="l mname">{esc(name(model))}<small>{esc(fam)}</small></th>'
                  f'<td data-v="{avg[model]:.3f}"><div class="avg"><s><i style="width:{avg[model] * 100:.0f}%"></i></s>{avg[model]:.2f}</div></td>{cells}{speed}{mem}</tr>')
-    table = (f"<style>{track_css}</style><div class='legend' style='padding:0 0 10px'><span class='muted'>Show tracks:</span>{filters}</div>"
+    ram_opts = "".join(f'<button type="button" data-ram="{v}">{l}</button>' for v, l in
+                        (("0", "All"), ("8", "≤8 GB"), ("16", "≤16 GB"), ("32", "≤32 GB"), ("64", "≤64 GB")))
+    toolbar = (f"<div class='toolbar'><input id='q' type='search' placeholder='Search models…' aria-label='Search models'>"
+               f"<div class='ramf'><span class='muted'>Fits in:</span>{ram_opts}</div>"
+               f"<button id='csv' type='button'>Download CSV</button></div>")
+    table = (f"<style>{track_css}</style><div class='legend' style='padding:0 0 10px'><span class='muted'>Show tracks:</span>{filters}</div>{toolbar}"
              f'<div class="panel scroll"><table class="sortable" id="lb"><thead><tr><th class="l">#</th><th class="l">Model</th><th>Average</th>{head}'
-             f"<th>Speed<br>(tok/s)</th><th>Memory</th></tr></thead><tbody>{rows}</tbody></table></div>")
+             f"<th>Speed<br>(tok/s)</th><th>Memory</th></tr></thead><tbody>{rows}</tbody></table></div><p id='novisible' class='note' style='display:none'>No model matches that search and memory limit.</p>")
 
     # --- quality against speed
     pts = [(name(k), pm[k]["generation_tok_s"], avg[k]) for k in agg if k in pm]
