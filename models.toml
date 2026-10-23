@@ -306,7 +306,7 @@ family = "Hermes (Nous Research, Solar-based)"
 params_b = 11
 size_gb = 5.9
 source = "ollama library"
-tier = "medium"
+tier = "mid"
 status = "round7"
 
 [[model]]

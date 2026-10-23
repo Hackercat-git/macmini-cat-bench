@@ -1,3 +1,4 @@
+import re
 import unittest
 
 from catbench import scoring
@@ -68,11 +69,11 @@ class ModelListTests(unittest.TestCase):
         models = load_models()
         self.assertGreaterEqual(len(models), 15)
         for tag, m in models.items():
-            self.assertIn(m["status"], ("round1", "planned", "wishlist"), tag)
+            self.assertTrue(m["status"] in ("planned", "wishlist") or re.fullmatch(r"round\d+", m["status"]), (tag, m["status"]))
             self.assertIn(m["tier"], ("small", "mid", "large", "huge"), tag)
             self.assertTrue(m["name"], tag)
         self.assertEqual(models["deepseek-r1:14b"]["predict_min"], 3000)
-        self.assertTrue(any(m["status"] == "round1" for m in models.values()))
+        self.assertTrue(any(re.fullmatch(r"round\d+", m["status"]) for m in models.values()))
 
 
 if __name__ == "__main__":
