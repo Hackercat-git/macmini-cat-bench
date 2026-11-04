@@ -6,6 +6,7 @@ import time
 from pathlib import Path
 
 from . import perf, report, runner, system
+from .mlx_client import MLXClient
 from .models import load_models
 from .ollama import Client, OllamaError
 from .scoring import score_task
@@ -19,8 +20,14 @@ def default_run_id(info: dict) -> str:
     return f"{time.strftime('%Y-%m-%d')}-macmini-{chip}-{info.get('ram_gb') or 'x'}gb"
 
 
+def _make_client(a):
+    if getattr(a, "backend", "ollama") == "mlx":
+        return MLXClient(a.mlx_host if hasattr(a, "mlx_host") else None)
+    return Client(a.host)
+
+
 def cmd_run(a) -> int:
-    client = Client(a.host)
+    client = _make_client(a)
     cfg = load_models()
     info = system.machine_info()
     run_id = a.run_id or default_run_id(info)
@@ -40,7 +47,7 @@ def cmd_run(a) -> int:
 
 
 def cmd_perf(a) -> int:
-    client = Client(a.host)
+    client = _make_client(a)
     run_dir = Path(a.out) / (a.run_id or default_run_id(system.machine_info()))
     result = {"models": {}}
     try:  # keep what earlier rounds measured: measuring more models adds to perf.json, it does not replace it
@@ -57,7 +64,7 @@ def cmd_perf(a) -> int:
 
 
 def cmd_parallel(a) -> int:
-    client = Client(a.host)
+    client = _make_client(a)
     run_dir = Path(a.out) / (a.run_id or default_run_id(system.machine_info()))
     r = perf.parallel(client, a.model, a.agents, note=a.note)
     print(r)
@@ -115,6 +122,8 @@ def main(argv=None) -> int:
     sub = p.add_subparsers(dest="cmd", required=True)
     common = argparse.ArgumentParser(add_help=False)
     common.add_argument("--host", default=None, help="Ollama host (default: OLLAMA_HOST or localhost:11434)")
+    common.add_argument("--backend", default="ollama", choices=["ollama", "mlx"], help="inference backend")
+    common.add_argument("--mlx-host", default=None, dest="mlx_host", help="mlx_lm.server host (default: MLX_HOST or localhost:8080)")
     common.add_argument("--out", default=str(ROOT / "runs"))
     common.add_argument("--run-id", default=None)
     r = sub.add_parser("run", parents=[common], help="run models over tracks")

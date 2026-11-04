@@ -1,0 +1,22 @@
+{
+ "models": {
+  "FrostWolfAI/Frost-Cyber-Mini-1.0-MLX": {
+   "model": "FrostWolfAI/Frost-Cyber-Mini-1.0-MLX",
+   "cold_load_s": 0.0,
+   "memory_gb": 0.0,
+   "gpu_gb": 0.0,
+   "context": null,
+   "prompt_tokens": 3185,
+   "reading_tok_s": 1978.6,
+   "first_token_long_prompt_s": 1.61,
+   "generation_tok_s": 267.7,
+   "generation_min": 239.3,
+   "generation_max": 268.5,
+   "generated_tokens": [
+    1,
+    1,
+    1
+   ]
+  }
+ }
+}

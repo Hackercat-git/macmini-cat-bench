@@ -319,3 +319,14 @@ source = "ollama library"
 tier = "large"
 status = "round7"
 predict_min = 0
+
+[[model]]
+tag = "FrostWolfAI/Frost-Cyber-Mini-1.0-MLX"
+name = "Frost-Cyber-Mini 1.0 (MLX)"
+family = "Qwen3.5 (cybersecurity-tuned)"
+params_b = 3
+size_gb = 2.0
+source = "Hugging Face FrostWolfAI/Frost-Cyber-Mini-1.0-MLX, 4-bit MLX quantized"
+tier = "small"
+status = "round1"
+notes = "Served via mlx_lm.server (--backend mlx). Cybersecurity-focused Qwen3.5 fine-tune by FrostWolfAI (Zeus)."
