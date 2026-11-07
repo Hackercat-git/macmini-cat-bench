@@ -1,0 +1,47 @@
+{
+ "run_id": "2026-11-06-macmini-m6-32gb-hf",
+ "date": "2026-11-06",
+ "machine": {
+  "os": "macOS-27.0.1-arm64-arm-64bit",
+  "python": "3.11.17",
+  "catbench": "0.1.0",
+  "chip": "Apple M6",
+  "ram_gb": 32,
+  "macos": "27.0.1",
+  "model": "Mac mini",
+  "identifier": "Mac18,5",
+  "cores": "12 (2 Super, 4 Performance, and 6 Efficiency)"
+ },
+ "ollama": "mlx-lm",
+ "settings": {
+  "seeds": 2,
+  "temperature": 0.2,
+  "tracks": [
+   "cybersecurity",
+   "daily",
+   "coding",
+   "dutch",
+   "tools",
+   "honesty",
+   "reasoning",
+   "longcontext",
+   "hard",
+   "standard",
+   "pentest",
+   "scenario",
+   "secdev"
+  ]
+ },
+ "models": {
+  "mlx-community/Qwen3-0.6B-4bit": {
+   "digest": "",
+   "size_gb": 0.0,
+   "details": {}
+  },
+  "mlx-community/Qwen3-1.7B-4bit": {
+   "digest": "",
+   "size_gb": 0.0,
+   "details": {}
+  }
+ }
+}
