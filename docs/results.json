@@ -1,96 +1,4113 @@
 {
- "run": "2026-11-04-macmini-m6-32gb",
+ "run": "2026-11-07-macmini-m6-32gb-all",
  "tracks": [
-  "cybersecurity",
   "coding",
+  "cybersecurity",
+  "daily",
+  "dutch",
+  "hard",
   "honesty",
-  "reasoning",
-  "standard",
+  "longcontext",
   "pentest",
+  "reasoning",
   "scenario",
-  "secdev"
+  "secdev",
+  "standard",
+  "tools"
  ],
  "models": {
   "FrostWolfAI/Frost-Cyber-Mini-1.0-MLX": {
    "coding": {
     "mean": 0.58535,
-    "lo": 0.515,
-    "hi": 0.6557,
-    "seeds": 2,
-    "n_tasks": 10,
-    "truncated": 4,
-    "answers": 40,
-    "secs": 11.131025
-   },
-   "pentest": {
-    "mean": 0.5227848324514992,
-    "lo": 0.4979506172839506,
-    "hi": 0.5476190476190477,
-    "seeds": 2,
-    "n_tasks": 42,
-    "truncated": 117,
-    "answers": 165,
-    "secs": 8.093557575757576
-   },
-   "secdev": {
-    "mean": 0.3875,
-    "lo": 0.375,
-    "hi": 0.4,
+    "lo": 0.446859,
+    "hi": 0.723841,
     "seeds": 2,
     "n_tasks": 20,
-    "truncated": 58,
-    "answers": 80,
-    "secs": 8.0245875
+    "truncated": 4,
+    "answers": 40,
+    "secs": 445.241
+   },
+   "cybersecurity": {
+    "mean": 0.586022,
+    "lo": 0.487344,
+    "hi": 0.684699,
+    "seeds": 2,
+    "n_tasks": 46,
+    "truncated": 33,
+    "answers": 93,
+    "secs": 825.528
+   },
+   "honesty": {
+    "mean": 0.645833,
+    "lo": 0.512251,
+    "hi": 0.779416,
+    "seeds": 2,
+    "n_tasks": 24,
+    "truncated": 16,
+    "answers": 48,
+    "secs": 385.146
+   },
+   "pentest": {
+    "mean": 0.523236,
+    "lo": 0.450062,
+    "hi": 0.596411,
+    "seeds": 2,
+    "n_tasks": 82,
+    "truncated": 117,
+    "answers": 165,
+    "secs": 1335.437
    },
    "reasoning": {
     "mean": 0.875,
-    "lo": 0.8333333333333334,
-    "hi": 0.9166666666666666,
+    "lo": 0.780449,
+    "hi": 0.969551,
     "seeds": 2,
-    "n_tasks": 12,
+    "n_tasks": 24,
     "truncated": 2,
     "answers": 48,
-    "secs": 13.925375
-   },
-   "honesty": {
-    "mean": 0.6458333333333333,
-    "lo": 0.625,
-    "hi": 0.6666666666666666,
-    "seeds": 2,
-    "n_tasks": 12,
-    "truncated": 16,
-    "answers": 48,
-    "secs": 8.023875
-   },
-   "standard": {
-    "mean": 0.6506538461538461,
-    "lo": 0.6410384615384616,
-    "hi": 0.6602692307692307,
-    "seeds": 2,
-    "n_tasks": 26,
-    "truncated": 34,
-    "answers": 104,
-    "secs": 6.591
-   },
-   "cybersecurity": {
-    "mean": 0.5873255813953489,
-    "lo": 0.57,
-    "hi": 0.6046511627906976,
-    "seeds": 2,
-    "n_tasks": 25,
-    "truncated": 33,
-    "answers": 93,
-    "secs": 8.876645161290323
+    "secs": 668.418
    },
    "scenario": {
     "mean": 0.1,
-    "lo": 0.0,
-    "hi": 0.2,
+    "lo": 0.005845,
+    "hi": 0.194155,
     "seeds": 2,
-    "n_tasks": 10,
+    "n_tasks": 20,
     "truncated": 36,
     "answers": 40,
-    "secs": 11.32385
+    "secs": 452.954
+   },
+   "secdev": {
+    "mean": 0.3875,
+    "lo": 0.284399,
+    "hi": 0.490601,
+    "seeds": 2,
+    "n_tasks": 40,
+    "truncated": 58,
+    "answers": 80,
+    "secs": 641.967
+   },
+   "standard": {
+    "mean": 0.650654,
+    "lo": 0.561324,
+    "hi": 0.739984,
+    "seeds": 2,
+    "n_tasks": 52,
+    "truncated": 34,
+    "answers": 104,
+    "secs": 685.464
+   }
+  },
+  "Qwen/Qwen3-0.6B-Base": {
+   "coding": {
+    "mean": 0.0,
+    "lo": 0,
+    "hi": 0.0,
+    "seeds": 2,
+    "n_tasks": 10,
+    "truncated": 18,
+    "answers": 20,
+    "secs": 85.451
+   },
+   "cybersecurity": {
+    "mean": 0.21334,
+    "lo": 0.114987,
+    "hi": 0.311693,
+    "seeds": 2,
+    "n_tasks": 25,
+    "truncated": 34,
+    "answers": 50,
+    "secs": 106.058
+   },
+   "daily": {
+    "mean": 0.465292,
+    "lo": 0.29082,
+    "hi": 0.639763,
+    "seeds": 2,
+    "n_tasks": 12,
+    "truncated": 12,
+    "answers": 24,
+    "secs": 34.599
+   },
+   "dutch": {
+    "mean": 0.437458,
+    "lo": 0.264011,
+    "hi": 0.610906,
+    "seeds": 2,
+    "n_tasks": 12,
+    "truncated": 16,
+    "answers": 24,
+    "secs": 39.064
+   },
+   "hard": {
+    "mean": 0.05,
+    "lo": 0,
+    "hi": 0.118402,
+    "seeds": 2,
+    "n_tasks": 20,
+    "truncated": 34,
+    "answers": 40,
+    "secs": 228.18
+   },
+   "honesty": {
+    "mean": 0.277792,
+    "lo": 0.099008,
+    "hi": 0.456575,
+    "seeds": 2,
+    "n_tasks": 12,
+    "truncated": 10,
+    "answers": 24,
+    "secs": 34.441
+   },
+   "longcontext": {
+    "mean": 0.0,
+    "lo": 0,
+    "hi": 0.0,
+    "seeds": 2,
+    "n_tasks": 6,
+    "truncated": 12,
+    "answers": 12,
+    "secs": 14.523
+   },
+   "pentest": {
+    "mean": 0.333333,
+    "lo": 0,
+    "hi": 0.986667,
+    "seeds": 1,
+    "n_tasks": 3,
+    "truncated": 1,
+    "answers": 3,
+    "secs": 3.301
+   },
+   "reasoning": {
+    "mean": 0.083333,
+    "lo": 0,
+    "hi": 0.196289,
+    "seeds": 2,
+    "n_tasks": 12,
+    "truncated": 23,
+    "answers": 24,
+    "secs": 151.576
+   },
+   "standard": {
+    "mean": 0.480769,
+    "lo": 0.34631,
+    "hi": 0.615228,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 33,
+    "answers": 52,
+    "secs": 90.349
+   },
+   "tools": {
+    "mean": 0.0,
+    "lo": 0,
+    "hi": 0.0,
+    "seeds": 2,
+    "n_tasks": 12,
+    "truncated": 23,
+    "answers": 24,
+    "secs": 54.585
+   }
+  },
+  "Qwen/Qwen3-1.7B-Base": {
+   "coding": {
+    "mean": 0.7857,
+    "lo": 0.606872,
+    "hi": 0.964528,
+    "seeds": 2,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 20,
+    "secs": 36.997
+   },
+   "cybersecurity": {
+    "mean": 0.715,
+    "lo": 0.604946,
+    "hi": 0.825054,
+    "seeds": 2,
+    "n_tasks": 25,
+    "truncated": 1,
+    "answers": 50,
+    "secs": 161.028
+   },
+   "daily": {
+    "mean": 0.8125,
+    "lo": 0.683093,
+    "hi": 0.941907,
+    "seeds": 2,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 24,
+    "secs": 18.068
+   },
+   "dutch": {
+    "mean": 0.701417,
+    "lo": 0.550725,
+    "hi": 0.852108,
+    "seeds": 2,
+    "n_tasks": 12,
+    "truncated": 2,
+    "answers": 24,
+    "secs": 23.144
+   },
+   "hard": {
+    "mean": 0.54,
+    "lo": 0.390171,
+    "hi": 0.689829,
+    "seeds": 2,
+    "n_tasks": 20,
+    "truncated": 5,
+    "answers": 40,
+    "secs": 233.966
+   },
+   "honesty": {
+    "mean": 0.458333,
+    "lo": 0.2547,
+    "hi": 0.661967,
+    "seeds": 2,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 24,
+    "secs": 39.089
+   },
+   "longcontext": {
+    "mean": 0.0,
+    "lo": 0,
+    "hi": 0.0,
+    "seeds": 2,
+    "n_tasks": 6,
+    "truncated": 12,
+    "answers": 12,
+    "secs": 29.274
+   },
+   "pentest": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 1,
+    "n_tasks": 3,
+    "truncated": 0,
+    "answers": 3,
+    "secs": 44.574
+   },
+   "reasoning": {
+    "mean": 0.958333,
+    "lo": 0.876667,
+    "hi": 1,
+    "seeds": 2,
+    "n_tasks": 12,
+    "truncated": 3,
+    "answers": 24,
+    "secs": 115.885
+   },
+   "standard": {
+    "mean": 0.75,
+    "lo": 0.634245,
+    "hi": 0.865755,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 3,
+    "answers": 52,
+    "secs": 64.035
+   },
+   "tools": {
+    "mean": 0.666667,
+    "lo": 0.474009,
+    "hi": 0.859324,
+    "seeds": 2,
+    "n_tasks": 12,
+    "truncated": 3,
+    "answers": 24,
+    "secs": 32.772
+   }
+  },
+  "codestral:22b": {
+   "coding": {
+    "mean": 0.916667,
+    "lo": 0.821718,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 228.976
+   },
+   "cybersecurity": {
+    "mean": 0.842182,
+    "lo": 0.769294,
+    "hi": 0.91507,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 579.29
+   },
+   "daily": {
+    "mean": 0.875,
+    "lo": 0.776418,
+    "hi": 0.973582,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 113.314
+   },
+   "dutch": {
+    "mean": 0.789333,
+    "lo": 0.67559,
+    "hi": 0.903077,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 96.283
+   },
+   "hard": {
+    "mean": 0.631667,
+    "lo": 0.516463,
+    "hi": 0.74687,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 2,
+    "answers": 60,
+    "secs": 1575.859
+   },
+   "honesty": {
+    "mean": 0.722222,
+    "lo": 0.573832,
+    "hi": 0.870613,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 267.71
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 200.109
+   },
+   "pentest": {
+    "mean": 0.823529,
+    "lo": 0.739458,
+    "hi": 0.907601,
+    "seeds": 2,
+    "n_tasks": 34,
+    "truncated": 4,
+    "answers": 68,
+    "secs": 527.264
+   },
+   "reasoning": {
+    "mean": 0.694444,
+    "lo": 0.541833,
+    "hi": 0.847055,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 568.046
+   },
+   "scenario": {
+    "mean": 0.583333,
+    "lo": 0.467442,
+    "hi": 0.699225,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 141.679
+   },
+   "secdev": {
+    "mean": 0.788889,
+    "lo": 0.674497,
+    "hi": 0.903281,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 12,
+    "answers": 45,
+    "secs": 341.819
+   },
+   "standard": {
+    "mean": 0.836538,
+    "lo": 0.736849,
+    "hi": 0.936228,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 1,
+    "answers": 52,
+    "secs": 302.594
+   },
+   "tools": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 89.212
+   }
+  },
+  "command-r:35b": {
+   "coding": {
+    "mean": 0.913333,
+    "lo": 0.816246,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 315.818
+   },
+   "cybersecurity": {
+    "mean": 0.85336,
+    "lo": 0.781658,
+    "hi": 0.925062,
+    "seeds": 3,
+    "n_tasks": 25,
+    "truncated": 0,
+    "answers": 75,
+    "secs": 579.423
+   },
+   "daily": {
+    "mean": 0.888889,
+    "lo": 0.784771,
+    "hi": 0.993007,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 103.709
+   },
+   "dutch": {
+    "mean": 0.930556,
+    "lo": 0.873269,
+    "hi": 0.987842,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 76.619
+   },
+   "hard": {
+    "mean": 0.535,
+    "lo": 0.41524,
+    "hi": 0.65476,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 0,
+    "answers": 60,
+    "secs": 1752.785
+   },
+   "honesty": {
+    "mean": 0.75,
+    "lo": 0.606543,
+    "hi": 0.893457,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 237.815
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 241.655
+   },
+   "pentest": {
+    "mean": 0.904762,
+    "lo": 0.856988,
+    "hi": 0.952535,
+    "seeds": 3,
+    "n_tasks": 42,
+    "truncated": 0,
+    "answers": 126,
+    "secs": 1187.586
+   },
+   "reasoning": {
+    "mean": 0.777778,
+    "lo": 0.640043,
+    "hi": 0.915513,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 576.404
+   },
+   "scenario": {
+    "mean": 0.666667,
+    "lo": 0.558154,
+    "hi": 0.775179,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 116.219
+   },
+   "secdev": {
+    "mean": 0.716667,
+    "lo": 0.608993,
+    "hi": 0.82434,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 2,
+    "answers": 60,
+    "secs": 572.99
+   },
+   "standard": {
+    "mean": 0.884615,
+    "lo": 0.813254,
+    "hi": 0.955977,
+    "seeds": 3,
+    "n_tasks": 26,
+    "truncated": 0,
+    "answers": 78,
+    "secs": 366.893
+   },
+   "tools": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 122.683
+   }
+  },
+  "deepseek-r1:14b": {
+   "coding": {
+    "mean": 0.883333,
+    "lo": 0.771317,
+    "hi": 0.99535,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 4,
+    "answers": 30,
+    "secs": 2923.347
+   },
+   "cybersecurity": {
+    "mean": 0.741167,
+    "lo": 0.648116,
+    "hi": 0.834217,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 1998.446
+   },
+   "daily": {
+    "mean": 0.888889,
+    "lo": 0.792369,
+    "hi": 0.985409,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 911.881
+   },
+   "dutch": {
+    "mean": 0.868056,
+    "lo": 0.762049,
+    "hi": 0.974063,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 466.058
+   },
+   "hard": {
+    "mean": 0.821667,
+    "lo": 0.726294,
+    "hi": 0.917039,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 2,
+    "answers": 60,
+    "secs": 3614.085
+   },
+   "honesty": {
+    "mean": 0.638889,
+    "lo": 0.479758,
+    "hi": 0.79802,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 818.902
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 406.541
+   },
+   "pentest": {
+    "mean": 0.840691,
+    "lo": 0.760455,
+    "hi": 0.920928,
+    "seeds": 2,
+    "n_tasks": 34,
+    "truncated": 0,
+    "answers": 68,
+    "secs": 1983.91
+   },
+   "reasoning": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 1188.033
+   },
+   "scenario": {
+    "mean": 0.683333,
+    "lo": 0.583843,
+    "hi": 0.782824,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 697.169
+   },
+   "secdev": {
+    "mean": 0.688889,
+    "lo": 0.552096,
+    "hi": 0.825681,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 3,
+    "answers": 45,
+    "secs": 2076.355
+   },
+   "standard": {
+    "mean": 0.923077,
+    "lo": 0.855075,
+    "hi": 0.991079,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 0,
+    "answers": 52,
+    "secs": 1818.246
+   },
+   "tools": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 566.313
+   }
+  },
+  "gemma3:12b": {
+   "coding": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 189.804
+   },
+   "cybersecurity": {
+    "mean": 0.796727,
+    "lo": 0.710259,
+    "hi": 0.883196,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 240.108
+   },
+   "daily": {
+    "mean": 0.916667,
+    "lo": 0.8251,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 39.45
+   },
+   "dutch": {
+    "mean": 0.833333,
+    "lo": 0.730032,
+    "hi": 0.936634,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 37.545
+   },
+   "hard": {
+    "mean": 0.915,
+    "lo": 0.853932,
+    "hi": 0.976068,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 0,
+    "answers": 60,
+    "secs": 866.575
+   },
+   "honesty": {
+    "mean": 0.75,
+    "lo": 0.606543,
+    "hi": 0.893457,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 126.087
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 97.739
+   },
+   "pentest": {
+    "mean": 0.955882,
+    "lo": 0.911201,
+    "hi": 1,
+    "seeds": 2,
+    "n_tasks": 34,
+    "truncated": 0,
+    "answers": 68,
+    "secs": 340.67
+   },
+   "reasoning": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 441.358
+   },
+   "scenario": {
+    "mean": 0.65,
+    "lo": 0.533475,
+    "hi": 0.766525,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 53.202
+   },
+   "secdev": {
+    "mean": 0.788889,
+    "lo": 0.674497,
+    "hi": 0.903281,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 3,
+    "answers": 45,
+    "secs": 212.457
+   },
+   "standard": {
+    "mean": 0.923077,
+    "lo": 0.849943,
+    "hi": 0.996211,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 0,
+    "answers": 52,
+    "secs": 207.642
+   },
+   "tools": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 53.998
+   }
+  },
+  "gemma3:4b": {
+   "coding": {
+    "mean": 0.867433,
+    "lo": 0.759608,
+    "hi": 0.975259,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 70.056
+   },
+   "cybersecurity": {
+    "mean": 0.662894,
+    "lo": 0.563365,
+    "hi": 0.762423,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 97.648
+   },
+   "daily": {
+    "mean": 0.736083,
+    "lo": 0.594485,
+    "hi": 0.877682,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 15.86
+   },
+   "dutch": {
+    "mean": 0.916667,
+    "lo": 0.854932,
+    "hi": 0.978401,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 14.489
+   },
+   "hard": {
+    "mean": 0.823333,
+    "lo": 0.728729,
+    "hi": 0.917938,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 3,
+    "answers": 60,
+    "secs": 365.686
+   },
+   "honesty": {
+    "mean": 0.583333,
+    "lo": 0.42,
+    "hi": 0.746667,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 58.516
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 30.194
+   },
+   "pentest": {
+    "mean": 0.977941,
+    "lo": 0.953355,
+    "hi": 1,
+    "seeds": 2,
+    "n_tasks": 34,
+    "truncated": 0,
+    "answers": 68,
+    "secs": 128.685
+   },
+   "reasoning": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 2,
+    "answers": 36,
+    "secs": 145.424
+   },
+   "scenario": {
+    "mean": 0.55,
+    "lo": 0.422613,
+    "hi": 0.677387,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 21.082
+   },
+   "secdev": {
+    "mean": 0.777778,
+    "lo": 0.654935,
+    "hi": 0.900621,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 3,
+    "answers": 45,
+    "secs": 77.556
+   },
+   "standard": {
+    "mean": 0.903846,
+    "lo": 0.822936,
+    "hi": 0.984756,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 2,
+    "answers": 52,
+    "secs": 81.507
+   },
+   "tools": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 21.84
+   }
+  },
+  "gemma4:12b": {
+   "coding": {
+    "mean": 0.94,
+    "lo": 0.874487,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 51.939
+   },
+   "cybersecurity": {
+    "mean": 0.954545,
+    "lo": 0.903906,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 124.749
+   },
+   "daily": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 22.72
+   },
+   "dutch": {
+    "mean": 0.958333,
+    "lo": 0.91255,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 26.41
+   },
+   "hard": {
+    "mean": 0.935,
+    "lo": 0.881308,
+    "hi": 0.988692,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 2,
+    "answers": 60,
+    "secs": 373.336
+   },
+   "honesty": {
+    "mean": 0.916667,
+    "lo": 0.8251,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 48.361
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 64.038
+   },
+   "pentest": {
+    "mean": 0.955882,
+    "lo": 0.911201,
+    "hi": 1,
+    "seeds": 2,
+    "n_tasks": 34,
+    "truncated": 0,
+    "answers": 68,
+    "secs": 196.56
+   },
+   "reasoning": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 246.572
+   },
+   "scenario": {
+    "mean": 0.716667,
+    "lo": 0.626488,
+    "hi": 0.806845,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 21.565
+   },
+   "secdev": {
+    "mean": 0.877778,
+    "lo": 0.783534,
+    "hi": 0.972021,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 3,
+    "answers": 45,
+    "secs": 134.849
+   },
+   "standard": {
+    "mean": 0.942308,
+    "lo": 0.88425,
+    "hi": 1,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 4,
+    "answers": 52,
+    "secs": 134.276
+   },
+   "tools": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 16.21
+   }
+  },
+  "glm4:9b": {
+   "coding": {
+    "mean": 0.933333,
+    "lo": 0.859288,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 87.029
+   },
+   "cybersecurity": {
+    "mean": 0.676758,
+    "lo": 0.579625,
+    "hi": 0.773891,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 562.47
+   },
+   "daily": {
+    "mean": 0.912028,
+    "lo": 0.820473,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 35.199
+   },
+   "dutch": {
+    "mean": 0.819444,
+    "lo": 0.707961,
+    "hi": 0.930927,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 24.501
+   },
+   "hard": {
+    "mean": 0.781667,
+    "lo": 0.682786,
+    "hi": 0.880548,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 0,
+    "answers": 60,
+    "secs": 647.173
+   },
+   "honesty": {
+    "mean": 0.861111,
+    "lo": 0.746537,
+    "hi": 0.975685,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 74.0
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 68.503
+   },
+   "pentest": {
+    "mean": 0.769608,
+    "lo": 0.691559,
+    "hi": 0.847656,
+    "seeds": 3,
+    "n_tasks": 34,
+    "truncated": 0,
+    "answers": 102,
+    "secs": 213.926
+   },
+   "reasoning": {
+    "mean": 0.916667,
+    "lo": 0.8251,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 200.336
+   },
+   "scenario": {
+    "mean": 0.583333,
+    "lo": 0.467442,
+    "hi": 0.699225,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 30.634
+   },
+   "secdev": {
+    "mean": 0.744422,
+    "lo": 0.622638,
+    "hi": 0.866207,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 0,
+    "answers": 45,
+    "secs": 85.807
+   },
+   "standard": {
+    "mean": 0.871795,
+    "lo": 0.797121,
+    "hi": 0.946469,
+    "seeds": 3,
+    "n_tasks": 26,
+    "truncated": 0,
+    "answers": 78,
+    "secs": 641.518
+   },
+   "tools": {
+    "mean": 0.97225,
+    "lo": 0.941758,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 30.575
+   }
+  },
+  "gpt-oss:20b": {
+   "coding": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 298.131
+   },
+   "cybersecurity": {
+    "mean": 0.891424,
+    "lo": 0.82002,
+    "hi": 0.962829,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 445.604
+   },
+   "daily": {
+    "mean": 0.986083,
+    "lo": 0.970792,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 154.354
+   },
+   "dutch": {
+    "mean": 0.895833,
+    "lo": 0.819285,
+    "hi": 0.972381,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 1,
+    "answers": 36,
+    "secs": 187.478
+   },
+   "hard": {
+    "mean": 0.966667,
+    "lo": 0.920862,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 0,
+    "answers": 60,
+    "secs": 544.145
+   },
+   "honesty": {
+    "mean": 0.722222,
+    "lo": 0.573832,
+    "hi": 0.870613,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 186.373
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 78.534
+   },
+   "pentest": {
+    "mean": 0.838235,
+    "lo": 0.754979,
+    "hi": 0.921491,
+    "seeds": 2,
+    "n_tasks": 34,
+    "truncated": 1,
+    "answers": 68,
+    "secs": 553.726
+   },
+   "reasoning": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 122.021
+   },
+   "scenario": {
+    "mean": 0.733333,
+    "lo": 0.642545,
+    "hi": 0.824122,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 168.812
+   },
+   "secdev": {
+    "mean": 0.866667,
+    "lo": 0.766222,
+    "hi": 0.967111,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 1,
+    "answers": 45,
+    "secs": 681.027
+   },
+   "standard": {
+    "mean": 0.932692,
+    "lo": 0.866612,
+    "hi": 0.998773,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 0,
+    "answers": 52,
+    "secs": 178.369
+   },
+   "tools": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 133.458
+   }
+  },
+  "granite4": {
+   "coding": {
+    "mean": 0.9,
+    "lo": 0.804279,
+    "hi": 0.995721,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 34.929
+   },
+   "cybersecurity": {
+    "mean": 0.760136,
+    "lo": 0.665016,
+    "hi": 0.855257,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 65.082
+   },
+   "daily": {
+    "mean": 0.967583,
+    "lo": 0.912642,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 12.889
+   },
+   "dutch": {
+    "mean": 0.875,
+    "lo": 0.776418,
+    "hi": 0.973582,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 15.974
+   },
+   "hard": {
+    "mean": 0.84,
+    "lo": 0.74928,
+    "hi": 0.93072,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 0,
+    "answers": 60,
+    "secs": 288.896
+   },
+   "honesty": {
+    "mean": 0.75,
+    "lo": 0.606543,
+    "hi": 0.893457,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 29.575
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 31.155
+   },
+   "pentest": {
+    "mean": 0.889706,
+    "lo": 0.819037,
+    "hi": 0.960375,
+    "seeds": 2,
+    "n_tasks": 34,
+    "truncated": 0,
+    "answers": 68,
+    "secs": 85.813
+   },
+   "reasoning": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 86.681
+   },
+   "scenario": {
+    "mean": 0.683333,
+    "lo": 0.583843,
+    "hi": 0.782824,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 13.361
+   },
+   "secdev": {
+    "mean": 0.766667,
+    "lo": 0.647656,
+    "hi": 0.885677,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 0,
+    "answers": 45,
+    "secs": 42.648
+   },
+   "standard": {
+    "mean": 0.923077,
+    "lo": 0.855075,
+    "hi": 0.991079,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 0,
+    "answers": 52,
+    "secs": 43.015
+   },
+   "tools": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 13.084
+   }
+  },
+  "hermes3:8b": {
+   "coding": {
+    "mean": 0.8214,
+    "lo": 0.70557,
+    "hi": 0.93723,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 71.605
+   },
+   "cybersecurity": {
+    "mean": 0.739924,
+    "lo": 0.653285,
+    "hi": 0.826564,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 167.964
+   },
+   "daily": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 43.764
+   },
+   "dutch": {
+    "mean": 0.858806,
+    "lo": 0.759943,
+    "hi": 0.957668,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 33.235
+   },
+   "hard": {
+    "mean": 0.715,
+    "lo": 0.60576,
+    "hi": 0.82424,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 0,
+    "answers": 60,
+    "secs": 523.656
+   },
+   "honesty": {
+    "mean": 0.666667,
+    "lo": 0.51049,
+    "hi": 0.822843,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 88.537
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 62.899
+   },
+   "pentest": {
+    "mean": 0.803922,
+    "lo": 0.73019,
+    "hi": 0.877653,
+    "seeds": 3,
+    "n_tasks": 34,
+    "truncated": 0,
+    "answers": 102,
+    "secs": 281.308
+   },
+   "reasoning": {
+    "mean": 0.972222,
+    "lo": 0.917778,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 137.518
+   },
+   "scenario": {
+    "mean": 0.516667,
+    "lo": 0.397026,
+    "hi": 0.636308,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 28.961
+   },
+   "secdev": {
+    "mean": 0.811111,
+    "lo": 0.701926,
+    "hi": 0.920297,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 3,
+    "answers": 45,
+    "secs": 122.54
+   },
+   "standard": {
+    "mean": 0.839744,
+    "lo": 0.758786,
+    "hi": 0.920701,
+    "seeds": 3,
+    "n_tasks": 26,
+    "truncated": 0,
+    "answers": 78,
+    "secs": 115.115
+   },
+   "tools": {
+    "mean": 0.97225,
+    "lo": 0.941758,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 24.037
+   }
+  },
+  "hf.co/QuantFactory/Foundation-Sec-8B-GGUF:Q4_K_M": {
+   "coding": {
+    "mean": 0.122233,
+    "lo": 0.007202,
+    "hi": 0.237264,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 30,
+    "answers": 30,
+    "secs": 503.182
+   },
+   "cybersecurity": {
+    "mean": 0.49497,
+    "lo": 0.38059,
+    "hi": 0.60935,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 66,
+    "answers": 66,
+    "secs": 663.692
+   },
+   "daily": {
+    "mean": 0.384278,
+    "lo": 0.256876,
+    "hi": 0.51168,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 36,
+    "answers": 36,
+    "secs": 301.265
+   },
+   "dutch": {
+    "mean": 0.504611,
+    "lo": 0.364742,
+    "hi": 0.64448,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 36,
+    "answers": 36,
+    "secs": 300.103
+   },
+   "hard": {
+    "mean": 0.058333,
+    "lo": 0.000841,
+    "hi": 0.115825,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 60,
+    "answers": 60,
+    "secs": 1428.987
+   },
+   "honesty": {
+    "mean": 0.5,
+    "lo": 0.33435,
+    "hi": 0.66565,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 36,
+    "answers": 36,
+    "secs": 300.622
+   },
+   "longcontext": {
+    "mean": 0.111111,
+    "lo": 0,
+    "hi": 0.260505,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 18,
+    "answers": 18,
+    "secs": 101.84
+   },
+   "pentest": {
+    "mean": 0.566176,
+    "lo": 0.453893,
+    "hi": 0.67846,
+    "seeds": 2,
+    "n_tasks": 34,
+    "truncated": 68,
+    "answers": 68,
+    "secs": 525.189
+   },
+   "reasoning": {
+    "mean": 0.111111,
+    "lo": 0.006993,
+    "hi": 0.215229,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 36,
+    "answers": 36,
+    "secs": 889.305
+   },
+   "scenario": {
+    "mean": 0.016667,
+    "lo": 0,
+    "hi": 0.049333,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 30,
+    "answers": 30,
+    "secs": 317.833
+   },
+   "secdev": {
+    "mean": 0.422222,
+    "lo": 0.27628,
+    "hi": 0.568164,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 45,
+    "answers": 45,
+    "secs": 386.516
+   },
+   "standard": {
+    "mean": 0.471154,
+    "lo": 0.335483,
+    "hi": 0.606825,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 52,
+    "answers": 52,
+    "secs": 426.919
+   },
+   "tools": {
+    "mean": 0.0,
+    "lo": 0,
+    "hi": 0.0,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 36,
+    "answers": 36,
+    "secs": 300.186
+   }
+  },
+  "hf.co/bartowski/WhiteRabbitNeo-2.5-Qwen-2.5-Coder-7B-GGUF:Q4_K_M": {
+   "coding": {
+    "mean": 0.995233,
+    "lo": 0.985891,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 70.612
+   },
+   "cybersecurity": {
+    "mean": 0.843455,
+    "lo": 0.771225,
+    "hi": 0.915685,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 110.587
+   },
+   "daily": {
+    "mean": 0.958333,
+    "lo": 0.91255,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 25.436
+   },
+   "dutch": {
+    "mean": 0.784722,
+    "lo": 0.665729,
+    "hi": 0.903715,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 21.084
+   },
+   "hard": {
+    "mean": 0.761667,
+    "lo": 0.662391,
+    "hi": 0.860942,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 1,
+    "answers": 60,
+    "secs": 549.514
+   },
+   "honesty": {
+    "mean": 0.611111,
+    "lo": 0.449603,
+    "hi": 0.772619,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 77.957
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 69.306
+   },
+   "pentest": {
+    "mean": 0.833338,
+    "lo": 0.752646,
+    "hi": 0.914031,
+    "seeds": 2,
+    "n_tasks": 34,
+    "truncated": 1,
+    "answers": 68,
+    "secs": 128.499
+   },
+   "reasoning": {
+    "mean": 0.888889,
+    "lo": 0.784771,
+    "hi": 0.993007,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 116.554
+   },
+   "scenario": {
+    "mean": 0.333333,
+    "lo": 0.215084,
+    "hi": 0.451582,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 23.346
+   },
+   "secdev": {
+    "mean": 0.711111,
+    "lo": 0.580858,
+    "hi": 0.841365,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 0,
+    "answers": 45,
+    "secs": 72.384
+   },
+   "standard": {
+    "mean": 0.855769,
+    "lo": 0.761243,
+    "hi": 0.950295,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 0,
+    "answers": 52,
+    "secs": 100.732
+   },
+   "tools": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 22.495
+   }
+  },
+  "hf.co/mradermacher/DeepHat-V1-7B-GGUF:Q4_K_M": {
+   "coding": {
+    "mean": 0.983333,
+    "lo": 0.950667,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 71.575
+   },
+   "cybersecurity": {
+    "mean": 0.776515,
+    "lo": 0.685831,
+    "hi": 0.867199,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 1,
+    "answers": 66,
+    "secs": 210.404
+   },
+   "daily": {
+    "mean": 0.916667,
+    "lo": 0.854932,
+    "hi": 0.978401,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 82.136
+   },
+   "dutch": {
+    "mean": 0.868083,
+    "lo": 0.789631,
+    "hi": 0.946536,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 39.167
+   },
+   "hard": {
+    "mean": 0.785,
+    "lo": 0.685863,
+    "hi": 0.884137,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 4,
+    "answers": 60,
+    "secs": 641.653
+   },
+   "honesty": {
+    "mean": 0.5,
+    "lo": 0.339017,
+    "hi": 0.660983,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 112.42
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 69.395
+   },
+   "pentest": {
+    "mean": 0.889706,
+    "lo": 0.819037,
+    "hi": 0.960375,
+    "seeds": 2,
+    "n_tasks": 34,
+    "truncated": 2,
+    "answers": 68,
+    "secs": 247.709
+   },
+   "reasoning": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 13,
+    "answers": 36,
+    "secs": 401.61
+   },
+   "scenario": {
+    "mean": 0.65,
+    "lo": 0.533475,
+    "hi": 0.766525,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 24.323
+   },
+   "secdev": {
+    "mean": 0.811111,
+    "lo": 0.69757,
+    "hi": 0.924652,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 3,
+    "answers": 45,
+    "secs": 130.678
+   },
+   "standard": {
+    "mean": 0.826923,
+    "lo": 0.726641,
+    "hi": 0.927205,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 0,
+    "answers": 52,
+    "secs": 118.377
+   },
+   "tools": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 26.692
+   }
+  },
+  "hf.co/mradermacher/Llama-3-WhiteRabbitNeo-8B-v2.0-GGUF:Q4_K_M": {
+   "coding": {
+    "mean": 0.791233,
+    "lo": 0.660112,
+    "hi": 0.922355,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 1,
+    "answers": 30,
+    "secs": 281.461
+   },
+   "cybersecurity": {
+    "mean": 0.779045,
+    "lo": 0.686778,
+    "hi": 0.871313,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 6,
+    "answers": 66,
+    "secs": 501.455
+   },
+   "daily": {
+    "mean": 0.643528,
+    "lo": 0.510706,
+    "hi": 0.77635,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 5,
+    "answers": 36,
+    "secs": 164.317
+   },
+   "dutch": {
+    "mean": 0.842639,
+    "lo": 0.744437,
+    "hi": 0.940841,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 9,
+    "answers": 36,
+    "secs": 159.579
+   },
+   "hard": {
+    "mean": 0.365,
+    "lo": 0.247712,
+    "hi": 0.482288,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 17,
+    "answers": 60,
+    "secs": 441.137
+   },
+   "honesty": {
+    "mean": 0.5,
+    "lo": 0.33435,
+    "hi": 0.66565,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 17,
+    "answers": 36,
+    "secs": 213.906
+   },
+   "longcontext": {
+    "mean": 0.722222,
+    "lo": 0.509303,
+    "hi": 0.935142,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 8,
+    "answers": 18,
+    "secs": 67.762
+   },
+   "pentest": {
+    "mean": 0.698529,
+    "lo": 0.595579,
+    "hi": 0.80148,
+    "seeds": 2,
+    "n_tasks": 34,
+    "truncated": 26,
+    "answers": 68,
+    "secs": 466.907
+   },
+   "reasoning": {
+    "mean": 0.583333,
+    "lo": 0.42,
+    "hi": 0.746667,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 233.611
+   },
+   "scenario": {
+    "mean": 0.233333,
+    "lo": 0.102667,
+    "hi": 0.364,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 2,
+    "answers": 30,
+    "secs": 226.125
+   },
+   "secdev": {
+    "mean": 0.655556,
+    "lo": 0.520428,
+    "hi": 0.790683,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 24,
+    "answers": 45,
+    "secs": 311.974
+   },
+   "standard": {
+    "mean": 0.75,
+    "lo": 0.631158,
+    "hi": 0.868842,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 18,
+    "answers": 52,
+    "secs": 280.55
+   },
+   "tools": {
+    "mean": 0.675944,
+    "lo": 0.530468,
+    "hi": 0.821421,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 4,
+    "answers": 36,
+    "secs": 176.962
+   }
+  },
+  "llama3.1:8b": {
+   "coding": {
+    "mean": 0.925,
+    "lo": 0.839805,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 75.374
+   },
+   "cybersecurity": {
+    "mean": 0.757621,
+    "lo": 0.664804,
+    "hi": 0.850439,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 155.017
+   },
+   "daily": {
+    "mean": 0.944444,
+    "lo": 0.879371,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 34.38
+   },
+   "dutch": {
+    "mean": 0.868056,
+    "lo": 0.769501,
+    "hi": 0.96661,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 23.787
+   },
+   "hard": {
+    "mean": 0.756667,
+    "lo": 0.652144,
+    "hi": 0.86119,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 2,
+    "answers": 60,
+    "secs": 606.125
+   },
+   "honesty": {
+    "mean": 0.916667,
+    "lo": 0.8251,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 69.087
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 66.824
+   },
+   "pentest": {
+    "mean": 0.819853,
+    "lo": 0.733441,
+    "hi": 0.906265,
+    "seeds": 2,
+    "n_tasks": 34,
+    "truncated": 1,
+    "answers": 68,
+    "secs": 211.237
+   },
+   "reasoning": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 168.628
+   },
+   "scenario": {
+    "mean": 0.666667,
+    "lo": 0.539424,
+    "hi": 0.793909,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 25.164
+   },
+   "secdev": {
+    "mean": 0.788889,
+    "lo": 0.674497,
+    "hi": 0.903281,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 2,
+    "answers": 45,
+    "secs": 140.56
+   },
+   "standard": {
+    "mean": 0.903846,
+    "lo": 0.822936,
+    "hi": 0.984756,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 0,
+    "answers": 52,
+    "secs": 103.017
+   },
+   "tools": {
+    "mean": 0.97225,
+    "lo": 0.941758,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 24.825
+   }
+  },
+  "llama3.2:3b": {
+   "coding": {
+    "mean": 0.9,
+    "lo": 0.790811,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 36.602
+   },
+   "cybersecurity": {
+    "mean": 0.675545,
+    "lo": 0.577169,
+    "hi": 0.773922,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 80.568
+   },
+   "daily": {
+    "mean": 0.953694,
+    "lo": 0.907474,
+    "hi": 0.999915,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 20.431
+   },
+   "dutch": {
+    "mean": 0.819444,
+    "lo": 0.715022,
+    "hi": 0.923867,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 11.695
+   },
+   "hard": {
+    "mean": 0.698333,
+    "lo": 0.587059,
+    "hi": 0.809607,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 0,
+    "answers": 60,
+    "secs": 247.15
+   },
+   "honesty": {
+    "mean": 0.916667,
+    "lo": 0.833842,
+    "hi": 0.999492,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 41.035
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 28.52
+   },
+   "pentest": {
+    "mean": 0.764706,
+    "lo": 0.669564,
+    "hi": 0.859848,
+    "seeds": 2,
+    "n_tasks": 34,
+    "truncated": 0,
+    "answers": 68,
+    "secs": 98.086
+   },
+   "reasoning": {
+    "mean": 0.916667,
+    "lo": 0.8251,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 79.281
+   },
+   "scenario": {
+    "mean": 0.183333,
+    "lo": 0.063692,
+    "hi": 0.302974,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 12.387
+   },
+   "secdev": {
+    "mean": 0.688867,
+    "lo": 0.560617,
+    "hi": 0.817117,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 1,
+    "answers": 45,
+    "secs": 69.765
+   },
+   "standard": {
+    "mean": 0.852577,
+    "lo": 0.762578,
+    "hi": 0.942576,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 0,
+    "answers": 52,
+    "secs": 40.863
+   },
+   "tools": {
+    "mean": 0.97225,
+    "lo": 0.941758,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 11.84
+   }
+  },
+  "mistral-small:24b": {
+   "coding": {
+    "mean": 0.866667,
+    "lo": 0.752213,
+    "hi": 0.981121,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 243.09
+   },
+   "cybersecurity": {
+    "mean": 0.854833,
+    "lo": 0.782623,
+    "hi": 0.927043,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 463.206
+   },
+   "daily": {
+    "mean": 0.981472,
+    "lo": 0.953019,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 152.952
+   },
+   "dutch": {
+    "mean": 0.958333,
+    "lo": 0.91255,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 79.958
+   },
+   "hard": {
+    "mean": 0.823333,
+    "lo": 0.737764,
+    "hi": 0.908903,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 0,
+    "answers": 60,
+    "secs": 1614.458
+   },
+   "honesty": {
+    "mean": 0.861111,
+    "lo": 0.746537,
+    "hi": 0.975685,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 223.835
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 177.508
+   },
+   "pentest": {
+    "mean": 0.933824,
+    "lo": 0.879871,
+    "hi": 0.987776,
+    "seeds": 2,
+    "n_tasks": 34,
+    "truncated": 0,
+    "answers": 68,
+    "secs": 654.254
+   },
+   "reasoning": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 729.509
+   },
+   "scenario": {
+    "mean": 0.666667,
+    "lo": 0.558154,
+    "hi": 0.775179,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 101.706
+   },
+   "secdev": {
+    "mean": 0.822222,
+    "lo": 0.713631,
+    "hi": 0.930814,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 3,
+    "answers": 45,
+    "secs": 339.038
+   },
+   "standard": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 0,
+    "answers": 52,
+    "secs": 405.667
+   },
+   "tools": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 81.376
+   }
+  },
+  "mlx-community/Qwen3-0.6B-4bit": {
+   "coding": {
+    "mean": 0.0,
+    "lo": 0,
+    "hi": 0.0,
+    "seeds": 2,
+    "n_tasks": 10,
+    "truncated": 20,
+    "answers": 20,
+    "secs": 36.937
+   },
+   "cybersecurity": {
+    "mean": 0.08166,
+    "lo": 0.017251,
+    "hi": 0.146069,
+    "seeds": 2,
+    "n_tasks": 25,
+    "truncated": 38,
+    "answers": 50,
+    "secs": 50.389
+   },
+   "daily": {
+    "mean": 0.451375,
+    "lo": 0.265374,
+    "hi": 0.637376,
+    "seeds": 2,
+    "n_tasks": 12,
+    "truncated": 12,
+    "answers": 24,
+    "secs": 19.141
+   },
+   "dutch": {
+    "mean": 0.319417,
+    "lo": 0.162831,
+    "hi": 0.476002,
+    "seeds": 2,
+    "n_tasks": 12,
+    "truncated": 7,
+    "answers": 24,
+    "secs": 15.644
+   },
+   "hard": {
+    "mean": 0.1125,
+    "lo": 0.016483,
+    "hi": 0.208517,
+    "seeds": 2,
+    "n_tasks": 20,
+    "truncated": 37,
+    "answers": 40,
+    "secs": 120.637
+   },
+   "honesty": {
+    "mean": 0.319458,
+    "lo": 0.133001,
+    "hi": 0.505916,
+    "seeds": 2,
+    "n_tasks": 12,
+    "truncated": 14,
+    "answers": 24,
+    "secs": 18.401
+   },
+   "longcontext": {
+    "mean": 0.0,
+    "lo": 0,
+    "hi": 0.0,
+    "seeds": 2,
+    "n_tasks": 6,
+    "truncated": 12,
+    "answers": 12,
+    "secs": 10.508
+   },
+   "pentest": {
+    "mean": 0.0,
+    "lo": 0,
+    "hi": 0.0,
+    "seeds": 1,
+    "n_tasks": 3,
+    "truncated": 3,
+    "answers": 3,
+    "secs": 2.995
+   },
+   "reasoning": {
+    "mean": 0.458333,
+    "lo": 0.2547,
+    "hi": 0.661967,
+    "seeds": 2,
+    "n_tasks": 12,
+    "truncated": 13,
+    "answers": 24,
+    "secs": 54.784
+   },
+   "standard": {
+    "mean": 0.384615,
+    "lo": 0.253832,
+    "hi": 0.515399,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 39,
+    "answers": 52,
+    "secs": 45.977
+   },
+   "tools": {
+    "mean": 0.25,
+    "lo": 0.073033,
+    "hi": 0.426967,
+    "seeds": 2,
+    "n_tasks": 12,
+    "truncated": 18,
+    "answers": 24,
+    "secs": 20.401
+   }
+  },
+  "mlx-community/Qwen3-1.7B-4bit": {
+   "coding": {
+    "mean": 0.69835,
+    "lo": 0.549494,
+    "hi": 0.847206,
+    "seeds": 2,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 20,
+    "secs": 14.593
+   },
+   "cybersecurity": {
+    "mean": 0.2967,
+    "lo": 0.183803,
+    "hi": 0.409597,
+    "seeds": 2,
+    "n_tasks": 25,
+    "truncated": 29,
+    "answers": 50,
+    "secs": 92.033
+   },
+   "daily": {
+    "mean": 0.65275,
+    "lo": 0.475865,
+    "hi": 0.829635,
+    "seeds": 2,
+    "n_tasks": 12,
+    "truncated": 8,
+    "answers": 24,
+    "secs": 27.659
+   },
+   "dutch": {
+    "mean": 0.298583,
+    "lo": 0.124948,
+    "hi": 0.472218,
+    "seeds": 2,
+    "n_tasks": 12,
+    "truncated": 16,
+    "answers": 24,
+    "secs": 40.938
+   },
+   "hard": {
+    "mean": 0.33,
+    "lo": 0.198295,
+    "hi": 0.461705,
+    "seeds": 2,
+    "n_tasks": 20,
+    "truncated": 24,
+    "answers": 40,
+    "secs": 181.827
+   },
+   "honesty": {
+    "mean": 0.333333,
+    "lo": 0.140676,
+    "hi": 0.525991,
+    "seeds": 2,
+    "n_tasks": 12,
+    "truncated": 14,
+    "answers": 24,
+    "secs": 37.323
+   },
+   "longcontext": {
+    "mean": 0.333333,
+    "lo": 0.054751,
+    "hi": 0.611916,
+    "seeds": 2,
+    "n_tasks": 6,
+    "truncated": 8,
+    "answers": 12,
+    "secs": 16.235
+   },
+   "pentest": {
+    "mean": 0.333333,
+    "lo": 0,
+    "hi": 0.986667,
+    "seeds": 1,
+    "n_tasks": 3,
+    "truncated": 2,
+    "answers": 3,
+    "secs": 6.123
+   },
+   "reasoning": {
+    "mean": 0.708333,
+    "lo": 0.522572,
+    "hi": 0.894094,
+    "seeds": 2,
+    "n_tasks": 12,
+    "truncated": 7,
+    "answers": 24,
+    "secs": 100.654
+   },
+   "standard": {
+    "mean": 0.451923,
+    "lo": 0.316664,
+    "hi": 0.587183,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 36,
+    "answers": 52,
+    "secs": 93.618
+   },
+   "tools": {
+    "mean": 0.944417,
+    "lo": 0.869075,
+    "hi": 1,
+    "seeds": 2,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 24,
+    "secs": 5.764
+   }
+  },
+  "nous-hermes2:10.7b": {
+   "coding": {
+    "mean": 0.597567,
+    "lo": 0.440913,
+    "hi": 0.754221,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 121.681
+   },
+   "cybersecurity": {
+    "mean": 0.720985,
+    "lo": 0.62354,
+    "hi": 0.81843,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 290.415
+   },
+   "daily": {
+    "mean": 0.861111,
+    "lo": 0.746537,
+    "hi": 0.975685,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 52.048
+   },
+   "dutch": {
+    "mean": 0.787056,
+    "lo": 0.668766,
+    "hi": 0.905345,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 43.994
+   },
+   "hard": {
+    "mean": 0.521667,
+    "lo": 0.403157,
+    "hi": 0.640176,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 0,
+    "answers": 60,
+    "secs": 450.464
+   },
+   "honesty": {
+    "mean": 0.833333,
+    "lo": 0.709865,
+    "hi": 0.956802,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 6,
+    "answers": 36,
+    "secs": 170.335
+   },
+   "longcontext": {
+    "mean": 0.5,
+    "lo": 0.262315,
+    "hi": 0.737685,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 30.563
+   },
+   "pentest": {
+    "mean": 0.892157,
+    "lo": 0.836478,
+    "hi": 0.947836,
+    "seeds": 3,
+    "n_tasks": 34,
+    "truncated": 5,
+    "answers": 102,
+    "secs": 461.387
+   },
+   "reasoning": {
+    "mean": 0.638889,
+    "lo": 0.479758,
+    "hi": 0.79802,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 268.896
+   },
+   "scenario": {
+    "mean": 0.683333,
+    "lo": 0.595637,
+    "hi": 0.771029,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 51.803
+   },
+   "secdev": {
+    "mean": 0.803689,
+    "lo": 0.695153,
+    "hi": 0.912225,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 1,
+    "answers": 45,
+    "secs": 204.721
+   },
+   "standard": {
+    "mean": 0.912397,
+    "lo": 0.851687,
+    "hi": 0.973108,
+    "seeds": 3,
+    "n_tasks": 26,
+    "truncated": 0,
+    "answers": 78,
+    "secs": 206.81
+   },
+   "tools": {
+    "mean": 0.97225,
+    "lo": 0.941758,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 39.8
+   }
+  },
+  "phi4:14b": {
+   "coding": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 137.157
+   },
+   "cybersecurity": {
+    "mean": 0.852258,
+    "lo": 0.774762,
+    "hi": 0.929753,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 353.143
+   },
+   "daily": {
+    "mean": 0.986111,
+    "lo": 0.958889,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 65.963
+   },
+   "dutch": {
+    "mean": 0.949083,
+    "lo": 0.900708,
+    "hi": 0.997459,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 55.467
+   },
+   "hard": {
+    "mean": 0.841667,
+    "lo": 0.752992,
+    "hi": 0.930341,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 2,
+    "answers": 60,
+    "secs": 875.082
+   },
+   "honesty": {
+    "mean": 0.75,
+    "lo": 0.606543,
+    "hi": 0.893457,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 161.572
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 121.98
+   },
+   "pentest": {
+    "mean": 0.838235,
+    "lo": 0.752485,
+    "hi": 0.923986,
+    "seeds": 2,
+    "n_tasks": 34,
+    "truncated": 1,
+    "answers": 68,
+    "secs": 480.545
+   },
+   "reasoning": {
+    "mean": 0.916667,
+    "lo": 0.8251,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 523.211
+   },
+   "scenario": {
+    "mean": 0.8,
+    "lo": 0.710848,
+    "hi": 0.889152,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 66.828
+   },
+   "secdev": {
+    "mean": 0.855556,
+    "lo": 0.754044,
+    "hi": 0.957067,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 3,
+    "answers": 45,
+    "secs": 259.294
+   },
+   "standard": {
+    "mean": 0.923077,
+    "lo": 0.849943,
+    "hi": 0.996211,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 0,
+    "answers": 52,
+    "secs": 260.815
+   },
+   "tools": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 56.547
+   }
+  },
+  "qwen2.5-coder:14b": {
+   "coding": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 138.904
+   },
+   "cybersecurity": {
+    "mean": 0.842197,
+    "lo": 0.764283,
+    "hi": 0.920111,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 316.491
+   },
+   "daily": {
+    "mean": 0.981472,
+    "lo": 0.953019,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 47.771
+   },
+   "dutch": {
+    "mean": 0.8565,
+    "lo": 0.757256,
+    "hi": 0.955744,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 47.46
+   },
+   "hard": {
+    "mean": 0.873333,
+    "lo": 0.798522,
+    "hi": 0.948145,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 0,
+    "answers": 60,
+    "secs": 1266.838
+   },
+   "honesty": {
+    "mean": 0.777778,
+    "lo": 0.640043,
+    "hi": 0.915513,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 150.396
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 137.829
+   },
+   "pentest": {
+    "mean": 0.838235,
+    "lo": 0.754979,
+    "hi": 0.921491,
+    "seeds": 2,
+    "n_tasks": 34,
+    "truncated": 0,
+    "answers": 68,
+    "secs": 330.407
+   },
+   "reasoning": {
+    "mean": 0.944444,
+    "lo": 0.868556,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 574.514
+   },
+   "scenario": {
+    "mean": 0.666667,
+    "lo": 0.548418,
+    "hi": 0.784916,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 62.222
+   },
+   "secdev": {
+    "mean": 0.811111,
+    "lo": 0.69757,
+    "hi": 0.924652,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 3,
+    "answers": 45,
+    "secs": 237.659
+   },
+   "standard": {
+    "mean": 0.913462,
+    "lo": 0.83868,
+    "hi": 0.988243,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 0,
+    "answers": 52,
+    "secs": 224.388
+   },
+   "tools": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 50.617
+   }
+  },
+  "qwen3.5:9b": {
+   "coding": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 60.962
+   },
+   "cybersecurity": {
+    "mean": 0.94697,
+    "lo": 0.894586,
+    "hi": 0.999354,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 137.404
+   },
+   "daily": {
+    "mean": 0.916667,
+    "lo": 0.8251,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 17.741
+   },
+   "dutch": {
+    "mean": 0.791667,
+    "lo": 0.665905,
+    "hi": 0.917429,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 21.107
+   },
+   "hard": {
+    "mean": 0.875,
+    "lo": 0.795579,
+    "hi": 0.954421,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 0,
+    "answers": 60,
+    "secs": 388.838
+   },
+   "honesty": {
+    "mean": 0.847222,
+    "lo": 0.731271,
+    "hi": 0.963174,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 63.625
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 42.234
+   },
+   "pentest": {
+    "mean": 0.933824,
+    "lo": 0.879871,
+    "hi": 0.987776,
+    "seeds": 2,
+    "n_tasks": 34,
+    "truncated": 0,
+    "answers": 68,
+    "secs": 199.084
+   },
+   "reasoning": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 204.704
+   },
+   "scenario": {
+    "mean": 0.683333,
+    "lo": 0.546477,
+    "hi": 0.82019,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 21.593
+   },
+   "secdev": {
+    "mean": 0.9,
+    "lo": 0.826294,
+    "hi": 0.973706,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 3,
+    "answers": 45,
+    "secs": 132.406
+   },
+   "standard": {
+    "mean": 0.961538,
+    "lo": 0.908759,
+    "hi": 1,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 1,
+    "answers": 52,
+    "secs": 136.155
+   },
+   "tools": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 17.61
+   }
+  },
+  "qwen3.8:27b": {
+   "coding": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 116.433
+   },
+   "cybersecurity": {
+    "mean": 0.944455,
+    "lo": 0.892467,
+    "hi": 0.996442,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 308.226
+   },
+   "daily": {
+    "mean": 0.916667,
+    "lo": 0.8251,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 69.912
+   },
+   "dutch": {
+    "mean": 0.916667,
+    "lo": 0.854932,
+    "hi": 0.978401,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 71.161
+   },
+   "hard": {
+    "mean": 0.941667,
+    "lo": 0.889105,
+    "hi": 0.994228,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 0,
+    "answers": 60,
+    "secs": 1386.601
+   },
+   "honesty": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 145.34
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 181.357
+   },
+   "pentest": {
+    "mean": 0.942412,
+    "lo": 0.891627,
+    "hi": 0.993197,
+    "seeds": 2,
+    "n_tasks": 34,
+    "truncated": 0,
+    "answers": 68,
+    "secs": 453.038
+   },
+   "reasoning": {
+    "mean": 0.972222,
+    "lo": 0.917778,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 1,
+    "answers": 36,
+    "secs": 563.881
+   },
+   "scenario": {
+    "mean": 0.85,
+    "lo": 0.766606,
+    "hi": 0.933394,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 78.358
+   },
+   "secdev": {
+    "mean": 0.977778,
+    "lo": 0.934222,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 3,
+    "answers": 45,
+    "secs": 266.742
+   },
+   "standard": {
+    "mean": 0.961538,
+    "lo": 0.908759,
+    "hi": 1,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 2,
+    "answers": 52,
+    "secs": 328.939
+   },
+   "tools": {
+    "mean": 0.888889,
+    "lo": 0.784771,
+    "hi": 0.993007,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 46.633
+   }
+  },
+  "qwen3:8b": {
+   "coding": {
+    "mean": 0.95,
+    "lo": 0.895406,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 76.828
+   },
+   "cybersecurity": {
+    "mean": 0.835879,
+    "lo": 0.751686,
+    "hi": 0.920072,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 128.343
+   },
+   "daily": {
+    "mean": 0.875,
+    "lo": 0.776418,
+    "hi": 0.973582,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 30.492
+   },
+   "dutch": {
+    "mean": 0.888889,
+    "lo": 0.800619,
+    "hi": 0.977159,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 29.437
+   },
+   "hard": {
+    "mean": 0.715,
+    "lo": 0.60576,
+    "hi": 0.82424,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 0,
+    "answers": 60,
+    "secs": 671.428
+   },
+   "honesty": {
+    "mean": 0.694444,
+    "lo": 0.541833,
+    "hi": 0.847055,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 74.164
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 72.047
+   },
+   "pentest": {
+    "mean": 0.823529,
+    "lo": 0.736987,
+    "hi": 0.910072,
+    "seeds": 2,
+    "n_tasks": 34,
+    "truncated": 0,
+    "answers": 68,
+    "secs": 167.619
+   },
+   "reasoning": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 209.925
+   },
+   "scenario": {
+    "mean": 0.65,
+    "lo": 0.566606,
+    "hi": 0.733394,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 35.383
+   },
+   "secdev": {
+    "mean": 0.733333,
+    "lo": 0.602667,
+    "hi": 0.864,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 3,
+    "answers": 45,
+    "secs": 102.64
+   },
+   "standard": {
+    "mean": 0.923077,
+    "lo": 0.855075,
+    "hi": 0.991079,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 0,
+    "answers": 52,
+    "secs": 112.11
+   },
+   "tools": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 27.777
+   }
+  },
+  "vicuna:7b": {
+   "coding": {
+    "mean": 0.600467,
+    "lo": 0.454597,
+    "hi": 0.746336,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 64.817
+   },
+   "cybersecurity": {
+    "mean": 0.565682,
+    "lo": 0.457354,
+    "hi": 0.67401,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 189.435
+   },
+   "daily": {
+    "mean": 0.921278,
+    "lo": 0.851813,
+    "hi": 0.990743,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 43.911
+   },
+   "dutch": {
+    "mean": 0.669,
+    "lo": 0.531344,
+    "hi": 0.806656,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 1,
+    "answers": 36,
+    "secs": 48.764
+   },
+   "hard": {
+    "mean": 0.173333,
+    "lo": 0.081819,
+    "hi": 0.264847,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 2,
+    "answers": 60,
+    "secs": 299.055
+   },
+   "honesty": {
+    "mean": 0.75,
+    "lo": 0.606543,
+    "hi": 0.893457,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 2,
+    "answers": 36,
+    "secs": 102.098
+   },
+   "longcontext": {
+    "mean": 0.444444,
+    "lo": 0.208231,
+    "hi": 0.680658,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 2,
+    "answers": 18,
+    "secs": 28.508
+   },
+   "pentest": {
+    "mean": 0.681373,
+    "lo": 0.595241,
+    "hi": 0.767504,
+    "seeds": 3,
+    "n_tasks": 34,
+    "truncated": 4,
+    "answers": 102,
+    "secs": 279.516
+   },
+   "reasoning": {
+    "mean": 0.25,
+    "lo": 0.106543,
+    "hi": 0.393457,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 4,
+    "answers": 36,
+    "secs": 206.296
+   },
+   "scenario": {
+    "mean": 0.416667,
+    "lo": 0.275053,
+    "hi": 0.55828,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 31.354
+   },
+   "secdev": {
+    "mean": 0.499978,
+    "lo": 0.369069,
+    "hi": 0.630887,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 2,
+    "answers": 45,
+    "secs": 132.261
+   },
+   "standard": {
+    "mean": 0.685897,
+    "lo": 0.584562,
+    "hi": 0.787233,
+    "seeds": 3,
+    "n_tasks": 26,
+    "truncated": 0,
+    "answers": 78,
+    "secs": 164.811
+   },
+   "tools": {
+    "mean": 0.777806,
+    "lo": 0.647661,
+    "hi": 0.90795,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 28.163
+   }
+  },
+  "wrn13b": {
+   "coding": {
+    "mean": 0.8927,
+    "lo": 0.80692,
+    "hi": 0.97848,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 199.739
+   },
+   "cybersecurity": {
+    "mean": 0.775258,
+    "lo": 0.682892,
+    "hi": 0.867624,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 37,
+    "answers": 66,
+    "secs": 968.181
+   },
+   "daily": {
+    "mean": 0.47225,
+    "lo": 0.34506,
+    "hi": 0.59944,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 13,
+    "answers": 36,
+    "secs": 380.192
+   },
+   "dutch": {
+    "mean": 0.838,
+    "lo": 0.738475,
+    "hi": 0.937525,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 29,
+    "answers": 36,
+    "secs": 431.769
+   },
+   "hard": {
+    "mean": 0.281667,
+    "lo": 0.172858,
+    "hi": 0.390475,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 17,
+    "answers": 60,
+    "secs": 986.407
+   },
+   "honesty": {
+    "mean": 0.555556,
+    "lo": 0.390931,
+    "hi": 0.72018,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 27,
+    "answers": 36,
+    "secs": 430.691
+   },
+   "longcontext": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 16,
+    "answers": 18,
+    "secs": 423.625
+   },
+   "pentest": {
+    "mean": 0.715691,
+    "lo": 0.612558,
+    "hi": 0.818824,
+    "seeds": 2,
+    "n_tasks": 34,
+    "truncated": 62,
+    "answers": 68,
+    "secs": 873.86
+   },
+   "reasoning": {
+    "mean": 0.305556,
+    "lo": 0.152945,
+    "hi": 0.458167,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 1,
+    "answers": 36,
+    "secs": 507.515
+   },
+   "scenario": {
+    "mean": 0.533333,
+    "lo": 0.40961,
+    "hi": 0.657057,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 2,
+    "answers": 30,
+    "secs": 354.815
+   },
+   "secdev": {
+    "mean": 0.518511,
+    "lo": 0.376834,
+    "hi": 0.660188,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 33,
+    "answers": 45,
+    "secs": 460.705
+   },
+   "standard": {
+    "mean": 0.576923,
+    "lo": 0.444027,
+    "hi": 0.709819,
+    "seeds": 2,
+    "n_tasks": 26,
+    "truncated": 34,
+    "answers": 52,
+    "secs": 539.593
+   },
+   "tools": {
+    "mean": 0.861111,
+    "lo": 0.746537,
+    "hi": 0.975685,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 5,
+    "answers": 36,
+    "secs": 133.899
+   }
+  },
+  "yi:9b": {
+   "coding": {
+    "mean": 0.835733,
+    "lo": 0.723858,
+    "hi": 0.947609,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 82.61
+   },
+   "cybersecurity": {
+    "mean": 0.712121,
+    "lo": 0.6163,
+    "hi": 0.807942,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 0,
+    "answers": 66,
+    "secs": 179.881
+   },
+   "daily": {
+    "mean": 0.888861,
+    "lo": 0.806534,
+    "hi": 0.971188,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 35.112
+   },
+   "dutch": {
+    "mean": 0.666722,
+    "lo": 0.541213,
+    "hi": 0.792232,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 41.253
+   },
+   "hard": {
+    "mean": 0.806667,
+    "lo": 0.708515,
+    "hi": 0.904818,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 0,
+    "answers": 60,
+    "secs": 344.859
+   },
+   "honesty": {
+    "mean": 0.777778,
+    "lo": 0.640043,
+    "hi": 0.915513,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 111.864
+   },
+   "longcontext": {
+    "mean": 0.5,
+    "lo": 0.262315,
+    "hi": 0.737685,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 0,
+    "answers": 18,
+    "secs": 27.86
+   },
+   "pentest": {
+    "mean": 0.808833,
+    "lo": 0.738264,
+    "hi": 0.879403,
+    "seeds": 3,
+    "n_tasks": 34,
+    "truncated": 0,
+    "answers": 102,
+    "secs": 274.183
+   },
+   "reasoning": {
+    "mean": 1.0,
+    "lo": 1.0,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 167.581
+   },
+   "scenario": {
+    "mean": 0.616667,
+    "lo": 0.50465,
+    "hi": 0.728683,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 35.78
+   },
+   "secdev": {
+    "mean": 0.733356,
+    "lo": 0.611659,
+    "hi": 0.855052,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 3,
+    "answers": 45,
+    "secs": 118.31
+   },
+   "standard": {
+    "mean": 0.871795,
+    "lo": 0.799294,
+    "hi": 0.944296,
+    "seeds": 3,
+    "n_tasks": 26,
+    "truncated": 0,
+    "answers": 78,
+    "secs": 141.871
+   },
+   "tools": {
+    "mean": 0.97225,
+    "lo": 0.941758,
+    "hi": 1,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 29.611
+   }
+  },
+  "zephyr:7b": {
+   "coding": {
+    "mean": 0.342167,
+    "lo": 0.197462,
+    "hi": 0.486871,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 2,
+    "answers": 30,
+    "secs": 164.714
+   },
+   "cybersecurity": {
+    "mean": 0.710879,
+    "lo": 0.614345,
+    "hi": 0.807412,
+    "seeds": 3,
+    "n_tasks": 22,
+    "truncated": 12,
+    "answers": 66,
+    "secs": 328.719
+   },
+   "daily": {
+    "mean": 0.902806,
+    "lo": 0.841255,
+    "hi": 0.964356,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 75.247
+   },
+   "dutch": {
+    "mean": 0.708306,
+    "lo": 0.586121,
+    "hi": 0.83049,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 1,
+    "answers": 36,
+    "secs": 54.155
+   },
+   "hard": {
+    "mean": 0.181667,
+    "lo": 0.086476,
+    "hi": 0.276857,
+    "seeds": 3,
+    "n_tasks": 20,
+    "truncated": 5,
+    "answers": 60,
+    "secs": 375.966
+   },
+   "honesty": {
+    "mean": 0.574083,
+    "lo": 0.412342,
+    "hi": 0.735825,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 3,
+    "answers": 36,
+    "secs": 121.969
+   },
+   "longcontext": {
+    "mean": 0.666667,
+    "lo": 0.442575,
+    "hi": 0.890758,
+    "seeds": 3,
+    "n_tasks": 6,
+    "truncated": 5,
+    "answers": 18,
+    "secs": 88.547
+   },
+   "pentest": {
+    "mean": 0.754902,
+    "lo": 0.674415,
+    "hi": 0.835389,
+    "seeds": 3,
+    "n_tasks": 34,
+    "truncated": 5,
+    "answers": 102,
+    "secs": 308.044
+   },
+   "reasoning": {
+    "mean": 0.666667,
+    "lo": 0.51049,
+    "hi": 0.822843,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 0,
+    "answers": 36,
+    "secs": 164.463
+   },
+   "scenario": {
+    "mean": 0.383333,
+    "lo": 0.244873,
+    "hi": 0.521793,
+    "seeds": 3,
+    "n_tasks": 10,
+    "truncated": 0,
+    "answers": 30,
+    "secs": 66.873
+   },
+   "secdev": {
+    "mean": 0.740733,
+    "lo": 0.622106,
+    "hi": 0.85936,
+    "seeds": 3,
+    "n_tasks": 15,
+    "truncated": 5,
+    "answers": 45,
+    "secs": 158.485
+   },
+   "standard": {
+    "mean": 0.820513,
+    "lo": 0.736681,
+    "hi": 0.904344,
+    "seeds": 3,
+    "n_tasks": 26,
+    "truncated": 4,
+    "answers": 78,
+    "secs": 158.555
+   },
+   "tools": {
+    "mean": 0.888917,
+    "lo": 0.795073,
+    "hi": 0.98276,
+    "seeds": 3,
+    "n_tasks": 12,
+    "truncated": 3,
+    "answers": 36,
+    "secs": 61.666
    }
   }
  }
